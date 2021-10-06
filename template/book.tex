@@ -1,0 +1,136 @@
+%! TeX program = lualatex
+\documentclass[12pt, oneside]{book}
+
+\usepackage{listings}
+
+\pagestyle{plain}
+\usepackage{tocloft}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\usepackage{pdfpages}
+\usepackage{titlesec}
+
+\setcounter{secnumdepth}{4}
+
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\usepackage{optidef}
+\usepackage{setspace}
+\usepackage{amsfonts, amsthm,amsmath,amssymb,mathtools}
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage[square,numbers]{natbib}
+\usepackage[pdftex,bookmarks=true,bookmarksopen=false,bookmarksnumbered=true,colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{bigints}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{forest}
+\usetikzlibrary{trees} % this is to allow the fork right path
+\usepackage[autostyle]{csquotes}
+\usepackage[ruled,vlined]{algorithm2e}
+\newlength{\commentWidth}
+\setlength{\commentWidth}{7cm}
+\newcommand{\atcp}[1]{\tcp*[r]{\makebox[\commentWidth]{#1\hfill}}}
+\usepackage{setspace}
+
+
+\usepackage[british]{babel}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{assumption}{Assumption}
+\newtheorem{acknowledgment}{Acknowledgment}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{conclusion}{Conclusion} 
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{criterion}{Criterion}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newtheorem{example}{Example}[section]
+\newtheorem{exercise}{Exercise}
+\newtheorem{notation}{Notation}
+\newtheorem{problem}{Problem}
+\newtheorem{remark}{Remark}
+\newtheorem{solution}{Solution}
+\newtheorem{summary}{Summary}
+\newenvironment{prf}[1][Proof]{\textbf{#1.} }{\qed}
+
+\input{julia_font}
+\input{julia_listings}
+
+\lstdefinelanguage{JuliaLocal}{
+    language = Julia, % inherit Julia lang. to add keywords
+    morekeywords = [3]{thompson_sampling}, % define more functions
+    morekeywords = [2]{Beta, Distributions}, % define more types and modules
+}
+
+
+
+%%%%%%%%%% BOOK INFORMATION %%%%%%%%%%
+\newcommand{\authorname}{Name}
+\newcommand{\booktitle}{Title}
+\newcommand{\subtitle}{Subtitle}
+\newcommand{\publisher}{TBD}
+\newcommand{\editionyear}{2021}
+\newcommand{\isbn}{XYZ}   % replace this with your own ISBN
+
+\title{\booktitle}
+\author{\authorname}
+
+
+\begin{document}
+
+% \includepdf{cover.pdf}
+
+\frontmatter
+\input{frontmatter/titlepage}
+\input{frontmatter/copyright}
+% \include{preface}
+
+\newpage
+\tableofcontents
+% \include{notation}
+% \listoftheorems[onlynamed]
+% \listoffigures
+
+\mainmatter
+\newpage
+% \include{optimal-transport-theory}
+% \include{2-benamou-brenier}
+% \include{3-fluxo-gradiente-wasserstein}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+using Distributions
+
+function thompson_sampling(𝛂, 𝛃, apply; T=100)
+    for t in 1:T
+        𝛉 = rand.(Beta.(𝛂, 𝛃))
+        x = argmax(𝛉)
+        r = apply(x)
+        𝛂[x], 𝛃[x] = (𝛂[x] + r, 𝛃[x] + 1 - r) # Comment
+    end
+    return Beta.(𝛂, 𝛃)
+end
+\end{lstlisting}
+\bibliography{ref}
+
+\bibliographystyle{plainnat}
+
+\include{appendix}
+
+\end{document}

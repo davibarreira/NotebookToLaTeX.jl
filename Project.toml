@@ -3,6 +3,10 @@ uuid = "d1325287-e83a-42c1-9f4a-9cbc16300cd8"
 authors = ["Davi Barreira <davisbarreira@gmail.com> and contributors"]
 version = "0.1.0"
 
+[deps]
+Pluto = "c3e4b0f8-55cb-11ea-2926-15256bba5781"
+ReadableRegex = "cbbcb084-453d-4c4c-b292-e315607ba6a4"
+
 [compat]
 julia = "1"
 
