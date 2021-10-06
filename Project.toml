@@ -1,0 +1,13 @@
+name = "PlutoLatexConverter"
+uuid = "d1325287-e83a-42c1-9f4a-9cbc16300cd8"
+authors = ["Davi Barreira <davisbarreira@gmail.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
