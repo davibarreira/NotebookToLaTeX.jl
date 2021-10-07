@@ -1,24 +1,6 @@
 # This file is machine-generated - editing it directly is not advised
 
-[[Dictionaries]]
-deps = ["Indexing", "Random"]
-git-tree-sha1 = "4b1cea8bbbc46367b0c551bb22bd2debb083b303"
-uuid = "85a47980-9c8c-11e8-2b9f-f7ca1fa99fb4"
-version = "0.3.12"
-
-[[Indexing]]
-git-tree-sha1 = "ce1566720fd6b19ff3411404d4b977acd4814f9f"
-uuid = "313cdc1a-70c2-5d6a-ae34-0150d3930a38"
-version = "1.1.1"
-
-[[Random]]
-deps = ["Serialization"]
-uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
-
 [[ReadableRegex]]
 git-tree-sha1 = "befcfa33f50688319571a770be4a55114b71d70a"
 uuid = "cbbcb084-453d-4c4c-b292-e315607ba6a4"
 version = "0.3.2"
-
-[[Serialization]]
-uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"

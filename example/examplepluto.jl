@@ -42,6 +42,11 @@ PlutoUI.LocalResource("figure.svg")
 # ╔═╡ 9fb84733-13bb-45fd-a4b2-5a39488c23d6
 PlutoUI.LocalResource("plotexample.png")
 
+# ╔═╡ e55debc5-451c-4e2d-b059-dfb18eb71288
+begin
+	B = [10,10,10]
+end
+
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
@@ -886,5 +891,6 @@ version = "0.9.1+5"
 # ╠═e1009c9c-1567-49ed-9c29-1fa081089b07
 # ╠═39d902cc-221c-4c50-9857-a12a072c0053
 # ╠═9fb84733-13bb-45fd-a4b2-5a39488c23d6
+# ╠═e55debc5-451c-4e2d-b059-dfb18eb71288
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002

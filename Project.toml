@@ -4,7 +4,6 @@ authors = ["Davi Barreira <davisbarreira@gmail.com> and contributors"]
 version = "0.1.0"
 
 [deps]
-Dictionaries = "85a47980-9c8c-11e8-2b9f-f7ca1fa99fb4"
 ReadableRegex = "cbbcb084-453d-4c4c-b292-e315607ba6a4"
 
 [compat]
