@@ -4,7 +4,7 @@ authors = ["Davi Barreira <davisbarreira@gmail.com> and contributors"]
 version = "0.1.0"
 
 [deps]
-Pluto = "c3e4b0f8-55cb-11ea-2926-15256bba5781"
+Dictionaries = "85a47980-9c8c-11e8-2b9f-f7ca1fa99fb4"
 ReadableRegex = "cbbcb084-453d-4c4c-b292-e315607ba6a4"
 
 [compat]

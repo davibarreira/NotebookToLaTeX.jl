@@ -26,6 +26,12 @@ going on under the hood.
 
 ### Code Structure
 
+## Saving Plots as Images
+
+For plots to be saved as a figure to be used
+on Latex, you must use either `Plots.jl`
+or `Makie.jl`.
+
 
 ### Important Details
 Here are some minor details that might go unnoticed, but that might be essential

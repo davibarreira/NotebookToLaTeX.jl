@@ -7,6 +7,9 @@ using InteractiveUtils
 # ╔═╡ 598d863b-3f42-4855-90f4-d98604776a4d
 using Plots
 
+# ╔═╡ 7b4b693d-c955-4c9b-97e8-56d28cf74e18
+using PlutoUI
+
 # ╔═╡ 9ebf3044-26d2-11ec-34c4-db68b273419f
 md"""
 # Chapter
@@ -27,24 +30,27 @@ Adding some code like `plots`. Note that the `using plots`
 begin
 	y(x) = sin(x)
 	plot(y)
-end
+end;	 
+
 
 # ╔═╡ e1009c9c-1567-49ed-9c29-1fa081089b07
 A = [10,10,10]
 
 # ╔═╡ 39d902cc-221c-4c50-9857-a12a072c0053
+PlutoUI.LocalResource("figure.svg")
 
-
-# ╔═╡ 39959601-29b6-49a4-a2d3-70204cec484e
-
+# ╔═╡ 9fb84733-13bb-45fd-a4b2-5a39488c23d6
+PlutoUI.LocalResource("plotexample.png")
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
 Plots = "~1.22.4"
+PlutoUI = "~0.7.14"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
@@ -256,6 +262,17 @@ deps = ["Artifacts", "Cairo_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll",
 git-tree-sha1 = "8a954fed8ac097d5be04921d595f741115c1b2ad"
 uuid = "2e76f6c2-a576-52d4-95c1-20adfe4de566"
 version = "2.8.1+0"
+
+[[HypertextLiteral]]
+git-tree-sha1 = "f6532909bf3d40b308a0f360b6a0e626c0e263a8"
+uuid = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
+version = "0.9.1"
+
+[[IOCapture]]
+deps = ["Logging", "Random"]
+git-tree-sha1 = "f7be53659ab06ddc986428d3a9dcc95f6fa6705a"
+uuid = "b5f81e59-6552-4d32-b1f0-c071b021bf89"
+version = "0.2.2"
 
 [[IniFile]]
 deps = ["Test"]
@@ -499,6 +516,12 @@ deps = ["Base64", "Contour", "Dates", "Downloads", "FFMPEG", "FixedPointNumbers"
 git-tree-sha1 = "6841db754bd01a91d281370d9a0f8787e220ae08"
 uuid = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 version = "1.22.4"
+
+[[PlutoUI]]
+deps = ["Base64", "Dates", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
+git-tree-sha1 = "d1fb76655a95bf6ea4348d7197b22e889a4375f4"
+uuid = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
+version = "0.7.14"
 
 [[Preferences]]
 deps = ["TOML"]
@@ -858,9 +881,10 @@ version = "0.9.1+5"
 # ╔═╡ Cell order:
 # ╠═9ebf3044-26d2-11ec-34c4-db68b273419f
 # ╟─598d863b-3f42-4855-90f4-d98604776a4d
+# ╟─7b4b693d-c955-4c9b-97e8-56d28cf74e18
 # ╠═bdad72d3-5744-459f-8627-299908573f40
 # ╠═e1009c9c-1567-49ed-9c29-1fa081089b07
 # ╠═39d902cc-221c-4c50-9857-a12a072c0053
-# ╠═39959601-29b6-49a4-a2d3-70204cec484e
+# ╠═9fb84733-13bb-45fd-a4b2-5a39488c23d6
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
