@@ -27,10 +27,12 @@ Adding some code like `plots`. Note that the `using plots`
 """
 
 # ╔═╡ bdad72d3-5744-459f-8627-299908573f40
-begin
+
+	 begin
 	y(x) = sin(x)
-	plot(y)
-end;	 
+	plot(y,
+		color=:blue)
+end
 
 
 # ╔═╡ e1009c9c-1567-49ed-9c29-1fa081089b07

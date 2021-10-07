@@ -3,24 +3,6 @@ using Pluto
 using ReadableRegex
 
 
-"""
-    tagcelloutput(cell)
-Reads the cell and add a tag for whether the output should
-be displayed or not. This is done by checking if there is a `;`
-at the end of the cell.
-"""
-    function tagcelloutput(cell)
-        p = findlast(";",cell)
-        if p ≢ nothing
-            if match(Regex(look_for(";",before=one_or_more(maybe(("\\n","\\t"))))),cell[p[1]:end]) != nothing
-                return "hideoutput"
-            else
-                return "showoutput"
-            end
-        else
-            return "showoutput"
-        end
-    end
 
 """
     extractnotebook(notebook)
@@ -34,29 +16,31 @@ The output is a dictionary containing
 * `outputtag`- Whether the output is hidden or showing (read the `tagcelloutput()` function).
 e.g. `extractnotebook("./mynotebook.jl")`
 """
-    function extractnotebook(notebook)
-        s = read(notebook, String)
-        cells = split(s, "# ╔═╡ ");
-
-        # The first cell is always a comment from Pluto
-        # and the last 3 are the Project, Manifest and the order
-        # hence, we only need the rest, which are the actual code.
-
-        codes = [cell[1:36] for cell in cells[2:end-1]]
-        contents = [cell[38:end] for cell in cells[2:end-3]]
-        
-        r = either("# ╠","# ╟")
-        sortedcells = split(cells[end],Regex(r))
-        sortedcodes = [cell[4:39] for cell in sortedcells[2:end]]
-        order = [findfirst(isequal(scode),codes) for scode in  sortedcodes[1:end]]
-        view  = [occursin("═",c) ? "showcode" : "hidecode" for c in sortedcells[2:end]]
-        # Matching running order
-        view  = view[order]
-        outputtag = [tagcelloutput(cell) for cell in cells[2:end-3]]
-        
-        notebookdata = Dict(:codes => codes[1:end-2], :cells => cells[2:end-2],
-            :contents => contents, :order=> order[1:end-2], :view=>view[1:end-2], :outputtag=>outputtag)
-        return notebookdata
+function extractnotebook(notebook)
+    s = read(notebook, String)
+    cells = split(s, "# ╔═╡ ");
+    # The first cell and the final 3 are not used
+    codes, contents, outputtag, celltype = [],[],[],[]
+    for cell in cells[2:end-3]
+        push!(codes, cell[1:36])
+        push!(contents, cell[38:end])
+        push!(outputtag, endswith(rstrip(cell),";") ? "hideoutput" : "showoutput")
+        push!(celltype, cell[38:42] == "md\"\"\"" ? "markdown" : "code")
     end
+    
+    # Get order and view type
+    r = either("# ╠","# ╟")
+    sortedcells = split(cells[end],Regex(r))
+    sortedcodes = [cell[4:39] for cell in sortedcells[2:end-2]]
+    order = [findfirst(isequal(scode),codes) for scode in  sortedcodes[1:end]]
+    view  = [occursin("═",c) ? "showcode" : "hidecode" for c in sortedcells[2:end-2]]
+    # Matching running order
+    view  = view[order]
+    
+    notebookdata = Dict(:codes => codes, :cells => cells[2:end-3],
+                        :contents => contents, :outputtag=>outputtag,
+                        :celltype => celltype,:order=> order,:view=>view)
+    return notebookdata
+end
 
 end
