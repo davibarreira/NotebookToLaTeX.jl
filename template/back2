@@ -9,6 +9,7 @@
 
 \setcounter{secnumdepth}{4}
 
+
 \usepackage{amsfonts, amsthm,amsmath,amssymb,mathtools}
 \usepackage{bbm}
 \usepackage{bm}
@@ -103,9 +104,6 @@ function thompson_sampling(𝛂, 𝛃, apply; T=100)
     return Beta.(𝛂, 𝛃)
 end
 \end{lstlisting}
-
-
-
 \bibliography{ref}
 
 \bibliographystyle{plainnat}
