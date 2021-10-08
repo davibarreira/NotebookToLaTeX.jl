@@ -15,8 +15,9 @@ using Test
         outputs  = collectoutputs(nb, "./")
         @test outputs[1] === nothing
         @test outputs[2] == (:plot, "notebooktest_figure1.png")
+        @test isfile("build_latex/figures/notebooktest_figure1.png")
     end
 
     #= rm("notebooktest_figure1.png") =#
-    #= rm("build_latex", recursive=true) =#
+    rm("build_latex", recursive=true)
 end

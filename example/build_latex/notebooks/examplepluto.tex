@@ -1,0 +1,50 @@
+\newpage
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+using PlutoUI
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+begin
+	using Plots
+	y(x) = sin(x)
+	plot(y,
+		color=:blue)
+end
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+A = [10,10,10]
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+x = rand(10);
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+x .+ 1
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+using Makie, CairoMakie
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+set_theme!(theme_ggplot2())
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+Makie.plot(x)
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+PlutoUI.LocalResource("figure.svg")
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+figurepath = "plotexample.png";
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+PlutoUI.LocalResource(figurepath)
+\end{lstlisting}

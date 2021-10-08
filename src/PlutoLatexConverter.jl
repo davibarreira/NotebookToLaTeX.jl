@@ -114,14 +114,14 @@ end
 
 function dispatch_output(command_eval::Makie.FigureAxisPlot, notebookname, runpath)
     global figureindex+=1
-    save(runpath*"/build_latex/notebooks/"*notebookname*"_"*"figure"*string(figureindex)*".png", command_eval)
+    save(runpath*"/build_latex/figures/"*notebookname*"_"*"figure"*string(figureindex)*".pdf", command_eval)
     return command_eval
 end
 
 function dispatch_output(command_eval::Plots.Plot, notebookname, runpath)
     global figureindex+=1
     println(runpath)
-    savefig(command_eval,runpath*"/build_latex/notebooks/"*notebookname*"_"*"figure"*string(figureindex)*".png")
+    savefig(command_eval,runpath*"/build_latex/figures/"*notebookname*"_"*"figure"*string(figureindex)*".png")
     return command_eval
 end
 
