@@ -1,6 +1,8 @@
 module PlutoLatexConverter
 using ReadableRegex
 using Plots
+using Makie
+using CairoMakie
 export extractnotebook, collectoutputs
 
 
@@ -79,7 +81,7 @@ function collectoutputs(notebookdata, notebookfolder="./")
             s = string(ex.args[end])
             if contains(s, Regex(either("PlutoUI.LocalResource","LocalResource")))
                 imagepath = s[findfirst(Regex(look_for(one_or_more(ANY),after="(",before=")")),s)]
-                push!(outputs,("imagepath",imagepath))
+                push!(outputs,(:image,imagepath))
             else
                 io = IOBuffer();
                 Base.invokelatest(show,
@@ -87,18 +89,24 @@ function collectoutputs(notebookdata, notebookfolder="./")
                     dispatch_output(Runner.eval(ex), notebookdata[:notebookname]));
                 celloutput = String(take!(io))
                 if celloutput == "nothing"
-                    push!(outputs,"")
+                    push!(outputs,nothing)
                 elseif startswith(celloutput, "Plot{Plots.")
                     push!(outputs,
-                    ("plot",notebookdata[:notebookname]*"_"*"figure"*string(figureindex)*".png"))
+                    (:plot,notebookdata[:notebookname]*"_"*"figure"*string(figureindex)*".png"))
                 else
-                    push!(outputs,celloutput)
+                    push!(outputs,(:text, celloutput))
                 end
             end
         end
     end
     cd(runpath)
     return outputs
+end
+
+function dispatch_output(command_eval::Makie.FigureAxisPlot, notebookname)
+    global figureindex+=1
+    save(notebookname*"_"*"figure"*string(figureindex)*".png", command_eval)
+    return command_eval
 end
 
 function dispatch_output(command_eval::Plots.Plot, notebookname)
