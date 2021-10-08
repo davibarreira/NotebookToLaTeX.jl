@@ -3,6 +3,7 @@ using Test
 
 @testset "PlutoLatexConverter.jl" begin
     # Write your tests here.
-    nb = extractnotebook("./notebooktest.jl")
-    collectoutputs(nb, "./")
+    @show nb = extractnotebook("./notebooktest.jl")
+    @show outputs  = collectoutputs(nb, "./")
+    @test outputs[1] == ""
 end

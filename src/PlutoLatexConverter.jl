@@ -1,8 +1,16 @@
 module PlutoLatexConverter
 using ReadableRegex
+using Plots
 export extractnotebook, collectoutputs
 
 
+figureindex = 0
+
+"""
+    Runner is a module for controling the scope
+    when running the notebook files, avoinding that any
+    command interferes with the "outside" script.
+"""
 module Runner
 end
 
@@ -19,7 +27,7 @@ The output is a dictionary containing
 * `order`    - Order that the cells are displayed in the notebook;
 e.g. `extractnotebook("./mynotebook.jl")`
 """
-function extractnotebook(notebook)
+function extractnotebook(notebook, notebookname=nothing)
     s = read(notebook, String)
     cells = split(s, "# ╔═╡ ");
     # The first cell and the final 3 are not used
@@ -39,8 +47,18 @@ function extractnotebook(notebook)
     view  = [occursin("═",c) ? "showcode" : "hidecode" for c in sortedcells[2:end-2]]
     # Matching running order
     view  = view[order]
+
+    # inferring the notebook name
+    # base on the notebook file path.
+    if notebookname === nothing
+        notebookname = split(notebook,"/")[end]
+        if endswith(notebookname,".jl")
+            # removes the ".jl" in the end
+            notebookname = notebookname[1:end-3]
+        end
+    end
     
-    notebookdata = Dict(:codes => codes,
+    notebookdata = Dict(:codes => codes, :notebookname => notebookname,
                         :contents => contents, :outputtag=>outputtag,
                         :celltype => celltype,:order=> order,:view=>view)
     return notebookdata
@@ -49,8 +67,6 @@ end
 function collectoutputs(notebookdata, notebookfolder="./")
     runpath = pwd()
     cd(notebookfolder)
-    io = IOBuffer();
-    expressions=[]
     outputs = []
     for (i, content) ∈ enumerate(notebookdata[:contents])
         if notebookdata[:celltype][i] == "code"
@@ -65,18 +81,34 @@ function collectoutputs(notebookdata, notebookfolder="./")
                 imagepath = s[findfirst(Regex(look_for(one_or_more(ANY),after="(",before=")")),s)]
                 push!(outputs,("imagepath",imagepath))
             else
-                Base.invokelatest(show,IOContext(io, :limit => true), "text/plain", Runner.eval(ex))
+                io = IOBuffer();
+                Base.invokelatest(show,
+                    IOContext(io, :limit => true),"text/plain",
+                    dispatch_output(Runner.eval(ex), notebookdata[:notebookname]));
                 celloutput = String(take!(io))
                 if celloutput == "nothing"
-                    celloutput = ""
+                    push!(outputs,"")
+                elseif startswith(celloutput, "Plot{Plots.")
+                    push!(outputs,
+                    ("plot",notebookdata[:notebookname]*"_"*"figure"*string(figureindex)*".png"))
+                else
+                    push!(outputs,celloutput)
                 end
-                push!(outputs, celloutput)
-                push!(expressions, ex)
             end
         end
     end
     cd(runpath)
-    return outputs, expressions
+    return outputs
+end
+
+function dispatch_output(command_eval::Plots.Plot, notebookname)
+    global figureindex+=1
+    savefig(command_eval,notebookname*"_"*"figure"*string(figureindex)*".png")
+    return command_eval
+end
+
+function dispatch_output(command_eval, notebookname)
+   return command_eval 
 end
 
 end
