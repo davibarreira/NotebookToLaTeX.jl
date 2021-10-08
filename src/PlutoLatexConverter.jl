@@ -3,7 +3,7 @@ using ReadableRegex
 using Plots
 using Makie
 using CairoMakie
-export extractnotebook, collectoutputs
+export extractnotebook, collectoutputs, createfolders
 
 
 figureindex = 0
@@ -92,11 +92,14 @@ function collectoutputs(notebookdata, notebookfolder="./")
                 io = IOBuffer();
                 Base.invokelatest(show,
                     IOContext(io, :limit => true),"text/plain",
-                    dispatch_output(Runner.eval(ex), notebookdata[:notebookname]));
+                    dispatch_output(Runner.eval(ex), notebookdata[:notebookname], runpath));
                 celloutput = String(take!(io))
                 if celloutput == "nothing"
                     push!(outputs,nothing)
                 elseif startswith(celloutput, "Plot{Plots.")
+                    push!(outputs,
+                    (:plot,notebookdata[:notebookname]*"_"*"figure"*string(figureindex)*".png"))
+                elseif startswith(celloutput, "FigureAxisPlot()")
                     push!(outputs,
                     (:plot,notebookdata[:notebookname]*"_"*"figure"*string(figureindex)*".png"))
                 else
@@ -109,20 +112,36 @@ function collectoutputs(notebookdata, notebookfolder="./")
     return outputs
 end
 
-function dispatch_output(command_eval::Makie.FigureAxisPlot, notebookname)
+function dispatch_output(command_eval::Makie.FigureAxisPlot, notebookname, runpath)
     global figureindex+=1
-    save(notebookname*"_"*"figure"*string(figureindex)*".png", command_eval)
+    save(runpath*"/build_latex/notebooks/"*notebookname*"_"*"figure"*string(figureindex)*".png", command_eval)
     return command_eval
 end
 
-function dispatch_output(command_eval::Plots.Plot, notebookname)
+function dispatch_output(command_eval::Plots.Plot, notebookname, runpath)
     global figureindex+=1
-    savefig(command_eval,notebookname*"_"*"figure"*string(figureindex)*".png")
+    println(runpath)
+    savefig(command_eval,runpath*"/build_latex/notebooks/"*notebookname*"_"*"figure"*string(figureindex)*".png")
     return command_eval
 end
 
-function dispatch_output(command_eval, notebookname)
+function dispatch_output(command_eval, notebookname, runpath)
    return command_eval 
+end
+
+function createfolders(path="./")
+    folder = path*"/build_latex/"
+    if !isdir(folder)
+    mkpath(folder*"notebooks")
+    mkpath(folder*"figures")
+    else
+        if !isdir(folder*"notebooks")
+            mkpath(folder*"notebooks")
+        end
+        if !isdir(folder*"figures")
+            mkpath(folder*"figures")
+        end
+    end
 end
 
 end
