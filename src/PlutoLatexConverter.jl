@@ -1,8 +1,10 @@
 module PlutoLatexConverter
-using Pluto
 using ReadableRegex
+export extractnotebook, collectoutputs
 
 
+module Runner
+end
 
 """
     extractnotebook(notebook)
@@ -10,10 +12,11 @@ Reads a Pluto notebook file, extracts the code
 and returns a dictionary with the code in organized form.
 The output is a dictionary containing
 * `codes`    - The cell code of each running cell;
-* `cells`    - The raw string in the cell;
 * `contents` - Only the Julia code in the cell;
+* `outputtag`- Whether the output is hidden or showing (read the `tagcelloutput()` function);
+* `celltype` - Whether cell contains code or markdown;
 * `view`     - Whether the code is hidden or showing (the "eye" icon in the notebook);
-* `outputtag`- Whether the output is hidden or showing (read the `tagcelloutput()` function).
+* `order`    - Order that the cells are displayed in the notebook;
 e.g. `extractnotebook("./mynotebook.jl")`
 """
 function extractnotebook(notebook)
@@ -37,10 +40,43 @@ function extractnotebook(notebook)
     # Matching running order
     view  = view[order]
     
-    notebookdata = Dict(:codes => codes, :cells => cells[2:end-3],
+    notebookdata = Dict(:codes => codes,
                         :contents => contents, :outputtag=>outputtag,
                         :celltype => celltype,:order=> order,:view=>view)
     return notebookdata
+end
+
+function collectoutputs(notebookdata, notebookfolder="./")
+    runpath = pwd()
+    cd(notebookfolder)
+    io = IOBuffer();
+    expressions=[]
+    outputs = []
+    for (i, content) ∈ enumerate(notebookdata[:contents])
+        if notebookdata[:celltype][i] == "code"
+            if startswith(lstrip(content),"begin") && endswith(rstrip(content),"end")
+                ex = :($(Meta.parse(strip(content))))
+            else
+                ex = :($(Meta.parse("begin\n"*content*"\nend")))
+            end
+            
+            s = string(ex.args[end])
+            if contains(s, Regex(either("PlutoUI.LocalResource","LocalResource")))
+                imagepath = s[findfirst(Regex(look_for(one_or_more(ANY),after="(",before=")")),s)]
+                push!(outputs,("imagepath",imagepath))
+            else
+                Base.invokelatest(show,IOContext(io, :limit => true), "text/plain", Runner.eval(ex))
+                celloutput = String(take!(io))
+                if celloutput == "nothing"
+                    celloutput = ""
+                end
+                push!(outputs, celloutput)
+                push!(expressions, ex)
+            end
+        end
+    end
+    cd(runpath)
+    return outputs, expressions
 end
 
 end

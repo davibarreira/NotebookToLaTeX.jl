@@ -4,18 +4,11 @@
 using Markdown
 using InteractiveUtils
 
+# ╔═╡ 598d863b-3f42-4855-90f4-d98604776a4d
+using Plots
+
 # ╔═╡ 7b4b693d-c955-4c9b-97e8-56d28cf74e18
 using PlutoUI
-
-# ╔═╡ bdad72d3-5744-459f-8627-299908573f40
-
-	 begin
-	using Plots
-	y(x) = sin(x)
-	plot(y,
-		color=:blue)
-end
-
 
 # ╔═╡ 9ebf3044-26d2-11ec-34c4-db68b273419f
 md"""
@@ -32,6 +25,15 @@ d(\omega(t_0),\omega(t_1)) \leq \int^{t_1}_{t_0}g(s) ds.
 
 Adding some code like `plots`. Note that the `using plots`
 """
+
+# ╔═╡ bdad72d3-5744-459f-8627-299908573f40
+
+	 begin
+	y(x) = sin(x)
+	plot(y,
+		color=:blue)
+end
+
 
 # ╔═╡ e1009c9c-1567-49ed-9c29-1fa081089b07
 A = [10,10,10]
@@ -886,7 +888,8 @@ version = "0.9.1+5"
 
 # ╔═╡ Cell order:
 # ╠═9ebf3044-26d2-11ec-34c4-db68b273419f
-# ╠═7b4b693d-c955-4c9b-97e8-56d28cf74e18
+# ╟─598d863b-3f42-4855-90f4-d98604776a4d
+# ╟─7b4b693d-c955-4c9b-97e8-56d28cf74e18
 # ╠═bdad72d3-5744-459f-8627-299908573f40
 # ╠═e1009c9c-1567-49ed-9c29-1fa081089b07
 # ╠═d25fc4f5-7f70-4291-a784-90556b85fb9d
