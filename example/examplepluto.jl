@@ -54,8 +54,11 @@ Makie.plot(x)
 # ╔═╡ 39d902cc-221c-4c50-9857-a12a072c0053
 PlutoUI.LocalResource("figure.svg")
 
+# ╔═╡ 94668e82-2938-41e9-8c8c-ebe1bbc2b925
+figurepath = "plotexample.png";
+
 # ╔═╡ 9fb84733-13bb-45fd-a4b2-5a39488c23d6
-PlutoUI.LocalResource("plotexample.png")
+PlutoUI.LocalResource(figurepath)
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1359,6 +1362,7 @@ version = "0.9.1+5"
 # ╠═36a3d67e-ef16-48a7-8f3e-84ed377960dc
 # ╠═3dd392b9-a63d-41d0-be35-71647302d51c
 # ╠═39d902cc-221c-4c50-9857-a12a072c0053
+# ╟─94668e82-2938-41e9-8c8c-ebe1bbc2b925
 # ╠═9fb84733-13bb-45fd-a4b2-5a39488c23d6
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
