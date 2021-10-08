@@ -80,7 +80,13 @@ function collectoutputs(notebookdata, notebookfolder="./")
             
             s = string(ex.args[end])
             if contains(s, Regex(either("PlutoUI.LocalResource","LocalResource")))
-                imagepath = s[findfirst(Regex(look_for(one_or_more(ANY),after="(",before=")")),s)]
+                if findfirst(Regex(look_for(one_or_more(ANY),after="(\"",before="\")")),s) === nothing
+                    Runner.eval(ex)
+                    pathvariable = s[findfirst(Regex(look_for(one_or_more(ANY),after="(",before=")")),s)]
+                    imagepath = Runner.eval(Meta.parse(pathvariable))
+                else
+                    imagepath = s[findfirst(Regex(look_for(one_or_more(ANY),after="(\"",before="\")")),s)]
+                end
                 push!(outputs,(:image,imagepath))
             else
                 io = IOBuffer();

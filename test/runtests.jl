@@ -5,5 +5,5 @@ using Test
     # Write your tests here.
     @show nb = extractnotebook("./notebooktest.jl")
     @show outputs  = collectoutputs(nb, "./")
-    @test outputs[1] == ""
+    @test outputs[1] === nothing
 end
