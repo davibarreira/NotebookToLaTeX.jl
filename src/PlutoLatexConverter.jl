@@ -138,12 +138,16 @@ function createfolders(path="./")
     if !isdir(folder)
         mkpath(folder*"/notebooks")
         mkpath(folder*"/figures")
+        mkpath(folder*"/frontmatter")
     else
         if !isdir(folder*"/notebooks")
             mkpath(folder*"/notebooks")
         end
         if !isdir(folder*"/figures")
             mkpath(folder*"/figures")
+        end
+        if !isdir(folder*"/frontmatter")
+            mkpath(folder*"/frontmatter")
         end
     end
 end
