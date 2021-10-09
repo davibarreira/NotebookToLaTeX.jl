@@ -4,8 +4,11 @@ using Plots
 using Makie
 using CairoMakie
 export extractnotebook, collectoutputs, createfolders
-#= include("templates.jl") =#
 
+include("templates.jl")
+include("auxiliarytex.jl")
+
+export createproject
 
 figureindex = 0
 
@@ -143,6 +146,11 @@ function createfolders(path="./")
             mkpath(folder*"/figures")
         end
     end
+end
+
+function createproject(path="./")
+    createfolders(path)
+    createtemplate(path)
 end
 
 function skiplines(io::IO, n)
