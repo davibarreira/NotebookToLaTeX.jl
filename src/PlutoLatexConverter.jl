@@ -10,7 +10,6 @@ include("auxiliarytex.jl")
 
 export createproject
 
-figureindex = 0
 
 """
     Runner is a module for controling the scope
@@ -71,6 +70,7 @@ function extractnotebook(notebook, notebookname=nothing)
 end
 
 function collectoutputs(notebookdata, notebookfolder="./")
+    figureindex = Dict(:i => 0)
     runpath = pwd()
     cd(notebookfolder)
     outputs = []
@@ -96,16 +96,16 @@ function collectoutputs(notebookdata, notebookfolder="./")
                 io = IOBuffer();
                 Base.invokelatest(show,
                     IOContext(io, :limit => true),"text/plain",
-                    dispatch_output(Runner.eval(ex), notebookdata[:notebookname], runpath));
+                    dispatch_output(Runner.eval(ex), notebookdata[:notebookname], runpath, figureindex));
                 celloutput = String(take!(io))
                 if celloutput == "nothing"
                     push!(outputs,nothing)
                 elseif startswith(celloutput, "Plot{Plots.")
                     push!(outputs,
-                    (:plot,notebookdata[:notebookname]*"_"*"figure"*string(figureindex)*".png"))
+                    (:plot,notebookdata[:notebookname]*"_"*"figure"*string(figureindex[:i])*".png"))
                 elseif startswith(celloutput, "FigureAxisPlot()")
                     push!(outputs,
-                    (:plot,notebookdata[:notebookname]*"_"*"figure"*string(figureindex)*".png"))
+                    (:plot,notebookdata[:notebookname]*"_"*"figure"*string(figureindex[:i])*".png"))
                 else
                     push!(outputs,(:text, celloutput))
                 end
@@ -118,20 +118,20 @@ function collectoutputs(notebookdata, notebookfolder="./")
     return outputs
 end
 
-function dispatch_output(command_eval::Makie.FigureAxisPlot, notebookname, runpath)
-    global figureindex+=1
-    save(runpath*"/build_latex/figures/"*notebookname*"_"*"figure"*string(figureindex)*".pdf", command_eval)
+function dispatch_output(command_eval::Makie.FigureAxisPlot, notebookname, runpath, figureindex)
+    figureindex[:i]+=1
+    save(runpath*"/build_latex/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".pdf", command_eval)
     return command_eval
 end
 
-function dispatch_output(command_eval::Plots.Plot, notebookname, runpath)
-    global figureindex+=1
+function dispatch_output(command_eval::Plots.Plot, notebookname, runpath, figureindex)
+    figureindex[:i]+=1
     println(runpath)
-    savefig(command_eval,runpath*"/build_latex/figures/"*notebookname*"_"*"figure"*string(figureindex)*".png")
+    savefig(command_eval,runpath*"/build_latex/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".png")
     return command_eval
 end
 
-function dispatch_output(command_eval, notebookname, runpath)
+function dispatch_output(command_eval, notebookname, runpath, figureindex)
    return command_eval 
 end
 
