@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1027 387" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-474.613,-491.877)">
+        <g transform="matrix(1.81581,0,0,1.81581,-1047.24,34.8485)">
+            <circle cx="885.875" cy="416.741" r="44.17" style="fill:rgb(211,102,95);stroke:rgb(206,56,57);stroke-width:7.18px;"/>
+        </g>
+        <g transform="matrix(1.81581,0,0,1.81581,-1047.24,-74.7288)">
+            <circle cx="885.875" cy="416.741" r="44.17" style="fill:rgb(174,127,197);stroke:rgb(146,93,175);stroke-width:7.18px;"/>
+        </g>
+        <g transform="matrix(1.81581,0,0,1.81581,-1047.24,-172.974)">
+            <circle cx="885.875" cy="416.741" r="44.17" style="fill:rgb(107,171,93);stroke:rgb(65,148,52);stroke-width:7.18px;"/>
+        </g>
+        <g transform="matrix(1.94409,0,0,1.94409,-1585.58,-200.478)">
+            <g transform="matrix(0.514379,-0,-0,0.514379,1059.72,356.133)">
+                <path d="M397.077,129.659L457.533,190.115L397.077,250.572" style="fill:none;stroke:black;stroke-width:40.3px;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+                <path d="M239.231,190.115L457.533,190.115" style="fill:none;stroke:black;stroke-width:40.3px;"/>
+            </g>
+        </g>
+        <g transform="matrix(2.03649,0,0,2.03649,-1408.5,-242.421)">
+            <g transform="matrix(5.52193,0,0,5.52193,-5569.79,-1515.8)">
+                <text x="1222.95px" y="362.297px" style="font-family:'HoeflerText-Regular', 'Hoefler Text', serif;font-size:24px;fill:rgb(65,148,52);">T</text>
+            </g>
+            <g transform="matrix(5.52193,0,0,5.52193,-5493.39,-1485.87)">
+                <text x="1222.95px" y="362.297px" style="font-family:'HoeflerText-Regular', 'Hoefler Text', serif;font-size:24px;fill:rgb(146,93,175);">E</text>
+            </g>
+            <g transform="matrix(5.52193,0,0,5.52193,-5426.14,-1516.33)">
+                <text x="1222.95px" y="362.297px" style="font-family:'HoeflerText-Regular', 'Hoefler Text', serif;font-size:24px;fill:rgb(206,56,57);">X</text>
+            </g>
+        </g>
+    </g>
+</svg>
