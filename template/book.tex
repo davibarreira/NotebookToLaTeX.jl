@@ -7,7 +7,7 @@
 \usepackage{pdfpages}
 \usepackage{titlesec}
 
-\setcounter{secnumdepth}{4}
+% \setcounter{secnumdepth}{4}
 
 \usepackage{amsfonts, amsthm,amsmath,amssymb,mathtools}
 \usepackage{bbm}
@@ -48,6 +48,7 @@
 
 \input{julia_font}
 \input{julia_listings}
+\input{julia_listings_unicode}
 
 \lstdefinelanguage{JuliaLocal}{
     language = Julia, % inherit Julia lang. to add keywords
@@ -86,9 +87,6 @@
 
 \mainmatter
 \newpage
-% \include{optimal-transport-theory}
-% \include{2-benamou-brenier}
-% \include{3-fluxo-gradiente-wasserstein}
 
 \begin{lstlisting}[language=JuliaLocal, style=julia]
 using Distributions

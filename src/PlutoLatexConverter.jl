@@ -4,6 +4,7 @@ using Plots
 using Makie
 using CairoMakie
 export extractnotebook, collectoutputs, createfolders
+#= include("templates.jl") =#
 
 
 figureindex = 0
@@ -132,14 +133,14 @@ end
 function createfolders(path="./")
     folder = path*"/build_latex/"
     if !isdir(folder)
-    mkpath(folder*"notebooks")
-    mkpath(folder*"figures")
+        mkpath(folder*"/notebooks")
+        mkpath(folder*"/figures")
     else
-        if !isdir(folder*"notebooks")
-            mkpath(folder*"notebooks")
+        if !isdir(folder*"/notebooks")
+            mkpath(folder*"/notebooks")
         end
-        if !isdir(folder*"figures")
-            mkpath(folder*"figures")
+        if !isdir(folder*"/figures")
+            mkpath(folder*"/figures")
         end
     end
 end

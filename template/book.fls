@@ -250,28 +250,13 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg
 INPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-bold.luc
 INPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-regular.luc
-INPUT ./JuliaMono-Regular.ttf
-INPUT /usr/share/texlive/texmf-dist/tex/luatex/luaotfload/luaotfload-glyphlist.lua
-OUTPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-regular.lua
-INPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-regular.lua
-OUTPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-regular.luc
 INPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-bold.luc
-INPUT ./JuliaMono-Bold.ttf
-OUTPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-bold.lua
-INPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-bold.lua
-OUTPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-bold.luc
 INPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc
-INPUT /home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf
-OUTPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-regular.lua
-INPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-regular.lua
-OUTPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-regular.luc
-INPUT /home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf
-OUTPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-bold.lua
-INPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-bold.lua
-OUTPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-bold.luc
 INPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-medium.luc
 INPUT ./julia_listings.tex
 INPUT ./julia_listings.tex
+INPUT ./julia_listings_unicode.tex
+INPUT ./julia_listings_unicode.tex
 INPUT ./julia_listings_unicode.tex
 INPUT ./julia_listings_unicode.tex
 INPUT ./book.aux

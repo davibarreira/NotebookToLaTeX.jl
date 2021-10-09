@@ -4,7 +4,7 @@ using Test
 @testset "PlutoLatexConverter.jl" begin
     # Write your tests here.
     @testset "Folder and Files" begin
-        createfolders("./test")
+        createfolders("./")
         @test isdir("build_latex")
         @test isdir("build_latex/notebooks")
         @test isdir("build_latex/figures")
@@ -16,6 +16,7 @@ using Test
         @test outputs[1] === nothing
         @test outputs[2] == (:plot, "notebooktest_figure1.png")
         @test isfile("build_latex/figures/notebooktest_figure1.png")
+        createtemplate()
     end
 
     #= rm("notebooktest_figure1.png") =#
