@@ -279,6 +279,12 @@ INPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/l
 OUTPUT notebooks/examplepluto.aux
 INPUT ./notebooks/examplepluto.tex
 INPUT ./notebooks/examplepluto.tex
+INPUT ./figures/examplepluto_figure1.png
+INPUT ./figures/examplepluto_figure1.png
+INPUT ./figures/examplepluto_figure1.png
+INPUT ./figures/examplepluto_figure2.png
+INPUT ./figures/examplepluto_figure2.png
+INPUT ./figures/examplepluto_figure2.png
 INPUT /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/lmroman17-regular.luc
 INPUT ./main.toc
 INPUT ./main.toc

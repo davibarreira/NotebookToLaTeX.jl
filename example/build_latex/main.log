@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  9 OCT 2021 11:12
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  9 OCT 2021 11:28
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -531,13 +531,25 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 warning  (pdf backend): ignoring duplicate destination with the name 'page.i'
 [1]
 \openout2 = notebooks/examplepluto.aux
- (./notebooks/examplepluto.tex [2
+ (./notebooks/examplepluto.tex
+<./figures/examplepluto_figure1.png, id=16, 602.25pt x 401.5pt>
+File: ./figures/examplepluto_figure1.png Graphic file (type png)
+<use ./figures/examplepluto_figure1.png>
+Package luatex.def Info: ./figures/examplepluto_figure1.png  used on input line 18.
+(luatex.def)             Requested size: 312.00119pt x 208.00926pt.
+ [2
 
-]) [3] (./main.toc)
+<./figures/examplepluto_figure1.png>]
+<./figures/examplepluto_figure2.png, id=37, 602.25pt x 401.5pt>
+File: ./figures/examplepluto_figure2.png Graphic file (type png)
+<use ./figures/examplepluto_figure2.png>
+Package luatex.def Info: ./figures/examplepluto_figure2.png  used on input line 66.
+(luatex.def)             Requested size: 312.00119pt x 208.00926pt.
+ [3<./figures/examplepluto_figure2.png>]) [4] (./main.toc)
 \tf@toc=\write4
 
 \openout4 = main.toc
- [4
+ [5
 
 
 
@@ -552,19 +564,19 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 19228 strings out of 478824
+ 19254 strings out of 478824
  100000,953878 words of node,token memory allocated
  474 words of node memory still in use:
    3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 8 attribute, 56 glue_spec, 8 attribute_list, 5 write nodes
-   avail lists: 2:1894,3:253,4:1550,5:1034,6:105,7:2225,8:38,9:3503,10:12,11:126
- 38263 multiletter control sequences out of 65536+600000
+   avail lists: 2:1443,3:159,4:1226,5:839,6:66,7:1418,8:30,9:2735,10:12,11:102
+ 38276 multiletter control sequences out of 65536+600000
  48 fonts using 26984063 bytes
- 86i,5n,89p,9591b,5180s stack positions out of 5000i,500n,10000p,200000b,200000s
+ 86i,6n,89p,9591b,5180s stack positions out of 5000i,500n,10000p,200000b,200000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Medium.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regular.otf>
-Output written on main.pdf (5 pages, 160479 bytes).
+Output written on main.pdf (6 pages, 191667 bytes).
 
-PDF statistics: 108 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
- 29 named destinations out of 1000 (max. 131072)
+PDF statistics: 114 PDF objects out of 1000 (max. 8388607)
+ 79 compressed objects within 1 object stream
+ 30 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 

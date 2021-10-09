@@ -13,6 +13,13 @@ begin
 end
 \end{lstlisting}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figures/examplepluto_figure1.png}
+	\label{fig:examplepluto_figure1.png}
+
+\end{figure}
+
 \begin{lstlisting}[language=JuliaLocal, style=julia]
 A = [10,10,10]
 \end{lstlisting}
@@ -34,16 +41,16 @@ x .+ 1
 
 \begin{verbatim}
 10-element Vector{Float64}:
- 1.1701759034214991
- 1.7106072576830913
- 1.5669620959711024
- 1.1357378777943175
- 1.0768386166852528
- 1.9546206671538047
- 1.6834036179640717
- 1.7490729553203428
- 1.4972331825730685
- 1.4263426410784033
+ 1.7628714129957028
+ 1.3555389111225373
+ 1.4291094785319325
+ 1.9961534157731415
+ 1.5140054961259364
+ 1.2228365779406158
+ 1.0961750891793673
+ 1.7292439442049676
+ 1.9921209010034493
+ 1.2256276790206206
 \end{verbatim}
 
 \begin{lstlisting}[language=JuliaLocal, style=julia]
@@ -53,6 +60,13 @@ set_theme!(theme_ggplot2())
 \begin{lstlisting}[language=JuliaLocal, style=julia]
 Makie.plot(x)
 \end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figures/examplepluto_figure2.png}
+	\label{fig:examplepluto_figure2.png}
+
+\end{figure}
 
 \begin{lstlisting}[language=JuliaLocal, style=julia]
 PlutoUI.LocalResource("figure.svg")
