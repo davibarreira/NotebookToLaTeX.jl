@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  9 OCT 2021 13:30
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  9 OCT 2021 13:32
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -312,30 +312,202 @@ Package: fontspec-luatex 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTe
  (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
 ) (/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+luaotfload | cache : Lookup cache loaded from /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.
+luaotfload | db : Reload initiated (formats: otf,ttf,ttc); reason: Font "[" not found.
+luaotfload | resolve : sequence of 3 lookups yielded nothing appropriate.
+
+./julia_font.tex:7: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7 	Extension = .ttf]
+                    
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./julia_font.tex:7: Missing $ inserted.
+<inserted text> 
+$
+l.7 	Extension = .ttf]
+                    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 7.
+
+./julia_font.tex:7: Package fontspec Error: The font "JuliaMono_Regular" cannot be found.
+
+For immediate help type H <return>.
+ ...                                              
+                                                  
+l.7 	Extension = .ttf]
+                    
+
+A font might not be found for many reasons.
+ Check the spelling, where the font is installed etc. etc.
+
+ When in doubt, ask someone for help!
+
+
+luaotfload | resolve : sequence of 3 lookups yielded nothing appropriate.
+luaotfload | aux : no font with id 0
+luaotfload | aux : no font with id 0
+luaotfload | resolve : sequence of 3 lookups yielded nothing appropriate.
+
+./julia_font.tex:7: Package fontspec Error: The font "JuliaMono_Regular" cannot be found.
+
+For immediate help type H <return>.
+ ...                                              
+                                                  
+l.7 	Extension = .ttf]
+                    
+
+A font might not be found for many reasons.
+ Check the spelling, where the font is installed etc. etc.
+
+ When in doubt, ask someone for help!
+
+
+luaotfload | resolve : sequence of 3 lookups yielded nothing appropriate.
+
+./julia_font.tex:7: Package fontspec Error: The font "JuliaMono_Regular" cannot be found.
+
+For immediate help type H <return>.
+ ...                                              
+                                                  
+l.7 	Extension = .ttf]
+                    
+
+A font might not be found for many reasons.
+ Check the spelling, where the font is installed etc. etc.
+
+ When in doubt, ask someone for help!
+
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 7.
+
+./julia_font.tex:7: Missing \endcsname inserted.
+<to be read again> 
+\protect 
+l.7 	Extension = .ttf]
+                    
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+./julia_font.tex:7: Missing \endcsname inserted.
+<to be read again> 
+\protect 
+l.7 	Extension = .ttf]
+                    
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+./julia_font.tex:7: Extra \endcsname.
+<recently read> \endcsname 
+           
+l.7 	Extension = .ttf]
+                    
+I'm ignoring this, since I wasn't doing a \csname.
+
+luaotfload | resolve : sequence of 3 lookups yielded nothing appropriate.
+
+./julia_font.tex:7: Package fontspec Error: The font "JuliaMono_Bold" cannot be found.
+
+For immediate help type H <return>.
+ ...                                              
+                                                  
+l.7 	Extension = .ttf]
+                    
+
+A font might not be found for many reasons.
+ Check the spelling, where the font is installed etc. etc.
+
+ When in doubt, ask someone for help!
+
+
+luaotfload | resolve : sequence of 3 lookups yielded nothing appropriate.
+
+./julia_font.tex:7: Package fontspec Error: The font "JuliaMono_Bold" cannot be found.
+
+For immediate help type H <return>.
+ ...                                              
+                                                  
+l.7 	Extension = .ttf]
+                    
+
+A font might not be found for many reasons.
+ Check the spelling, where the font is installed etc. etc.
+
+ When in doubt, ask someone for help!
+
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 7.
+
+./julia_font.tex:7: Missing \endcsname inserted.
+<to be read again> 
+\protect 
+l.7 	Extension = .ttf]
+                    
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+./julia_font.tex:7: Missing \endcsname inserted.
+<to be read again> 
+\protect 
+l.7 	Extension = .ttf]
+                    
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+./julia_font.tex:7: Extra \endcsname.
+<recently read> \endcsname 
+           
+l.7 	Extension = .ttf]
+                    
+I'm ignoring this, since I wasn't doing a \csname.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 7.
+
 
 Package fontspec Info: Font family 'JuliaMono(0)' created for font 'JuliaMono'
 (fontspec)             with options [UprightFont = *_Regular,BoldFont =
-(fontspec)             *_Bold,Path =
-(fontspec)             /home/davibarreira/.local/share/fonts/Unknown
+(fontspec)             *_Bold,Path = \unhbox\voidb@x \penalty\@M 
+(fontspec)             {}/.local/share/fonts/Unknown
 (fontspec)             Vendor/TrueType/JuliaMono/,Extension = .ttf].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[/home/davibarreira/.local/share/fonts/Unknown
-(fontspec)             Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf]:mode=node;script=latn;language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
-(fontspec)             <->"[/home/davibarreira/.local/share/fonts/Unknown
-(fontspec)             Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf]:mode=node;script=latn;language=dflt;+smcp;"
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"[/home/davibarreira/.local/share/fonts/Unknown
-(fontspec)             Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf]:mode=node;script=latn;language=dflt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
-(fontspec)             <->"[/home/davibarreira/.local/share/fonts/Unknown
-(fontspec)             Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf]:mode=node;script=latn;language=dflt;+smcp;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[\unhbox\voidb@x
+(fontspec)             \penalty\@M  {}/.local/share/fonts/Unknown
+(fontspec)             Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf]:mode=node;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"[\unhbox\voidb@x
+(fontspec)             \penalty\@M  {}/.local/share/fonts/Unknown
+(fontspec)             Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf]:mode=node;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
-luaotfload | cache : Lookup cache loaded from /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.
+./julia_font.tex:7: Missing $ inserted.
+<inserted text> 
+$
+l.7 	Extension = .ttf]
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
 
 Package fontspec Info: Font family 'JuliaMono-Regular(0)' created for font
 (fontspec)             'JuliaMono-Regular' with options
@@ -389,6 +561,46 @@ Package fontspec Info: Font family 'JuliaMono-Medium(0)' created for font
 (fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
 (fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
 (fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+
+
+Overfull \hbox (65.39801pt too wide) in paragraph at lines 7--11
+[] \TU/lmr/m/n/12 /.lo-cal/share/-fonts/Un-known Vendor/TrueType/JuliaMono/JuliaMono$[][]\OML/cmm/m/it/12 egular:ttf\OT1/cmr/m/n/12 ] :
+ []
+
+
+Overfull \hbox (213.82474pt too wide) in paragraph at lines 7--11
+\OML/cmm/m/it/12 mode \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 node\OT1/cmr/m/n/12 ; "\OML/cmm/m/it/12 at\OT1/cmr/m/n/12 11\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 99997\OML/cmm/m/it/12 pt []=:local=share=fonts=UnknownVendor=TrueType=JuliaMono=JuliaMono[]egular:ttf\OT1/cmr/m/n/12 ] :
+ []
+
+
+Overfull \hbox (211.21674pt too wide) in paragraph at lines 7--11
+\OML/cmm/m/it/12 mode \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 node\OT1/cmr/m/n/12 ; "\OML/cmm/m/it/12 at\OT1/cmr/m/n/12 12\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 00003\OML/cmm/m/it/12 pt[]=:local=share=fonts=UnknownVendor=TrueType=JuliaMono=JuliaMono[]egular:ttf\OT1/cmr/m/n/12 ] :
+ []
+
+
+Overfull \hbox (298.87347pt too wide) in paragraph at lines 7--11
+\OML/cmm/m/it/12 mode \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 node\OT1/cmr/m/n/12 ; \OML/cmm/m/it/12 language \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 dflt\OT1/cmr/m/n/12 ; "\OML/cmm/m/it/12 at\OT1/cmr/m/n/12 12\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 00003\OML/cmm/m/it/12 pt[]=:local=share=fonts=UnknownVendor=TrueType=JuliaMono=JuliaMono[]egular:ttf\OT1/cmr/m/n/12 ] :
+ []
+
+
+Overfull \hbox (298.87347pt too wide) in paragraph at lines 7--11
+\OML/cmm/m/it/12 mode \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 node\OT1/cmr/m/n/12 ; \OML/cmm/m/it/12 language \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 dflt\OT1/cmr/m/n/12 ; "\OML/cmm/m/it/12 at\OT1/cmr/m/n/12 12\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 00003\OML/cmm/m/it/12 pt[]=:local=share=fonts=UnknownVendor=TrueType=JuliaMono=JuliaMono[]egular:ttf\OT1/cmr/m/n/12 ] :
+ []
+
+
+Overfull \hbox (216.71529pt too wide) in paragraph at lines 7--11
+\OML/cmm/m/it/12 mode \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 node\OT1/cmr/m/n/12 ; \OML/cmm/m/it/12 language \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 dflt\OT1/cmr/m/n/12 ; "[]\OML/cmm/m/it/12 =:local=share=fonts=UnknownVendor=TrueType=JuliaMono=JuliaMono[]old:ttf\OT1/cmr/m/n/12 ] :
+ []
+
+
+Overfull \hbox (281.65489pt too wide) in paragraph at lines 7--11
+\OML/cmm/m/it/12 mode \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 node\OT1/cmr/m/n/12 ; \OML/cmm/m/it/12 language \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 dflt\OT1/cmr/m/n/12 ; "\OML/cmm/m/it/12 at\OT1/cmr/m/n/12 12\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 00003\OML/cmm/m/it/12 pt[]=:local=share=fonts=UnknownVendor=TrueType=JuliaMono=JuliaMono[]old:ttf\OT1/cmr/m/n/12 ] :
+ []
+
+
+Overfull \hbox (281.65489pt too wide) in paragraph at lines 7--11
+\OML/cmm/m/it/12 mode \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 node\OT1/cmr/m/n/12 ; \OML/cmm/m/it/12 language \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 dflt\OT1/cmr/m/n/12 ; "\OML/cmm/m/it/12 at\OT1/cmr/m/n/12 12\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 00003\OML/cmm/m/it/12 pt[]=:local=share=fonts=UnknownVendor=TrueType=JuliaMono=JuliaMono[]old:ttf\OT1/cmr/m/n/12 ] :
+ []
 
 ) (./julia_listings.tex (./julia_listings_unicode.tex)) (./julia_listings.tex (./julia_listings_unicode.tex)) (./julia_listings_unicode.tex) (./main.aux (./notebooks/examplepluto.aux) (./appendix.aux))
 \openout1 = main.aux
@@ -523,11 +735,12 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/JuliaMono-Medium(0)/b/n on input line 44.
- (./frontmatter/titlepage.tex [1
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./frontmatter/titlepage.tex [1
 
 
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]) (./frontmatter/copyright.tex)
+]) (./frontmatter/copyright.tex)
 warning  (pdf backend): ignoring duplicate destination with the name 'page.i'
 [1] (./main.toc)
 \tf@toc=\write4
@@ -538,22 +751,24 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.i'
 ]
 \openout2 = notebooks/examplepluto.aux
  (./notebooks/examplepluto.tex
-<./figures/examplepluto_figure1.png, id=22, 602.25pt x 401.5pt>
+<./figures/examplepluto_figure1.png, id=29, 602.25pt x 401.5pt>
 File: ./figures/examplepluto_figure1.png Graphic file (type png)
 <use ./figures/examplepluto_figure1.png>
 Package luatex.def Info: ./figures/examplepluto_figure1.png  used on input line 18.
 (luatex.def)             Requested size: 312.00119pt x 208.00926pt.
- [1
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
+[1
 
 
 <./figures/examplepluto_figure1.png>]
-<./figures/examplepluto_figure2.pdf, id=43, 602.25pt x 451.6875pt>
+<./figures/examplepluto_figure2.pdf, id=49, 602.25pt x 451.6875pt>
 File: ./figures/examplepluto_figure2.pdf Graphic file (type pdf)
 <use ./figures/examplepluto_figure2.pdf>
 Package luatex.def Info: ./figures/examplepluto_figure2.pdf  used on input line 66.
 (luatex.def)             Requested size: 312.00119pt x 234.01042pt.
  [2<./figures/examplepluto_figure2.pdf>]
-</home/davibarreira/MEGA/EMAp/PlutoLatexConverter.jl/example/plotexample.png, id=60, 602.25pt x 401.5pt>
+</home/davibarreira/MEGA/EMAp/PlutoLatexConverter.jl/example/plotexample.png, id=66, 602.25pt x 401.5pt>
 File: /home/davibarreira/MEGA/EMAp/PlutoLatexConverter.jl/example/plotexample.png Graphic file (type png)
 <use /home/davibarreira/MEGA/EMAp/PlutoLatexConverter.jl/example/plotexample.png>
 Package luatex.def Info: /home/davibarreira/MEGA/EMAp/PlutoLatexConverter.jl/example/plotexample.png  used on input line 77.
@@ -569,19 +784,19 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 19264 strings out of 478824
+ 19271 strings out of 478824
  100000,953878 words of node,token memory allocated
  481 words of node memory still in use:
    3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 9 attribute, 56 glue_spec, 9 attribute_list, 6 write nodes
-   avail lists: 2:1443,3:160,4:1226,5:839,6:66,7:1399,8:30,9:2735,10:12,11:102
- 38282 multiletter control sequences out of 65536+600000
- 48 fonts using 26984063 bytes
+   avail lists: 2:1443,3:785,4:1226,5:839,6:66,7:1999,8:774,9:2735,10:12,11:102
+ 38289 multiletter control sequences out of 65536+600000
+ 58 fonts using 27606007 bytes
  86i,6n,89p,9591b,5180s stack positions out of 5000i,500n,10000p,200000b,200000s
-</home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Medium.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regular.otf>
-Output written on main.pdf (6 pages, 197714 bytes).
+</home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Medium.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on main.pdf (7 pages, 231474 bytes).
 
-PDF statistics: 119 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
+PDF statistics: 134 PDF objects out of 1000 (max. 8388607)
+ 92 compressed objects within 1 object stream
  28 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 

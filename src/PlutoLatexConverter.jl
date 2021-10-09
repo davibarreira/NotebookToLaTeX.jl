@@ -154,9 +154,9 @@ function createfolders(path="./")
     end
 end
 
-function createproject(path="./")
+function createproject(path="./", template=:book)
     createfolders(path)
-    createtemplate(path)
+    createtemplate(path, template)
     createauxiliarytex(path)
 end
 
@@ -187,7 +187,7 @@ function writetext(file::String, text::String, linenumber::Integer, endline=true
     close(f)
 end
 
-function insertline(file::String, text::String, linenumber::Integer)
+function insertlineabove(file::String, text::String, linenumber::Integer)
     if linenumber==1
         writetext(file, text*"\n", linenumber, false)
     else
@@ -195,9 +195,13 @@ function insertline(file::String, text::String, linenumber::Integer)
     end
 end
 
-function plutotolatex(notebookname)
+function insertlinebelow(file::String, text::String, linenumber::Integer)
+    writetext(file, "\n"*text, linenumber)
+end
 
-    createproject(dirname(notebookname))
+function plutotolatex(notebookname; template=:book)
+
+    createproject(dirname(notebookname), template)
     nb = extractnotebook(notebookname)
     outputs = collectoutputs(nb,dirname(notebookname));
     notebook = "./build_latex/notebooks/"*nb[:notebookname]*".tex"

@@ -14,6 +14,11 @@ Still in progress...
 This package uses [julia-mono-listing](https://github.com/mossr/julia-mono-listings),
 hence, *it requires using `lualatex` for compilation*.
 
+## Converting a Pluto Notebook to Latex
+
+Once the files are created, the `./build_latex/julia_font.tex` file
+contains information related to `Julia-Mono`, which is the font
+used. Note that the user should define the path to the fonts location.
 
 ## Options
 
