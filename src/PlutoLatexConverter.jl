@@ -203,6 +203,13 @@ function plutotolatex(notebookname; template=:book)
 
     createproject(dirname(notebookname), template)
     nb = extractnotebook(notebookname)
+    if template == :book
+        insertlinebelow(dirname(notebookname)*"/build_latex/main.tex",
+        "\\include{./notebooks/"*nb[:notebookname]*"}", 58)
+    elseif template == :mathbook
+        insertlinebelow(dirname(notebookname)*"/build_latex/main.tex",
+        "\\include{./notebooks/"*nb[:notebookname]*"}", 87)
+    end
     outputs = collectoutputs(nb,dirname(notebookname));
     notebook = "./build_latex/notebooks/"*nb[:notebookname]*".tex"
     open(notebook, "w") do f

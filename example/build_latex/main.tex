@@ -7,6 +7,16 @@
 \usepackage{pdfpages}
 \usepackage{titlesec}
 
+%%%% MATH PACKAGES %%%%
+
+\usepackage{amsfonts, amsthm,amsmath,amssymb,mathtools}
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{thmtools} % List of Theorems
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage[square,numbers]{natbib}
 \usepackage[pdftex,bookmarks=true,bookmarksopen=false,bookmarksnumbered=true,colorlinks=true,linkcolor=blue]{hyperref}
 \usepackage[utf8]{inputenc}
@@ -15,7 +25,6 @@
 
 %%%%%%% JULIA %%%%%%%%%%
 \input{julia_font}
-\input{julia_listings}
 \input{julia_listings}
 \input{julia_listings_unicode}
 
@@ -40,6 +49,24 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%% MATH STYLE  %%%%%%%%%%%%%
+\newtheoremstyle{bfnote}%
+  {}{}
+  {}{}
+  {\bfseries}{.}
+  { }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+\theoremstyle{bfnote}
+\newenvironment{prf}[1][Proof]{\textbf{#1.} }{\qed}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{exer}{Exercise}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newtheorem{note}{Note}[section]
+\newtheorem{example}{Example}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -53,11 +80,12 @@
 \newpage
 \tableofcontents
 
+%\listoftheorems[onlynamed]
+
 \mainmatter
 \newpage
-\include{notebooks/examplepluto}
-\include{./notebooks/new.jl}
 
+\include{./notebooks/examplepluto}
 
 \bibliography{ref}
 
@@ -66,3 +94,4 @@
 \include{appendix}
 
 \end{document}
+
