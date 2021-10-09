@@ -4,6 +4,7 @@ using Plots
 using Makie
 using CairoMakie
 export extractnotebook, collectoutputs, createfolders
+export plutotolatex
 
 include("templates.jl")
 include("auxiliarytex.jl")
@@ -91,7 +92,7 @@ function collectoutputs(notebookdata, notebookfolder="./")
                 else
                     imagepath = s[findfirst(Regex(look_for(one_or_more(ANY),after="(\"",before="\")")),s)]
                 end
-                push!(outputs,(:image,imagepath))
+                push!(outputs,(:image,pwd()*"/"*imagepath))
             else
                 io = IOBuffer();
                 Base.invokelatest(show,
@@ -99,13 +100,13 @@ function collectoutputs(notebookdata, notebookfolder="./")
                     dispatch_output(Runner.eval(ex), notebookdata[:notebookname], runpath, figureindex));
                 celloutput = String(take!(io))
                 if celloutput == "nothing"
-                    push!(outputs,nothing)
+                    push!(outputs,(:nothing, ""))
                 elseif startswith(celloutput, "Plot{Plots.")
                     push!(outputs,
                     (:plot,notebookdata[:notebookname]*"_"*"figure"*string(figureindex[:i])*".png"))
                 elseif startswith(celloutput, "FigureAxisPlot()")
                     push!(outputs,
-                    (:plot,notebookdata[:notebookname]*"_"*"figure"*string(figureindex[:i])*".png"))
+                    (:plot,notebookdata[:notebookname]*"_"*"figure"*string(figureindex[:i])*".pdf"))
                 else
                     push!(outputs,(:text, celloutput))
                 end
@@ -126,7 +127,6 @@ end
 
 function dispatch_output(command_eval::Plots.Plot, notebookname, runpath, figureindex)
     figureindex[:i]+=1
-    println(runpath)
     savefig(command_eval,runpath*"/build_latex/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".png")
     return command_eval
 end
@@ -229,6 +229,7 @@ function plutotolatex(notebookname)
                 end
             end
         end
+    end
 end
 
 end

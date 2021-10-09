@@ -1,0 +1,80 @@
+\newpage
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+using PlutoUI
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+begin
+	using Plots
+	y(x) = sin(x)
+	plot(y,
+		color=:blue)
+end
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figures/examplepluto_figure1.png}
+	\label{fig:examplepluto_figure1.png}
+
+\end{figure}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+A = [10,10,10]
+\end{lstlisting}
+
+\begin{verbatim}
+3-element Vector{Int64}:
+ 10
+ 10
+ 10
+\end{verbatim}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+x = rand(10);
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+x .+ 1
+\end{lstlisting}
+
+\begin{verbatim}
+10-element Vector{Float64}:
+ 1.0245676197044296
+ 1.5622649652643041
+ 1.674702492649005
+ 1.262337437975199
+ 1.3020211107450574
+ 1.9527268244375764
+ 1.763307221336093
+ 1.5374449906334042
+ 1.2595569194392977
+ 1.3254304228522624
+\end{verbatim}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+set_theme!(theme_ggplot2())
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+Makie.plot(x)
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figures/examplepluto_figure2.pdf}
+	\label{fig:examplepluto_figure2.pdf}
+
+\end{figure}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+PlutoUI.LocalResource(figurepath)
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{/home/davibarreira/MEGA/EMAp/PlutoLatexConverter.jl/example/plotexample.png}
+	\label{fig:/home/davibarreira/MEGA/EMAp/PlutoLatexConverter.jl/example/plotexample.png}
+
+\end{figure}
