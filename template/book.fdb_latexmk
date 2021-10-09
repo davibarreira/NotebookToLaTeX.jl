@@ -1,14 +1,15 @@
 # Fdb version 3
-["bibtex book"] 1633781349 "book.aux" "book.bbl" "book" 1633784068
+["bibtex book"] 1633781349 "book.aux" "book.bbl" "book" 1633788347
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "appendix.aux" 1633784068 1288 1c7bde9ad25a88c447aa01daa5e92ca6 "lualatex"
-  "book.aux" 1633784068 742 e17c9d61838c55eebb59f059f8d1da39 "lualatex"
+  "appendix.aux" 1633788346 1288 1c7bde9ad25a88c447aa01daa5e92ca6 "lualatex"
+  "book.aux" 1633788346 742 e17c9d61838c55eebb59f059f8d1da39 "lualatex"
   "ref.bib" 1633536645 0 d41d8cd98f00b204e9800998ecf8427e ""
   (generated)
-  "book.bbl"
   "book.blg"
-["lualatex"] 1633784066 "book.tex" "book.pdf" "book" 1633784068
+  "book.bbl"
+["lualatex"] 1633788345 "book.tex" "book.pdf" "book" 1633788347
   "/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf" 1630356382 2568676 9e09e15816db2c4971c706a9a05ab9be ""
+  "/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Medium.ttf" 1630356382 2572128 be927287fd0b16dd10fb27100e26f3cc ""
   "/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf" 1630356382 2540644 e0a9b3ce560efac1a4d62ec1244a1ac4 ""
   "/home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-bold.luc" 1633717040 1091109 e3feb6d0f1f10fa6be6a5c038f584146 ""
   "/home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/juliamono-medium.luc" 1633542483 1094455 978573ba4c90436a79008435b47e5222 ""
@@ -19,7 +20,7 @@
   "/home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-regular.luc" 1633542480 123481 69b7465b6451e46e78288f4a098f9014 ""
   "/home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/lmroman17-regular.luc" 1633542729 124728 4310dce5bcce5ce19a69def0aaa2fd86 ""
   "/home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/fonts/otl/lmromancaps10-regular.luc" 1633542729 116074 4d500f5502307bb2d2c327e989a4c4ff ""
-  "/home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc" 1633742697 1536 f52c746a09f1c88365f7d6f17215ea39 ""
+  "/home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc" 1633788322 1624 b366d2266d54aaeb8838aaa432f273e5 ""
   "/home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/names/luaotfload-names.luc" 1633742622 1633697 2af527f1d8f880750f9c4578de251f36 ""
   "/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty" 1576625341 40635 c40361e206be584d448876bba8a64a3b ""
@@ -152,13 +153,13 @@
   "/usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regular.otf" 1254938640 108740 82741d58d9334b5242a3acb1d982bd05 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1625484539 4856172 17904a52973240b44a2e5720d5f9ac05 ""
   "/var/lib/texmf/web2c/luahbtex/lualatex.fmt" 1625484552 3255894 7add531f50d1325b7444441c06ce0591 ""
-  "appendix.aux" 1633784068 1288 1c7bde9ad25a88c447aa01daa5e92ca6 "lualatex"
+  "appendix.aux" 1633788346 1288 1c7bde9ad25a88c447aa01daa5e92ca6 "lualatex"
   "appendix.tex" 0 -1 0 ""
-  "book.aux" 1633784068 742 e17c9d61838c55eebb59f059f8d1da39 "lualatex"
+  "book.aux" 1633788346 742 e17c9d61838c55eebb59f059f8d1da39 "lualatex"
   "book.bbl" 1633781349 275 de5ffaf5b665b622658d80bed97ba2a5 "bibtex book"
-  "book.out" 1633784068 0 d41d8cd98f00b204e9800998ecf8427e "lualatex"
-  "book.tex" 1633781344 2660 48f91a425d53496a6e1e2d47e87b26ea ""
-  "book.toc" 1633784068 0 d41d8cd98f00b204e9800998ecf8427e "lualatex"
+  "book.out" 1633788346 0 d41d8cd98f00b204e9800998ecf8427e "lualatex"
+  "book.tex" 1633788343 2707 0ebe6804b1f8a26d1f2cfb5900e58121 ""
+  "book.toc" 1633788346 0 d41d8cd98f00b204e9800998ecf8427e "lualatex"
   "frontmatter/copyright.tex" 1633784044 571 8b15c356e6b2dbc2b2c388e44e563e97 ""
   "frontmatter/titlepage.tex" 1633784064 440 b2751fb9f0ffb5fae6f45fd5841da0e4 ""
   "julia_font.tex" 1633742619 354 bf4e66d563ea0eed793ee53158ab80b8 ""
@@ -167,7 +168,7 @@
   (generated)
   "book.pdf"
   "appendix.aux"
-  "book.aux"
-  "book.log"
   "book.out"
+  "book.log"
   "book.toc"
+  "book.aux"

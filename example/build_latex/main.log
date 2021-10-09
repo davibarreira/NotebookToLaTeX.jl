@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  9 OCT 2021 10:06
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  9 OCT 2021 11:12
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -390,7 +390,7 @@ Package fontspec Info: Font family 'JuliaMono-Medium(0)' created for font
 (fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
 (fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 
-) (./julia_listings.tex (./julia_listings_unicode.tex)) (./julia_listings.tex (./julia_listings_unicode.tex)) (./julia_listings_unicode.tex) (./main.aux (./appendix.aux))
+) (./julia_listings.tex (./julia_listings_unicode.tex)) (./julia_listings.tex (./julia_listings_unicode.tex)) (./julia_listings_unicode.tex) (./main.aux (./notebooks/examplepluto.aux) (./appendix.aux))
 \openout1 = main.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
@@ -529,39 +529,42 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]) (./frontmatter/copyright.tex)
 warning  (pdf backend): ignoring duplicate destination with the name 'page.i'
-[1] (./main.toc)
+[1]
+\openout2 = notebooks/examplepluto.aux
+ (./notebooks/examplepluto.tex [2
+
+]) [3] (./main.toc)
 \tf@toc=\write4
 
 \openout4 = main.toc
- [2
+ [4
+
+
 
 ]
 No file main.bbl.
-[1
 
-]
 \openout2 = appendix.aux
-
 No file appendix.tex.
-(./main.aux (./appendix.aux))
+(./main.aux (./notebooks/examplepluto.aux) (./appendix.aux))
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 )
 
 Here is how much of LuaTeX's memory you used:
- 19176 strings out of 478824
+ 19228 strings out of 478824
  100000,953878 words of node,token memory allocated
- 467 words of node memory still in use:
-   3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 7 attribute, 56 glue_spec, 7 attribute_list, 4 write nodes
-   avail lists: 2:1530,3:77,4:2728,5:1984,6:30,7:2286,8:26,9:6026,10:48,11:324
- 38253 multiletter control sequences out of 65536+600000
- 47 fonts using 25349271 bytes
- 86i,5n,89p,9591b,5203s stack positions out of 5000i,500n,10000p,200000b,200000s
-</home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regular.otf>
-Output written on main.pdf (4 pages, 112448 bytes).
+ 474 words of node memory still in use:
+   3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 8 attribute, 56 glue_spec, 8 attribute_list, 5 write nodes
+   avail lists: 2:1894,3:253,4:1550,5:1034,6:105,7:2225,8:38,9:3503,10:12,11:126
+ 38263 multiletter control sequences out of 65536+600000
+ 48 fonts using 26984063 bytes
+ 86i,5n,89p,9591b,5180s stack positions out of 5000i,500n,10000p,200000b,200000s
+</usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Medium.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regular.otf>
+Output written on main.pdf (5 pages, 160479 bytes).
 
-PDF statistics: 86 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
- 17 named destinations out of 1000 (max. 131072)
+PDF statistics: 108 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
+ 29 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 

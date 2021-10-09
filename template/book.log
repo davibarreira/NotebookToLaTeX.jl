@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  9 OCT 2021 09:54
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  9 OCT 2021 11:05
  restricted system commands enabled.
  file:line:error style messages enabled.
 **book.tex
@@ -681,19 +681,19 @@ Package rerunfilecheck Info: File `book.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 21115 strings out of 478824
+ 21117 strings out of 478824
  100000,953878 words of node,token memory allocated
  550 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 9 attribute, 61 glue_spec, 9 attribute_list, 4 write nodes
-   avail lists: 2:1529,3:77,4:2728,5:1985,6:30,7:2286,8:26,9:6026,10:48,11:324
- 40087 multiletter control sequences out of 65536+600000
- 47 fonts using 25349271 bytes
+   avail lists: 2:1551,3:91,4:2732,5:1993,6:32,7:2334,8:26,9:6034,10:48,11:324
+ 40089 multiletter control sequences out of 65536+600000
+ 48 fonts using 26984063 bytes
  86i,5n,89p,9591b,5218s stack positions out of 5000i,500n,10000p,200000b,200000s
-</home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regular.otf>
-Output written on book.pdf (5 pages, 113903 bytes).
+</home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Medium.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regular.otf>
+Output written on book.pdf (5 pages, 158562 bytes).
 
-PDF statistics: 91 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
+PDF statistics: 98 PDF objects out of 1000 (max. 8388607)
+ 66 compressed objects within 1 object stream
  19 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 

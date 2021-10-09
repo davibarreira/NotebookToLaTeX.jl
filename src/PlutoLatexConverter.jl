@@ -52,7 +52,7 @@ function extractnotebook(notebook, notebookname=nothing)
     order = [findfirst(isequal(scode),codes) for scode in  sortedcodes[1:end]]
     view  = [occursin("═",c) ? "showcode" : "hidecode" for c in sortedcells[2:end-2]]
     # Matching running order
-    view  = view[order]
+    view  = view[[findfirst(isequal(scode),sortedcodes) for scode in  codes]]
 
     # inferring the notebook name
     # base on the notebook file path.
@@ -110,6 +110,8 @@ function collectoutputs(notebookdata, notebookfolder="./")
                     push!(outputs,(:text, celloutput))
                 end
             end
+        else
+            push!(outputs,nothing)
         end
     end
     cd(runpath)
