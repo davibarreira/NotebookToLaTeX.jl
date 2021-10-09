@@ -1,5 +1,4 @@
-# PlutoLatexConverter.jl
-<!-- <a href=''><img src="docs/src/assets/logo.svg" align="right" height="70.5" /></a> -->
+# PlutoLatexConverter.jl <a href='https://github.com/davibarreira/PlutoLatexConverter.jl/blob/master/src/assets/logo.svg'><img src="src/assets/logo.svg" align="center" height="50." /></a>
 
 [![Build Status](https://github.com/davibarreira/PlutoLatexConverter.jl/workflows/CI/badge.svg)](https://github.com/davibarreira/PlutoLatexConverter.jl/actions)
 [![Coverage](https://codecov.io/gh/davibarreira/PlutoLatexConverter.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/davibarreira/PlutoLatexConverter.jl)
