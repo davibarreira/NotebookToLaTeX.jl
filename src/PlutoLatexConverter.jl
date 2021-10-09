@@ -151,6 +151,7 @@ end
 function createproject(path="./")
     createfolders(path)
     createtemplate(path)
+    createauxiliarytex(path)
 end
 
 function skiplines(io::IO, n)
