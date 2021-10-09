@@ -195,4 +195,40 @@ function insertline(file::String, text::String, linenumber::Integer)
     end
 end
 
+function plutotolatex(notebookname)
+
+    createproject(dirname(notebookname))
+    nb = extractnotebook(notebookname)
+    outputs = collectoutputs(nb,dirname(notebookname));
+    notebook = "./build_latex/notebooks/"*nb[:notebookname]*".tex"
+    open(notebook, "w") do f
+        write(f,"\\newpage\n")
+        for i in nb[:order]
+            if nb[:celltype][i] == "code" && nb[:view][i] == "showcode"
+                write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia]\n")
+                write(f, strip(nb[:contents][i]))
+                write(f,"\n\\end{lstlisting}\n")
+            end
+            if nb[:celltype][i] == "code" && nb[:outputtag][i] == "showoutput"
+                if outputs[i][1] == :text
+                    write(f,"\n\\begin{verbatim}\n")
+                    write(f, outputs[i][2])
+                    write(f,"\n\\end{verbatim}\n")
+                elseif outputs[i][1] == :plot
+                    write(f,"\n\\begin{figure}[H]\n")
+                    write(f,"\t\\centering\n")
+                    write(f,"\t\\includegraphics[width=0.8\\textwidth]{./figures/"*outputs[i][2]*"}\n")
+                    write(f,"\t\\label{fig:"*outputs[i][2]*"}\n")
+                    write(f,"\n\\end{figure}\n")
+                elseif outputs[i][1] == :image
+                    write(f,"\n\\begin{figure}[H]\n")
+                    write(f,"\t\\centering\n")
+                    write(f,"\t\\includegraphics[width=0.8\\textwidth]{"*outputs[i][2]*"}\n")
+                    write(f,"\t\\label{fig:"*outputs[i][2]*"}\n")
+                    write(f,"\n\\end{figure}\n")
+                end
+            end
+        end
+end
+
 end
