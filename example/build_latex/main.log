@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  10 OCT 2021 10:03
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  10 OCT 2021 11:03
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -572,7 +572,7 @@ Here is how much of LuaTeX's memory you used:
  52 fonts using 33486495 bytes
  86i,6n,89p,9591b,5180s stack positions out of 5000i,500n,10000p,200000b,200000s
 </home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Medium.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regular.otf>
-Output written on main.pdf (6 pages, 197850 bytes).
+Output written on main.pdf (6 pages, 198044 bytes).
 
 PDF statistics: 119 PDF objects out of 1000 (max. 8388607)
  81 compressed objects within 1 object stream

@@ -225,13 +225,17 @@ function plutotolatex(notebookname; template=:book, fontpath=nothing)
 
     createproject(dirname(notebookname), template)
     nb = extractnotebook(notebookname)
-    if template == :book
-        insertlinebelow(dirname(notebookname)*"/build_latex/main.tex",
-        "\\include{./notebooks/"*nb[:notebookname]*"}", 58)
-    elseif template == :mathbook
-        insertlinebelow(dirname(notebookname)*"/build_latex/main.tex",
-        "\\include{./notebooks/"*nb[:notebookname]*"}", 87)
+    texfile = read(dirname(notebookname)*"/build_latex/main.tex", String)
+    lineinsert = 1
+    for (i,line) in enumerate(split(texfile, "\n"))
+        if startswith(line, "% INCLUDE NOTEBOOKS")
+            lineinsert = i
+            break
+        end
     end
+    insertlinebelow(dirname(notebookname)*"/build_latex/main.tex",
+        "\\include{./notebooks/"*nb[:notebookname]*"}", lineinsert)
+
     outputs = collectoutputs(nb,dirname(notebookname));
     notebook = "./build_latex/notebooks/"*nb[:notebookname]*".tex"
     open(notebook, "w") do f
