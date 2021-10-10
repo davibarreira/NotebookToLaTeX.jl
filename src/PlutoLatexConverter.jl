@@ -22,12 +22,6 @@ export downloadfonts
 module Runner
 end
 
-function pkgpath()
-    for font in readdir(joinpath(@__DIR__,"../templates/fonts/"))
-        println(font)
-    end
-end
-
 """
     extractnotebook(notebook)
 Reads a Pluto notebook file, extracts the code
@@ -170,22 +164,22 @@ function downloadfonts(path="./"; fontpath=nothing)
             println(fontsourcepath)
             for font in readdir(fontsourcepath)
                 cp(joinpath(fontsourcepath, font),
-                   joinpath(path*"/build_latex/fonts",font))
+                   joinpath(path*"/build_latex/fonts/",font))
             end
         end
         julia_font_tex = path * "/build_latex/julia_font.tex"
-        writetext(julia_font_tex, "./fonts,", 6)
+        writetext(julia_font_tex, "./fonts/,", 6)
     else
         julia_font_tex = path * "/build_latex/julia_font.tex"
-        writetext(julia_font_tex, fontpath*",", 6)
+        writetext(julia_font_tex, fontpath*"/,", 6)
     end
 end
 
-function createproject(path="./", template=:book)
+function createproject(path="./", template=:book, fontpath=nothing)
     createfolders(path)
     createtemplate(path, template)
     createauxiliarytex(path)
-    #= downloadfonts() =#
+    downloadfonts(path, fontpath=fontpath)
 end
 
 function skiplines(io::IO, n)
@@ -227,7 +221,7 @@ function insertlinebelow(file::String, text::String, linenumber::Integer)
     writetext(file, "\n"*text, linenumber)
 end
 
-function plutotolatex(notebookname; template=:book)
+function plutotolatex(notebookname; template=:book, fontpath=nothing)
 
     createproject(dirname(notebookname), template)
     nb = extractnotebook(notebookname)
