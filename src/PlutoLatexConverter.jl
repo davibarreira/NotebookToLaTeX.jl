@@ -11,6 +11,7 @@ include("auxiliarytex.jl")
 
 export createproject
 export pkgpath
+export downloadfonts
 
 
 """
@@ -22,7 +23,9 @@ module Runner
 end
 
 function pkgpath()
-    println(@__DIR__)
+    for font in readdir(joinpath(@__DIR__,"../templates/fonts/"))
+        println(font)
+    end
 end
 
 """
@@ -159,10 +162,30 @@ function createfolders(path="./")
     end
 end
 
+function downloadfonts(path="./"; fontpath=nothing)
+    if fontpath === nothing
+        if !isdir(path*"/build_latex/fonts")
+            mkpath(path*"/build_latex/fonts")
+            fontsourcepath = joinpath(@__DIR__,"../templates/fonts/")
+            println(fontsourcepath)
+            for font in readdir(fontsourcepath)
+                cp(joinpath(fontsourcepath, font),
+                   joinpath(path*"/build_latex/fonts",font))
+            end
+        end
+        julia_font_tex = path * "/build_latex/julia_font.tex"
+        writetext(julia_font_tex, "./fonts,", 6)
+    else
+        julia_font_tex = path * "/build_latex/julia_font.tex"
+        writetext(julia_font_tex, fontpath*",", 6)
+    end
+end
+
 function createproject(path="./", template=:book)
     createfolders(path)
     createtemplate(path, template)
     createauxiliarytex(path)
+    #= downloadfonts() =#
 end
 
 function skiplines(io::IO, n)
