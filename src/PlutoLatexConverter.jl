@@ -10,6 +10,7 @@ include("templates.jl")
 include("auxiliarytex.jl")
 
 export createproject
+export pkgpath
 
 
 """
@@ -18,6 +19,10 @@ export createproject
     command interferes with the "outside" script.
 """
 module Runner
+end
+
+function pkgpath()
+    println(@__DIR__)
 end
 
 """
