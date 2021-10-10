@@ -8,6 +8,7 @@ export plutotolatex
 
 include("templates.jl")
 include("auxiliarytex.jl")
+include("markdowntolatex.jl")
 
 export createproject
 export pkgpath
@@ -161,7 +162,6 @@ function downloadfonts(path="./"; fontpath=nothing)
         if !isdir(path*"/build_latex/fonts")
             mkpath(path*"/build_latex/fonts")
             fontsourcepath = joinpath(@__DIR__,"../templates/fonts/")
-            println(fontsourcepath)
             for font in readdir(fontsourcepath)
                 cp(joinpath(fontsourcepath, font),
                    joinpath(path*"/build_latex/fonts/",font))
@@ -241,7 +241,10 @@ function plutotolatex(notebookname; template=:book, fontpath=nothing)
     open(notebook, "w") do f
         write(f,"\\newpage\n")
         for i in nb[:order]
-            if nb[:celltype][i] == "code" && nb[:view][i] == "showcode"
+            if nb[:celltype][i] == "markdown"
+                parsed = markdowntolatex(strip(nb[:contents][i][7:end]))
+                write(f,parsed)
+            elseif nb[:celltype][i] == "code" && nb[:view][i] == "showcode"
                 write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia]\n")
                 write(f, strip(nb[:contents][i]))
                 write(f,"\n\\end{lstlisting}\n")
