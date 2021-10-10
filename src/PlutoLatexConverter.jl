@@ -233,8 +233,12 @@ function plutotolatex(notebookname; template=:book, fontpath=nothing)
             break
         end
     end
-    insertlinebelow(dirname(notebookname)*"/build_latex/main.tex",
-        "\\include{./notebooks/"*nb[:notebookname]*"}", lineinsert)
+    
+    if !occursin("\\include{./notebooks/"*nb[:notebookname]*"}",read(dirname(notebookname)*"/build_latex/main.tex", String))
+
+        insertlinebelow(dirname(notebookname)*"/build_latex/main.tex",
+            "\\include{./notebooks/"*nb[:notebookname]*"}", lineinsert)
+    end
 
     outputs = collectoutputs(nb,dirname(notebookname));
     notebook = "./build_latex/notebooks/"*nb[:notebookname]*".tex"
