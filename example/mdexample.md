@@ -4,7 +4,7 @@
 #### Subsubsection
 My text here with *italics*, with **bold**, and a [link](https://davibarreira.github.io/).
 
-Adding some math expression here with $x=10$ and
+Adding some math expression here with $x=10$ and $y = 10^2 + 2*2$.
 ```math
 d(\omega(t_0),\omega(t_1)) \leq \int^{t_1}_{t_0}g(s) ds.
 ```

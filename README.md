@@ -25,6 +25,12 @@ used. Note that the user should define the path to the fonts location.
 One can add a custom folder by passing the command
 `cover = "cover.pdf"`. This will add the cover in the Latex template.
 
+## Tips on Use
+
+Note that there are some limitations on the parser from Markdown to Latex.
+For example, it's advised to write links without white spaces,
+e.g. `[mylink](www.github.com)`.
+
 ## For Developers
 The information here is mostly for people who want to better understand what is
 going on under the hood.
