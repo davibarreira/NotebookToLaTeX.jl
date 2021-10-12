@@ -10,7 +10,7 @@ include("templates.jl")
 include("auxiliarytex.jl")
 include("markdowntolatex.jl")
 
-export createproject
+export createproject, createtemplate
 export pkgpath
 export downloadfonts
 
@@ -124,13 +124,13 @@ end
 
 function dispatch_output(command_eval::Makie.FigureAxisPlot, notebookname, runpath, figureindex)
     figureindex[:i]+=1
-    save(runpath*"/build_latex/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".pdf", command_eval)
+    save("./build_latex/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".pdf", command_eval)
     return command_eval
 end
 
 function dispatch_output(command_eval::Plots.Plot, notebookname, runpath, figureindex)
     figureindex[:i]+=1
-    savefig(command_eval,runpath*"/build_latex/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".png")
+    savefig(command_eval,"./build_latex/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".png")
     return command_eval
 end
 
