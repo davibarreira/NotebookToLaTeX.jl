@@ -1,4 +1,4 @@
-using NotebookToLatex
+using PlutoLatexConverter
 using Test
 
 @testset "PlutoLatexConverter.jl" begin
@@ -18,9 +18,10 @@ using Test
     @testset "Parsing Notebook" begin
         nb = extractnotebook("./notebooktest.jl")
         outputs  = collectoutputs(nb, path)
-        @test outputs[1] == (:nothing, "")
+        @test outputs[1] === nothing
         @test outputs[2] == (:plot, "notebooktest_figure1.png")
-        @test isfile(path*"build_latex/figures/notebooktest_figure1.png")
+        println(outputs)
+        @test isfile("build_latex/figures/notebooktest_figure1.png")
     end
 
     rm(path, recursive=true)

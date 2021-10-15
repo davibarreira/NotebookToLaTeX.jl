@@ -1,5 +1,5 @@
-name = "NotebookToLatex"
-uuid = "4acc56a1-9938-4ee1-a82a-abdf2d4f6bfc"
+name = "PlutoLatexConverter"
+uuid = "d1325287-e83a-42c1-9f4a-9cbc16300cd8"
 authors = ["Davi Barreira <davisbarreira@gmail.com> and contributors"]
 version = "0.1.0"
 
