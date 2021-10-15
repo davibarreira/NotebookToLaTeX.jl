@@ -64,3 +64,11 @@ const _order_delimiter = "# ╠═"
 const _order_delimiter_folded = "# ╟─"
 const _cell_suffix = "\n\n"
 ```
+
+TODO
+* Enable customizing parser, for example, removing numbering in sections;
+* Enable to pass a caption in the code listings (e.g.
+`\begin{lstlisting}[language=JuliaLocal, style=julia, caption=SOR Algorithm, numbers=left]`);
+* Add `\vline` before code (?);
+* Add other color schemes;
+* Add Jupyter Converter;
