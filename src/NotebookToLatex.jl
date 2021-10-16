@@ -140,7 +140,20 @@ function dispatch_output(command_eval, notebookname, path, figureindex)
    return command_eval 
 end
 
-function notebooktolatex(notebook, targetdir="./build_latex"; template=:book, fontpath=nothing)
+"""
+    notebooktolatex(notebook, targetdir="./build_latex"; template=:book, fontpath=nothing)
+Takes a notebook file, converts it to Latex and creates a file structure
+with figures, fonts and listing files.
+* `targetdir` is the target directory where the Latex project will be created.
+If the directory does no exists, it is created.
+* `template` - The template for the Latex file. It's based on Latex templates.
+Current supported templates are `:book`, `:mathbook`.
+* `fontpath` - The output Latex files uses JuliaMono fonts in order to support the
+unicodes that are also supported in Julia. If the user already has JuliaMono installed,
+he can provide the path to where the `.ttf` files are stored. If `nothing` is passed,
+then the font files will be downloaded and saved in the `./fonts/` folder.
+"""
+function notebooktolatex(notebook::String, targetdir="./build_latex"; template=:book, fontpath=nothing)
     if endswith((notebook),".jl")
         plutotolatex(notebook, targetdir, template=template, fontpath=fontpath)
     elseif endswith((notebook),".ipynb")
@@ -150,6 +163,11 @@ function notebooktolatex(notebook, targetdir="./build_latex"; template=:book, fo
     end
 end
 
+"""
+    plutotolatex(notebookname, targetdir="./build_latex"; template=:book, fontpath=nothing)
+Function to convert Pluto notebooks. The arguments are the same as the ones in
+`notebooktolatex`.
+"""
 function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, fontpath=nothing)
 
     createproject(targetdir, template)
