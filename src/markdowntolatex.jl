@@ -26,12 +26,12 @@ function parseparagraph(paragraph)
             # It's a math sentence, i.e text is between $ $, so nothing should be parsed
             parsedparagraph *= "\$" * sentence * "\$"
         else
-            for (i, sentence) in enumerate(split(paragraph, "`"))
+            for (i, subsentence) in enumerate(split(sentence, "`"))
                 if iseven(i)
                     # It's a code sentence, i.e text is between ` ` and is not a math sentence.
-                    parsedparagraph *= "\\lstinline{" * sentence * "}"
+                    parsedparagraph *= "\\lstinline{" * subsentence * "}"
                 else
-                    parsedparagraph *= parsesentence(sentence)
+                    parsedparagraph *= parsesentence(subsentence)
                 end
             end
         end
@@ -45,16 +45,7 @@ function markdowntolatex(md)
     parsedtext = ""
     for line in split(md, "\n")
         l = strip(line)
-        if startswith(l, "####")
-            parsedtext *= "\\subsubsection{" * l[6:end] * "}\n"
-        elseif startswith(l, "###")
-            parsedtext *= "\\subsection{" * l[5:end] * "}\n"
-        elseif startswith(l, "##")
-            parsedtext *= "\\section{" * l[4:end] * "}\n"
-        elseif startswith(l, "#")
-            parsedtext *= "\\chapter{" * l[3:end] * "}\n"
-        end
-        
+
         if startswith(l, "```math")
             tag = !tag
             parsedtext *= "\n\\begin{displaymath}\n"
@@ -62,17 +53,30 @@ function markdowntolatex(md)
             continue
         elseif startswith(l, "```") && tag
             tag = !tag
-            parsedtext *= "\\end{" * component * "}"
+            parsedtext *= "\\end{" * component * "}\n"
+            continue
+
+        elseif startswith(l, "####")
+            parsedtext *= "\n\\subsubsection{" * l[6:end] * "}\n"
+            continue
+        elseif startswith(l, "###")
+            parsedtext *= "\n\\subsection{" * l[5:end] * "}\n"
+            continue
+        elseif startswith(l, "##")
+            parsedtext *= "\n\\section{" * l[4:end] * "}\n"
+            continue
+        elseif startswith(l, "#")
+            parsedtext *= "\n\\chapter{" * l[3:end] * "}\n"
             continue
         end
+        
+
         if tag
             parsedtext *= "\t" * l * "\n"
-        end
-        if !tag
-            if !startswith(l, "#")
+        elseif !tag
+            #= if !startswith(l, "#") =#
                 parsedtext *= parseparagraph(l)
-                
-            end
+            #= end =#
         end
     end
     return parsedtext
