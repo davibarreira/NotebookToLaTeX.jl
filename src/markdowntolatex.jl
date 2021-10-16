@@ -29,7 +29,7 @@ function parseparagraph(paragraph)
             for (i, subsentence) in enumerate(split(sentence, "`"))
                 if iseven(i)
                     # It's a code sentence, i.e text is between ` ` and is not a math sentence.
-                    parsedparagraph *= "\\lstinline{" * subsentence * "}"
+                    parsedparagraph *= "\\lstinline[style=julia]{" * subsentence * "}"
                 else
                     parsedparagraph *= parsesentence(subsentence)
                 end

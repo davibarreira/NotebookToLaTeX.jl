@@ -245,7 +245,7 @@ function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, f
         write(f,"\\newpage\n")
         for i in nb[:order]
             if nb[:celltype][i] == "markdown"
-                parsed = markdowntolatex(strip(nb[:contents][i][7:end]))
+                parsed = markdowntolatex(strip(nb[:contents][i])[7:end-3])
                 write(f,parsed)
             elseif nb[:celltype][i] == "code" && nb[:view][i] == "showcode"
                 write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia]\n")
