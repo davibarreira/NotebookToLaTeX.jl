@@ -56,7 +56,3 @@ At the moment, the available templates are:
 * `:book` - The standard Latex book template;
 * `:mathbook` - Very similar to `:book`, but with some extra packages already imported.
 
-## Function Documentation
-```@docs
-MyFunction
-```
