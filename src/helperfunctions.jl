@@ -3,48 +3,89 @@
 # https://discourse.julialang.org/t/write-to-a-particular-line-in-a-file/50179
 
 
-function createfolders(path="./")
-    folder = path
-    if !isdir(folder)
-        mkpath(folder * "/notebooks")
-        mkpath(folder * "/figures")
-        mkpath(folder * "/frontmatter")
+
+############# Project Structure Helper Function ###############
+# Collection of functions creating the latex files and
+# directories. Inside the "target directory" which is equivalent
+# the `path` varible, there are some files:
+# `main.tex` - Main file to run build the pdf;
+# `julia_font.tex` - Font information;
+# `julia_listings.tex` - Listings configurations;
+# `julia_listings_unicode.tex` - Listings unicodes;
+# `preface.tex` - Preface when using a book latex template.
+# There are four folders:
+# `figures/` - Location where plots are saved;
+# `fonts/` - Location of the `.ttf` files for the Julia-Mono font;
+# `frontmatter/`- Files used in the book latex template;
+# `notebooks/`  - Contains the latex files for each converted notebook.
+
+
+"""
+    createfolders(targetdir="./")
+Creates the directories for the latex project.
+"""
+function createfolders(targetdir="./")
+    if !isdir(targetdir)
+        mkpath(targetdir * "/notebooks")
+        mkpath(targetdir * "/figures")
+        mkpath(targetdir * "/frontmatter")
     else
-        if !isdir(folder * "/notebooks")
-            mkpath(folder * "/notebooks")
+        if !isdir(targetdir * "/notebooks")
+            mkpath(targetdir * "/notebooks")
         end
-        if !isdir(folder * "/figures")
-            mkpath(folder * "/figures")
+        if !isdir(targetdir * "/figures")
+            mkpath(targetdir * "/figures")
         end
-        if !isdir(folder * "/frontmatter")
-            mkpath(folder * "/frontmatter")
+        if !isdir(targetdir * "/frontmatter")
+            mkpath(targetdir * "/frontmatter")
         end
     end
 end
 
-function downloadfonts(path="./"; fontpath=nothing)
+"""
+    downloadfonts(targetdir="./"; fontpath=nothing)
+Downloads the Julia-Mono fonts necessary. If the user already
+has the fonts installed, he can provide `fontpath` to
+be used, instead of downloading `.ttf` files.
+Note that in such case, the `fonts/` dictory will be empty.
+If you use a font manager, the Julia-Mono font might
+be found in a path such as the one below:
+```
+fontpath = "/home/username/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/"
+```
+"""
+function downloadfonts(targetdir="./"; fontpath=nothing)
     if fontpath === nothing
-        if !isdir(path * "/fonts")
-            mkpath(path * "/fonts")
+        if !isdir(targetdir * "/fonts")
+            mkpath(targetdir * "/fonts")
             fontsourcepath = joinpath(@__DIR__, "../templates/fonts/")
             for font in readdir(fontsourcepath)
                 cp(joinpath(fontsourcepath, font),
-                   joinpath(path * "/fonts/", font))
+                   joinpath(targetdir * "/fonts/", font))
             end
         end
-        julia_font_tex = path * "/julia_font.tex"
+        # the code below sets font path in the julia_font.tex file
+        julia_font_tex = targetdir * "/julia_font.tex"
         writetext(julia_font_tex, "./fonts/,", 6)
     else
-        julia_font_tex = path * "/julia_font.tex"
+        julia_font_tex = targetdir * "/julia_font.tex"
         writetext(julia_font_tex, fontpath * "/,", 6)
     end
 end
 
-function createproject(path="./", template=:book, fontpath=nothing)
-    createfolders(path)
-    createtemplate(path, template)
-    createauxiliarytex(path)
-    downloadfonts(path, fontpath=fontpath)
+"""
+    createproject(targetdir="./", template=:book, fontpath=nothing)
+This function just call all the other auxiliary functions
+in order to create the proper files and directories.
+Note that first the folders must be created, then
+the main latex template files, followed by the auxiliary
+latex listings, and finally, the fonts.
+"""
+function createproject(targetdir="./", template=:book, fontpath=nothing)
+    createfolders(targetdir)
+    createtemplate(targetdir, template)
+    createauxiliarytex(targetdir)
+    downloadfonts(targetdir, fontpath=fontpath)
 end
 
 
