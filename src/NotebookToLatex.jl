@@ -89,9 +89,9 @@ function collectoutputs(notebookdata, path)
             s = string(ex.args[end])
             if contains(s, Regex(either("PlutoUI.LocalResource","LocalResource")))
                 if findfirst(Regex(look_for(one_or_more(ANY),after="(\"",before="\")")),s) === nothing
-                    Runner.eval(ex)
+                    Core.eval(Runner, ex)
                     pathvariable = s[findfirst(Regex(look_for(one_or_more(ANY),after="(",before=")")),s)]
-                    imagepath = Runner.eval(Meta.parse(pathvariable))
+                    imagepath = Core.eval(Runner,Meta.parse(pathvariable))
                 else
                     imagepath = s[findfirst(Regex(look_for(one_or_more(ANY),after="(\"",before="\")")),s)]
                 end
@@ -100,7 +100,7 @@ function collectoutputs(notebookdata, path)
                 io = IOBuffer();
                 Base.invokelatest(show,
                     IOContext(io, :limit => true),"text/plain",
-                    dispatch_output(Runner.eval(ex), notebookdata[:notebookname], path, figureindex));
+                    dispatch_output(Core.eval(Runner,ex), notebookdata[:notebookname], path, figureindex));
                 celloutput = String(take!(io))
                 if celloutput == "nothing"
                     push!(outputs,(:nothing, ""))
