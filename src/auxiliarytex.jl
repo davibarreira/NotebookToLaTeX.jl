@@ -1,3 +1,8 @@
+"""
+    createauxiliarytex(path="./")
+Creates the `julia_font.tex`, `julia_listings.tex` and
+`julia_listings_unicode.tex` files.
+"""
 function createauxiliarytex(path="./")
     
     juliafont = "\\usepackage{fontspec}\n\n\\newfontfamily\\JuliaMono{JuliaMono}[\n\tUprightFont = *_Regular,\n\tBoldFont = *_Bold,\n\tPath = \n\tExtension = .ttf]\n\\newfontface\\JuliaMonoRegular{JuliaMono-Regular}\n\\newfontface\\JuliaMonoBold{JuliaMono-Bold}\n\\setmonofont{JuliaMono-Medium}[Contextuals=Alternate]\n\n"

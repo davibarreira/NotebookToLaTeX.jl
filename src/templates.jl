@@ -1,3 +1,12 @@
+"""
+    createtemplate(path=".", template=:book)
+Creates the latex files such as `main.tex`,
+`preface.tex`, `frontmatter/titlepage.tex` and
+`frontmatter/copyright.tex`. The `.tex` files depend on the template used.
+At the moment, the available templates are `:book` and
+`:mathbook`, which are pretty much the same, but `:mathbook`
+imports some more packages specific for mathematics.
+"""
 function createtemplate(path=".", template=:book)
 
     if template == :book
