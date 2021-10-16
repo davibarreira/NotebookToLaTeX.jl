@@ -12,7 +12,7 @@ using PlutoUI
 	 begin
 	using Plots
 	y(x) = sin(x)
-	plot(y,
+	Plots.plot(y,
 		color=:blue)
 end
 
@@ -52,7 +52,7 @@ set_theme!(theme_ggplot2())
 Makie.plot(x)
 
 # ╔═╡ 39d902cc-221c-4c50-9857-a12a072c0053
-PlutoUI.LocalResource("figure.svg")
+PlutoUI.LocalResource("./figure.svg")
 
 # ╔═╡ 94668e82-2938-41e9-8c8c-ebe1bbc2b925
 figurepath = "plotexample.png";

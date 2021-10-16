@@ -57,7 +57,7 @@ function markdowntolatex(md)
         
         if startswith(l, "```math")
             tag = !tag
-            parsedtext *= "\\begin{displaymath}\n"
+            parsedtext *= "\n\\begin{displaymath}\n"
             component = "displaymath"
             continue
         elseif startswith(l, "```") && tag
