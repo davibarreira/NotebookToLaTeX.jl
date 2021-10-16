@@ -4,7 +4,7 @@ using ReadableRegex
 using Plots
 using Makie
 using CairoMakie
-export plutotolatex
+export notebooktolatex
 
 include("templates.jl")
 include("auxiliarytex.jl")
@@ -142,11 +142,11 @@ end
 
 function notebooktolatex(notebook, targetdir="./build_latex"; template=:book, fontpath=nothing)
     if endswith((notebook),".jl")
-        plutotolatex(notebook, targetdir; template=template, fontpath=fontpath)
+        plutotolatex(notebook, targetdir, template=template, fontpath=fontpath)
     elseif endswith((notebook),".ipynb")
-        continue
+        println("Jupyter no yet implemented")
     else
-        throw(ArgumentError(notebook, "extension must be either .jl or .ipynb")
+        throw(ArgumentError(notebook, "extension must be either .jl or .ipynb"))
     end
 end
 
