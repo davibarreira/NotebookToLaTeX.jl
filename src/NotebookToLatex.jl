@@ -10,6 +10,7 @@ export plutotolatex
 include("templates.jl")
 include("auxiliarytex.jl")
 include("markdowntolatex.jl")
+include("textfunctions.jl")
 
 #= export createproject, createtemplate =#
 #= export downloadfonts =#
@@ -181,44 +182,6 @@ function createproject(path="./", template=:book, fontpath=nothing)
     downloadfonts(path, fontpath=fontpath)
 end
 
-function skiplines(io::IO, n)
-    i = 1
-    while i <= n
-       eof(io) && error("File contains less than $n lines")
-       i += read(io, Char) === '\n'
-    end
-end
-
-# Function based on https://discourse.julialang.org/t/write-to-a-particular-line-in-a-file/50179
-function writetext(file::String, text::String, linenumber::Integer, endline=true)
-    f = open(file, "r+");
-    if endline
-        skiplines(f, linenumber);
-        skip(f, -1)
-    else
-        skiplines(f, linenumber-1);
-    end
-    mark(f)
-    buf = IOBuffer()
-    write(buf, f)
-    seekstart(buf)
-    reset(f)
-    print(f, text);
-    write(f, buf)
-    close(f)
-end
-
-function insertlineabove(file::String, text::String, linenumber::Integer)
-    if linenumber==1
-        writetext(file, text*"\n", linenumber, false)
-    else
-        writetext(file, "\n"*text, linenumber-1)
-    end
-end
-
-function insertlinebelow(file::String, text::String, linenumber::Integer)
-    writetext(file, "\n"*text, linenumber)
-end
 
 function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, fontpath=nothing)
 
