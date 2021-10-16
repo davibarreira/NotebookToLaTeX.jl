@@ -1,7 +1,12 @@
 using NotebookToLatex
+import NotebookToLatex:dispatch_output
+import NotebookToLatex:createfolders
+import NotebookToLatex:createtemplate
+import NotebookToLatex:extractnotebook
+import NotebookToLatex:collectoutputs
 using Test
 
-@testset "PlutoLatexConverter.jl" begin
+@testset "NotebookToLatex.jl" begin
     # Write your tests here.
     path = "./project/"
     @testset "Creating Folders and Files" begin
@@ -20,8 +25,13 @@ using Test
         outputs  = collectoutputs(nb, path)
         @test outputs[1] == (:nothing, "")
         @test outputs[2] == (:plot, "notebooktest_figure1.png")
-        @test isfile(path*"build_latex/figures/notebooktest_figure1.png")
+        @test isfile(path * "build_latex/figures/notebooktest_figure1.png")
+        #= rm(path, recursive=true) =#
     end
+
+    #= @testset "Pluto to Latex" begin =#
+    #=     plutotolatex("./notebooktest.jl") =#
+    #= end =#
 
     rm(path, recursive=true)
 end

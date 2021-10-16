@@ -4,15 +4,15 @@ using ReadableRegex
 using Plots
 using Makie
 using CairoMakie
-export extractnotebook, collectoutputs, createfolders
+#= export extractnotebook, collectoutputs, createfolders =#
 export plutotolatex
 
 include("templates.jl")
 include("auxiliarytex.jl")
 include("markdowntolatex.jl")
 
-export createproject, createtemplate
-export downloadfonts
+#= export createproject, createtemplate =#
+#= export downloadfonts =#
 
 
 """
@@ -221,10 +221,11 @@ function insertlinebelow(file::String, text::String, linenumber::Integer)
 end
 
 function plutotolatex(notebookname; template=:book, fontpath=nothing)
+    notebookdir = dirname(notebook) == "" ? "./" : dirname(notebook)
 
-    createproject(dirname(notebookname), template)
+    createproject(notebookdir, template)
     nb = extractnotebook(notebookname)
-    texfile = read(dirname(notebookname)*"/build_latex/main.tex", String)
+    texfile = read(notebookdir*"/build_latex/main.tex", String)
     lineinsert = 1
     for (i,line) in enumerate(split(texfile, "\n"))
         if startswith(line, "% INCLUDE NOTEBOOKS")
