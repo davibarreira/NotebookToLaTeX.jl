@@ -1,0 +1,67 @@
+%! TeX program = lualatex
+\documentclass[12pt, oneside]{book}
+
+\usepackage{listings}
+
+\pagestyle{plain}
+\usepackage{pdfpages}
+\usepackage{titlesec}
+
+\usepackage[square,numbers]{natbib}
+\usepackage[pdftex,bookmarks=true,bookmarksopen=false,bookmarksnumbered=true,colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{enumerate}
+
+%%%%%%% JULIA %%%%%%%%%%
+\input{julia_font}
+\input{julia_listings}
+\input{julia_listings}
+\input{julia_listings_unicode}
+
+\lstdefinelanguage{JuliaLocal}{
+    language = Julia, % inherit Julia lang. to add keywords
+    morekeywords = [3]{thompson_sampling}, % define more functions
+    morekeywords = [2]{Beta, Distributions}, % define more types and modules
+}
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% BOOK INFORMATION %%%%%%%%%%
+\newcommand{\authorname}{Name}
+\newcommand{\booktitle}{Title}
+\newcommand{\subtitle}{Subtitle}
+\newcommand{\publisher}{TBD}
+\newcommand{\editionyear}{2021}
+\newcommand{\isbn}{XYZ}   % replace this with your own ISBN
+
+\title{\booktitle}
+\author{\authorname}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+% \includepdf{cover.pdf}
+
+\frontmatter
+\input{frontmatter/titlepage}
+\input{frontmatter/copyright}
+% \include{preface}
+
+\newpage
+\tableofcontents
+
+\mainmatter
+\newpage
+% INCLUDE NOTEBOOKS HERE %
+\include{./notebooks/examplepluto}
+
+\bibliography{ref}
+
+\bibliographystyle{plainnat}
+
+\include{appendix}
+
+\end{document}

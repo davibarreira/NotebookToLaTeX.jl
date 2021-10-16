@@ -1,6 +1,56 @@
-# Contains helper functions for inserting text in files
-# Functions based on https://discourse.julialang.org/t/write-to-a-particular-line-in-a-file/50179
+# Contains helper functions
+# Functions for inserting text are based on
+# https://discourse.julialang.org/t/write-to-a-particular-line-in-a-file/50179
 
+
+function createfolders(path="./")
+    folder = path
+    if !isdir(folder)
+        mkpath(folder * "/notebooks")
+        mkpath(folder * "/figures")
+        mkpath(folder * "/frontmatter")
+    else
+        if !isdir(folder * "/notebooks")
+            mkpath(folder * "/notebooks")
+        end
+        if !isdir(folder * "/figures")
+            mkpath(folder * "/figures")
+        end
+        if !isdir(folder * "/frontmatter")
+            mkpath(folder * "/frontmatter")
+        end
+    end
+end
+
+function downloadfonts(path="./"; fontpath=nothing)
+    if fontpath === nothing
+        if !isdir(path * "/fonts")
+            mkpath(path * "/fonts")
+            fontsourcepath = joinpath(@__DIR__, "../templates/fonts/")
+            for font in readdir(fontsourcepath)
+                cp(joinpath(fontsourcepath, font),
+                   joinpath(path * "/fonts/", font))
+            end
+        end
+        julia_font_tex = path * "/julia_font.tex"
+        writetext(julia_font_tex, "./fonts/,", 6)
+    else
+        julia_font_tex = path * "/julia_font.tex"
+        writetext(julia_font_tex, fontpath * "/,", 6)
+    end
+end
+
+function createproject(path="./", template=:book, fontpath=nothing)
+    createfolders(path)
+    createtemplate(path, template)
+    createauxiliarytex(path)
+    downloadfonts(path, fontpath=fontpath)
+end
+
+
+############# Text Helper Function ###############
+# Collection of functions for inserting text in
+# specific locations of a file
 
 """
     skiplines(io::IO, n)

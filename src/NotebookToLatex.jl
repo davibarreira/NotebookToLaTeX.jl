@@ -10,7 +10,7 @@ export plutotolatex
 include("templates.jl")
 include("auxiliarytex.jl")
 include("markdowntolatex.jl")
-include("textfunctions.jl")
+include("helperfunctions.jl")
 
 #= export createproject, createtemplate =#
 #= export downloadfonts =#
@@ -29,13 +29,19 @@ end
 Reads a Pluto notebook file, extracts the code
 and returns a dictionary with the code in organized form.
 The output is a dictionary containing
-* `codes`    - The cell code of each running cell;
-* `contents` - Only the Julia code in the cell;
-* `outputtag`- Whether the output is hidden or showing (read the `tagcelloutput()` function);
-* `celltype` - Whether cell contains code or markdown;
-* `view`     - Whether the code is hidden or showing (the "eye" icon in the notebook);
-* `order`    - Order that the cells are displayed in the notebook;
+* `codes`        - The cell code of each running cell;
+* `notebookname` - Name of the notebook;
+* `notebookdir`  - Directory location of the notebook file;
+* `contents`     - Only the Julia code in the cell;
+* `outputtag`    - Whether the output is hidden or showing (read the `tagcelloutput()` function);
+* `celltype`     - Whether cell contains code or markdown;
+* `order`        - Order that the cells are displayed in the notebook;
+* `view`         - Whether the code is hidden or showing (the "eye" icon in the notebook);
+
 e.g. `extractnotebook("./mynotebook.jl")`
+notebookdata = Dict(:codes => codes, :notebookname => notebookname, :notebookdir => notebookdir,
+                        :contents => contents, :outputtag=>outputtag,
+                        :celltype => celltype,:order=> order,:view=>view)
 """
 function extractnotebook(notebook)
     s = read(notebook, String)
@@ -136,50 +142,6 @@ end
 
 function dispatch_output(command_eval, notebookname, path, figureindex)
    return command_eval 
-end
-
-function createfolders(path="./")
-    folder = path
-    if !isdir(folder)
-        mkpath(folder*"/notebooks")
-        mkpath(folder*"/figures")
-        mkpath(folder*"/frontmatter")
-    else
-        if !isdir(folder*"/notebooks")
-            mkpath(folder*"/notebooks")
-        end
-        if !isdir(folder*"/figures")
-            mkpath(folder*"/figures")
-        end
-        if !isdir(folder*"/frontmatter")
-            mkpath(folder*"/frontmatter")
-        end
-    end
-end
-
-function downloadfonts(path="./"; fontpath=nothing)
-    if fontpath === nothing
-        if !isdir(path*"/fonts")
-            mkpath(path*"/fonts")
-            fontsourcepath = joinpath(@__DIR__,"../templates/fonts/")
-            for font in readdir(fontsourcepath)
-                cp(joinpath(fontsourcepath, font),
-                   joinpath(path*"/fonts/",font))
-            end
-        end
-        julia_font_tex = path * "/julia_font.tex"
-        writetext(julia_font_tex, "./fonts/,", 6)
-    else
-        julia_font_tex = path * "/julia_font.tex"
-        writetext(julia_font_tex, fontpath*"/,", 6)
-    end
-end
-
-function createproject(path="./", template=:book, fontpath=nothing)
-    createfolders(path)
-    createtemplate(path, template)
-    createauxiliarytex(path)
-    downloadfonts(path, fontpath=fontpath)
 end
 
 
