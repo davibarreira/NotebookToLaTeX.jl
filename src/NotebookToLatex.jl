@@ -123,13 +123,13 @@ end
 
 function dispatch_output(command_eval::Makie.FigureAxisPlot, notebookname, path, figureindex)
     figureindex[:i]+=1
-    save(path*"/build_latex/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".pdf", command_eval)
+    save(path*"/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".pdf", command_eval)
     return command_eval
 end
 
 function dispatch_output(command_eval::Plots.Plot, notebookname, path, figureindex)
     figureindex[:i]+=1
-    savefig(command_eval,path*"/build_latex/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".png")
+    savefig(command_eval,path*"/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".png")
     return command_eval
 end
 
@@ -138,7 +138,7 @@ function dispatch_output(command_eval, notebookname, path, figureindex)
 end
 
 function createfolders(path="./")
-    folder = path*"/build_latex/"
+    folder = path
     if !isdir(folder)
         mkpath(folder*"/notebooks")
         mkpath(folder*"/figures")
@@ -158,18 +158,18 @@ end
 
 function downloadfonts(path="./"; fontpath=nothing)
     if fontpath === nothing
-        if !isdir(path*"/build_latex/fonts")
-            mkpath(path*"/build_latex/fonts")
+        if !isdir(path*"/fonts")
+            mkpath(path*"/fonts")
             fontsourcepath = joinpath(@__DIR__,"../templates/fonts/")
             for font in readdir(fontsourcepath)
                 cp(joinpath(fontsourcepath, font),
-                   joinpath(path*"/build_latex/fonts/",font))
+                   joinpath(path*"/fonts/",font))
             end
         end
-        julia_font_tex = path * "/build_latex/julia_font.tex"
+        julia_font_tex = path * "/julia_font.tex"
         writetext(julia_font_tex, "./fonts/,", 6)
     else
-        julia_font_tex = path * "/build_latex/julia_font.tex"
+        julia_font_tex = path * "/julia_font.tex"
         writetext(julia_font_tex, fontpath*"/,", 6)
     end
 end
@@ -220,12 +220,11 @@ function insertlinebelow(file::String, text::String, linenumber::Integer)
     writetext(file, "\n"*text, linenumber)
 end
 
-function plutotolatex(notebookname; template=:book, fontpath=nothing)
-    notebookdir = dirname(notebook) == "" ? "./" : dirname(notebook)
+function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, fontpath=nothing)
 
-    createproject(notebookdir, template)
+    createproject(targetdir, template)
     nb = extractnotebook(notebookname)
-    texfile = read(notebookdir*"/build_latex/main.tex", String)
+    texfile = read(targetdir*"/main.tex", String)
     lineinsert = 1
     for (i,line) in enumerate(split(texfile, "\n"))
         if startswith(line, "% INCLUDE NOTEBOOKS")
@@ -234,14 +233,14 @@ function plutotolatex(notebookname; template=:book, fontpath=nothing)
         end
     end
     
-    if !occursin("\\include{./notebooks/"*nb[:notebookname]*"}",read(dirname(notebookname)*"/build_latex/main.tex", String))
+    if !occursin("\\include{./notebooks/"*nb[:notebookname]*"}",read(targetdir*"/main.tex", String))
 
-        insertlinebelow(dirname(notebookname)*"/build_latex/main.tex",
+        insertlinebelow(targetdir*"/main.tex",
             "\\include{./notebooks/"*nb[:notebookname]*"}", lineinsert)
     end
 
-    outputs = collectoutputs(nb,dirname(notebookname));
-    notebook = "./build_latex/notebooks/"*nb[:notebookname]*".tex"
+    outputs = collectoutputs(nb,targetdir);
+    notebook = targetdir*"/notebooks/"*nb[:notebookname]*".tex"
     open(notebook, "w") do f
         write(f,"\\newpage\n")
         for i in nb[:order]
