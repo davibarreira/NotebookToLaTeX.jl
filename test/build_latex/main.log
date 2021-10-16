@@ -1,0 +1,9 @@
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  16 OCT 2021 18:15
+ system commands enabled.
+**main.tex
+(./main.tex
+LaTeX2e <2020-10-01> patch level 4
+Lua module: luaotfload 2021-01-08 3.17 Lua based OpenType font support
+Lua module: lualibs 2020-12-30 2.73 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2020-12-30 2.73 ConTeXt Lua libraries -- extended collection.
+luaotfload | conf : Root cache directory is "/home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/names".

@@ -30,8 +30,10 @@ using Test
     end
 
     @testset "Pluto to Latex" begin
-        plutotolatex("./notebooktest.jl")
+        notebooktolatex("./notebooktest.jl", template=:mathbook,
+                        fontpath="/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/")
     end
 
     rm(path, recursive=true)
+    #= rm("./build_latex/", recursive=true) =#
 end
