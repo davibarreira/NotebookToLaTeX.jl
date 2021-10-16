@@ -4,16 +4,12 @@ using ReadableRegex
 using Plots
 using Makie
 using CairoMakie
-#= export extractnotebook, collectoutputs, createfolders =#
 export plutotolatex
 
 include("templates.jl")
 include("auxiliarytex.jl")
 include("markdowntolatex.jl")
 include("helperfunctions.jl")
-
-#= export createproject, createtemplate =#
-#= export downloadfonts =#
 
 
 """
@@ -144,6 +140,15 @@ function dispatch_output(command_eval, notebookname, path, figureindex)
    return command_eval 
 end
 
+function notebooktolatex(notebook, targetdir="./build_latex"; template=:book, fontpath=nothing)
+    if endswith((notebook),".jl")
+        plutotolatex(notebook, targetdir; template=template, fontpath=fontpath)
+    elseif endswith((notebook),".ipynb")
+        continue
+    else
+        throw(ArgumentError(notebook, "extension must be either .jl or .ipynb")
+    end
+end
 
 function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, fontpath=nothing)
 
