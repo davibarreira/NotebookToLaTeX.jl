@@ -1,5 +1,6 @@
 # NotebookToLatex.jl <a href='https://github.com/davibarreira/PlutoLatexConverter.jl/blob/master/src/assets/logo.svg'><img src="src/assets/logo.svg" align="center" height="50." /></a>
 
+[![][bag-dev]][bld-dev]
 [![Build Status](https://github.com/davibarreira/PlutoLatexConverter.jl/workflows/CI/badge.svg)](https://github.com/davibarreira/PlutoLatexConverter.jl/actions)
 [![Coverage](https://codecov.io/gh/davibarreira/PlutoLatexConverter.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/davibarreira/PlutoLatexConverter.jl)
 
@@ -72,3 +73,5 @@ TODO
 * Add `\vline` before code (?);
 * Add other color schemes;
 * Add Jupyter Converter;
+
+[bld-dev]: https://davibarreira.github.io/TopologicalDataAnalysis.jl/dev
