@@ -2,8 +2,8 @@
 
 [![][bag-dev]][bld-dev]
 [![Build Status](https://github.com/davibarreira/PlutoLatexConverter.jl/workflows/CI/badge.svg)](https://github.com/davibarreira/PlutoLatexConverter.jl/actions)
-[![Coverage](https://codecov.io/gh/davibarreira/PlutoLatexConverter.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/davibarreira/PlutoLatexConverter.jl)
-
+[![Coverage](https://codecov.io/gh/davibarreira/PlutoLatexConverter.jl/branch/master/graph/badge.svg)](https://app.codecov.io/gh/davibarreira/NotebookToLatex.jl
+)
 **This is an experimental package.**
 
 This package has been tested on Linux and macOS, and might not work properly on Windows.
