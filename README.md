@@ -74,4 +74,5 @@ TODO
 * Add other color schemes;
 * Add Jupyter Converter;
 
-[bld-dev]: https://davibarreira.github.io/TopologicalDataAnalysis.jl/dev
+[bag-dev]: https://img.shields.io/badge/docs-dev-blue.svg
+[bld-dev]: https://davibarreira.github.io/NotebookToLatex.jl/dev
