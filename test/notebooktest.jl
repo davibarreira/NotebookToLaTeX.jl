@@ -11,6 +11,7 @@ using PlutoUI
 
 	 begin
 	using Plots
+  ENV["GKSwstype"] = "100"
 	y(x) = sin(x)
 	Plots.plot(y,
 		color=:blue)
@@ -64,12 +65,14 @@ PlutoUI.LocalResource(figurepath)
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+Gaston = "4b11ee91-296f-5714-9832-002c20994614"
 Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
 CairoMakie = "~0.6.5"
+Gaston = "~1.0.4"
 Makie = "~0.15.2"
 Plots = "~1.22.4"
 PlutoUI = "~0.7.16"
@@ -367,6 +370,12 @@ deps = ["Artifacts", "Bzip2_jll", "Cairo_jll", "FFMPEG_jll", "Fontconfig_jll", "
 git-tree-sha1 = "ef49a187604f865f4708c90e3f431890724e9012"
 uuid = "d2c73de3-f751-5644-a686-071e5b155ba9"
 version = "0.59.0+0"
+
+[[Gaston]]
+deps = ["ColorSchemes", "DelimitedFiles", "Random"]
+git-tree-sha1 = "ef62952980d19c98d00bd44d2266a98f8e9c7178"
+uuid = "4b11ee91-296f-5714-9832-002c20994614"
+version = "1.0.4"
 
 [[GeometryBasics]]
 deps = ["EarCut_jll", "IterTools", "LinearAlgebra", "StaticArrays", "StructArrays", "Tables"]

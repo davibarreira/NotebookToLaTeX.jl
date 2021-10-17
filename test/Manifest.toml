@@ -289,6 +289,12 @@ git-tree-sha1 = "4c8c0719591e108a83fb933ac39e32731c7850ff"
 uuid = "d2c73de3-f751-5644-a686-071e5b155ba9"
 version = "0.60.0+0"
 
+[[Gaston]]
+deps = ["ColorSchemes", "DelimitedFiles", "Random"]
+git-tree-sha1 = "ef62952980d19c98d00bd44d2266a98f8e9c7178"
+uuid = "4b11ee91-296f-5714-9832-002c20994614"
+version = "1.0.4"
+
 [[GeometryBasics]]
 deps = ["EarCut_jll", "IterTools", "LinearAlgebra", "StaticArrays", "StructArrays", "Tables"]
 git-tree-sha1 = "58bcdf5ebc057b085e58d95c138725628dd7453c"

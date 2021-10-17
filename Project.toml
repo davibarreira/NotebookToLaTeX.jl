@@ -19,6 +19,7 @@ julia = "1"
 [extras]
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+Gaston = "4b11ee91-296f-5714-9832-002c20994614"
 
 [targets]
-test = ["Test", "Plots", "Makie", "CairoMakie", "PlutoUI"]
+test = ["Test", "Gaston","Plots", "Makie", "CairoMakie", "PlutoUI"]
