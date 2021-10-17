@@ -52,13 +52,13 @@ set_theme!(theme_ggplot2())
 Makie.plot(x)
 
 # ╔═╡ 39d902cc-221c-4c50-9857-a12a072c0053
-PlutoUI.LocalResource("./figure.svg")
+# PlutoUI.LocalResource("./figure.svg")
 
 # ╔═╡ 94668e82-2938-41e9-8c8c-ebe1bbc2b925
 figurepath = "plotexample.png";
 
 # ╔═╡ 9fb84733-13bb-45fd-a4b2-5a39488c23d6
-PlutoUI.LocalResource(figurepath)
+# PlutoUI.LocalResource(figurepath)
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
