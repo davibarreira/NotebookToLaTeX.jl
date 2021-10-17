@@ -4,9 +4,6 @@
 using Markdown
 using InteractiveUtils
 
-# ╔═╡ 7b4b693d-c955-4c9b-97e8-56d28cf74e18
-using PlutoUI
-
 # ╔═╡ bdad72d3-5744-459f-8627-299908573f40
 
 	 begin
@@ -35,6 +32,9 @@ d(\omega(t_0),\omega(t_1)) \leq \int^{t_1}_{t_0}g(s) ds.
 
 Adding some code like `plots`. Note that the `using plots`
 """
+
+# ╔═╡ 7b4b693d-c955-4c9b-97e8-56d28cf74e18
+# using PlutoUI
 
 # ╔═╡ e1009c9c-1567-49ed-9c29-1fa081089b07
 A = [10,10,10]

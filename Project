@@ -17,7 +17,8 @@ ReadableRegex = "0.3"
 julia = "1"
 
 [extras]
+PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
-test = ["Test", "Plots", "Makie", "CairoMakie"]
+test = ["Test", "Plots", "Makie", "CairoMakie", "PlutoUI"]
