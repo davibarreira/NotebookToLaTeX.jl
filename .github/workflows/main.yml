@@ -21,12 +21,12 @@ jobs:
       matrix:
         julia-version: [1.6.3]
         julia-arch: [x64, x86]
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest, macOS-latest]
         exclude:
           - os: macOS-latest
             julia-arch: x86
-          - os: windows-latest
-            julia-arch: x86
+          # - os: windows-latest
+          #   julia-arch: x86
 
     steps:
       - uses: actions/checkout@v1
