@@ -6,13 +6,18 @@ simple Latex files, that are easy to modify. Thus, making it ideal
 to write reports, articles or books from notebooks.
 
 Although it's already possible to convert both Pluto and Jupyter notebooks
-to PDFs, or even to Latex (via Pandoc), the output Latex files
-are usually very messy. In contrast, NotebookToLatex.jl is very
-opinionated and specific, producing straightforward latex files.
+to PDFs, or even to Latex (via Pandoc), the PDFs are not very customizable
+and the Latex files are usually very messy.
+In contrast, NotebookToLatex.jl focuses less in generality, and is instead
+more opinionated and specific, thus producing straightforward Latex files.
 
-This package uses [julia-mono-listing](https://github.com/mossr/julia-mono-listings),
-to produce beautiful Julia code inside the Latex pdf.
-Note that **it requires using `lualatex` for compilation**.
+The package has it's own implementation to parse Markdown to Latex,
+e.g. it turns `# Example` to `\chapter{Example}`.
+
+Another very important point to note is that NotebookToLatex.jl uses
+[julia-mono-listing](https://github.com/mossr/julia-mono-listings).
+This enables it to produce beautiful Julia code inside the Latex pdf.
+Note that *it requires using `lualatex` for compilation*.
 
 ## Getting Started
 

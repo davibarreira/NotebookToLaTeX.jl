@@ -4,6 +4,9 @@
 using Markdown
 using InteractiveUtils
 
+# ╔═╡ 7b4b693d-c955-4c9b-97e8-56d28cf74e18
+using PlutoUI
+
 # ╔═╡ bdad72d3-5744-459f-8627-299908573f40
 
 	 begin
@@ -33,9 +36,6 @@ d(\omega(t_0),\omega(t_1)) \leq \int^{t_1}_{t_0}g(s) ds.
 Adding some code like `plots`. Note that the `using plots`
 """
 
-# ╔═╡ 7b4b693d-c955-4c9b-97e8-56d28cf74e18
-# using PlutoUI
-
 # ╔═╡ e1009c9c-1567-49ed-9c29-1fa081089b07
 A = [10,10,10]
 
@@ -52,13 +52,13 @@ set_theme!(theme_ggplot2())
 Makie.plot(x)
 
 # ╔═╡ 39d902cc-221c-4c50-9857-a12a072c0053
-# PlutoUI.LocalResource("./figure.svg")
+PlutoUI.LocalResource("./figure.svg")
 
 # ╔═╡ 94668e82-2938-41e9-8c8c-ebe1bbc2b925
 figurepath = "plotexample.png";
 
 # ╔═╡ 9fb84733-13bb-45fd-a4b2-5a39488c23d6
-# PlutoUI.LocalResource(figurepath)
+PlutoUI.LocalResource(figurepath)
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -72,7 +72,7 @@ PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 CairoMakie = "~0.6.5"
 Makie = "~0.15.2"
 Plots = "~1.22.4"
-PlutoUI = "~0.7.14"
+PlutoUI = "~0.7.16"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
@@ -420,6 +420,12 @@ deps = ["Artifacts", "Cairo_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll",
 git-tree-sha1 = "8a954fed8ac097d5be04921d595f741115c1b2ad"
 uuid = "2e76f6c2-a576-52d4-95c1-20adfe4de566"
 version = "2.8.1+0"
+
+[[Hyperscript]]
+deps = ["Test"]
+git-tree-sha1 = "8d511d5b81240fc8e6802386302675bdf47737b9"
+uuid = "47d2ed2b-36de-50cf-bf87-49c2cf4b8b91"
+version = "0.0.4"
 
 [[HypertextLiteral]]
 git-tree-sha1 = "f6532909bf3d40b308a0f360b6a0e626c0e263a8"
@@ -869,10 +875,10 @@ uuid = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 version = "1.22.4"
 
 [[PlutoUI]]
-deps = ["Base64", "Dates", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
-git-tree-sha1 = "d1fb76655a95bf6ea4348d7197b22e889a4375f4"
+deps = ["Base64", "Dates", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
+git-tree-sha1 = "4c8a7d080daca18545c56f1cac28710c362478f3"
 uuid = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
-version = "0.7.14"
+version = "0.7.16"
 
 [[PolygonOps]]
 git-tree-sha1 = "77b3d3605fc1cd0b42d95eba87dfcd2bf67d5ff6"

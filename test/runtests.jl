@@ -24,10 +24,8 @@ using Test
         nb = extractnotebook("./notebooktest.jl")
         outputs  = collectoutputs(nb, path)
         println(outputs)
-        @test outputs[1] == (:plot, "notebooktest_figure1.png")
-        @test outputs[2] == (:nothing, "")
-        #= @test outputs[1] == (:nothing, "") =#
-        #= @test outputs[2] == (:plot, "notebooktest_figure1.png") =#
+        @test outputs[1] == (:nothing, "")
+        @test outputs[2] == (:plot, "notebooktest_figure1.png")
         @test isfile(path * "/figures/notebooktest_figure1.png")
         #= rm(path, recursive=true) =#
     end
