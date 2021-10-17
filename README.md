@@ -1,9 +1,8 @@
 # NotebookToLatex.jl <a href='https://github.com/davibarreira/PlutoLatexConverter.jl/blob/master/src/assets/logo.svg'><img src="src/assets/logo.svg" align="center" height="50." /></a>
 
 [![][bag-dev]][bld-dev]
-[![Build Status](https://github.com/davibarreira/PlutoLatexConverter.jl/workflows/CI/badge.svg)](https://github.com/davibarreira/PlutoLatexConverter.jl/actions)
-[![Coverage](https://codecov.io/gh/davibarreira/PlutoLatexConverter.jl/branch/master/graph/badge.svg)](https://app.codecov.io/gh/davibarreira/NotebookToLatex.jl
-)
+[![Build Status](https://github.com/davibarreira/NotebookToLatex.jl/workflows/CI/badge.svg)](https://github.com/davibarreira/NotebookToLatex.jl/actions)
+[![Coverage](https://codecov.io/gh/davibarreira/NotebookToLatex.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/davibarreira/NotebookToLatex.jl)
 **This is an experimental package.**
 
 This package has been tested on Linux and macOS, and might not work properly on Windows.
