@@ -6,6 +6,8 @@
 
 **This is an experimental package.**
 
+This package has been tested on Linux and macOS, and might not work properly on Windows.
+
 The goal of this package is generate Latex files from Pluto and Jupyter notebooks.
 At the current moment, Pluto.jl allows one to generate pdfs from notebooks,
 but these are not customizable. This package turns notebooks into Latex files.
