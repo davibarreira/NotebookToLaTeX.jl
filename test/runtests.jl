@@ -35,5 +35,5 @@ using Test
     end
 
     rm(path, recursive=true)
-    #= rm("./build_latex/", recursive=true) =#
+    rm("./build_latex/", recursive=true)
 end
