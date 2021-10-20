@@ -254,15 +254,17 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
         for cell in jsonnb["cells"]
             
             # Checks whether the cell has markdown
-            if get(cell,"cell_type", nothing) == "markdown"
+            if get(cell,"cell_type", nothing) == "markdown" || get(cell,"cell_type", nothing) == "raw"
                 parsed = markdowntolatex(strip(join(cell["source"])))
                 write(f,parsed)
                 
             # Checks whether the cell has code and whether the code is hidden
             elseif get(cell,"cell_type", nothing) == "code" && nestedget(cell,["metadata","jupyter", "source_hidden"],nothing) == nothing
-                write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia]\n")
-                write(f, strip(join(cell["source"])))
-                write(f,"\n\\end{lstlisting}\n")
+                if get(cell,"outputs", nothing) != []
+                    write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia]\n")
+                    write(f, strip(join(cell["source"])))
+                    write(f,"\n\\end{lstlisting}\n")
+                end
             end
             
             
