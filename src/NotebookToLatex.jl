@@ -4,6 +4,8 @@ using ReadableRegex
 using Plots
 using Makie
 using CairoMakie
+using Base64
+using JSON
 export notebooktolatex
 
 include("templates.jl")

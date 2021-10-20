@@ -4,6 +4,7 @@ authors = ["Davi Barreira <davisbarreira@gmail.com> and contributors"]
 version = "0.1.0"
 
 [deps]
+Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
@@ -12,10 +13,10 @@ ReadableRegex = "cbbcb084-453d-4c4c-b292-e315607ba6a4"
 
 [compat]
 CairoMakie = "0.6"
+JSON = "0.21"
 Makie = "0.15"
 Plots = "1"
 ReadableRegex = "0.3"
-JSON = "0.21"
 julia = "1"
 
 [extras]
