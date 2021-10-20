@@ -6,7 +6,7 @@ using Makie
 using CairoMakie
 using Base64
 using JSON
-export notebooktolatex
+export notebooktolatex, jupytertolatex
 
 include("templates.jl")
 include("auxiliarytex.jl")
@@ -230,7 +230,7 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
 
     createproject(targetdir, template)
     
-    notebookname = basename(notebook)
+    notebookname = basename(notebook)[1:end-4]
     jsonnb = JSON.parse(read(notebook, String))
     texfile = read(targetdir*"/main.tex", String)
     lineinsert = 1
@@ -254,12 +254,12 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
         for cell in jsonnb["cells"]
             
             # Checks whether the cell has markdown
-            if get(cell,"cell_type", false) == "markdown"
+            if get(cell,"cell_type", nothing) == "markdown"
                 parsed = markdowntolatex(strip(join(cell["source"])))
                 write(f,parsed)
                 
             # Checks whether the cell has code and whether the code is hidden
-            elseif get(cell,"cell_type", false) == "code" && nestedget(cell,["metadata","jupyter", "source_hidden"],false)
+            elseif get(cell,"cell_type", nothing) == "code" && nestedget(cell,["metadata","jupyter", "source_hidden"],nothing) == nothing
                 write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia]\n")
                 write(f, strip(join(cell["source"])))
                 write(f,"\n\\end{lstlisting}\n")
@@ -269,20 +269,22 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
             ## Collecting outputs
             
             # Checks if the output is an empty array or if the outputs_hidden is true
-            check_output_hidden = get(cell, "output",[]) == [] || nestedget(cell, ["metadata","jupyter","outputs_hidden"], false) == true
+            check_output_hidden = get(cell, "outputs",[]) == [] || nestedget(cell, ["metadata","jupyter","outputs_hidden"], nothing) !== nothing
             
             # Collect the output if the cell has code and the output is not hidden
-            if get(cell, "cell_type") == "code" && check_output_hidden == false
-                for output in get(cell, "outputs")
-                    if get(output, "output_type", false) == "stream"
+            if get(cell, "cell_type", nothing) == "code" && !check_output_hidden
+                for output in get(cell, "outputs", nothing)
+                    println(output)
+                    if get(output, "output_type", nothing) == "stream"
                         write(f,"\n\\begin{verbatim}\n")
-                        write(f, output["text"])
+                        write(f, string(output["text"]))
                         write(f,"\n\\end{verbatim}\n")
-                    elseif get(output, "output_type", false) == "execute_result"
-                        if nestedget(output,["data","text/latex"], nothing) != nothing
+                    elseif get(output, "output_type", nothing) == "execute_result"
+                        if nestedget(output,["data","text/latex"], nothing) !== nothing
                             write(f, "\n"*output["data"]["text/latex"])
-                        elseif nestedget(output,["data","image/png"], nothing) != nothing
+                        elseif nestedget(output,["data","image/png"], nothing) !== nothing
                             png = base64decode(output["data"]["image/png"])
+                            
                             figureindex[:i]+=1
                             figurename = notebookname*"_figure"*string(figureindex[:i])*".png"
                             write(targetdir*"/figures/"*figurename, png)
@@ -291,8 +293,8 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
                             write(f,"\t\\includegraphics[width=0.8\\textwidth]{./figures/"*figurename*"}\n")
                             write(f,"\t\\label{fig:"*figurename*"}\n")
                             write(f,"\n\\end{figure}\n")
-                        elseif nestedget(output,["data","image/svg+xml"], nothing) != nothing
-                            svg = output["data"]["image/svg+xml"]
+                        elseif nestedget(output,["data","image/svg+xml"], nothing) !== nothing
+                            svg = join(output["data"]["image/svg+xml"])
                             figureindex[:i]+=1
                             figurename = notebookname*"_figure"*string(figureindex[:i])*".svg"
                             write(targetdir*"/figures/"*figurename, svg)
