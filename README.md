@@ -1,4 +1,4 @@
-# NotebookToLatex.jl <a href='https://github.com/davibarreira/PlutoLatexConverter.jl/blob/master/src/assets/logo.svg'><img src="src/assets/logo.svg" align="center" height="50." /></a>
+# NotebookToLatex.jl <a href='https://github.com/davibarreira/NotebookToLatex.jl/blob/master/src/assets/logo.svg'><img src="src/assets/logo.svg" align="center" height="50." /></a>
 
 [![][bag-dev]][bld-dev]
 [![Build Status](https://github.com/davibarreira/NotebookToLatex.jl/workflows/CI/badge.svg)](https://github.com/davibarreira/NotebookToLatex.jl/actions)
@@ -68,6 +68,7 @@ const _cell_suffix = "\n\n"
 ```
 
 TODO
+* Check DataFrame on Pluto
 * Enable customizing parser, for example, removing numbering in sections;
 * Enable to pass a caption in the code listings (e.g.
 `\begin{lstlisting}[language=JuliaLocal, style=julia, caption=SOR Algorithm, numbers=left]`);

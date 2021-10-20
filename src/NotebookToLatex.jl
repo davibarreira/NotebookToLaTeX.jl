@@ -11,6 +11,7 @@ include("auxiliarytex.jl")
 include("markdowntolatex.jl")
 include("helperfunctions.jl")
 
+export nestedget
 
 """
     Runner is a module for controling the scope
@@ -175,8 +176,8 @@ function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, f
     texfile = read(targetdir*"/main.tex", String)
     lineinsert = 1
     for (i,line) in enumerate(split(texfile, "\n"))
-        if startswith(line, "% INCLUDE NOTEBOOKS")
             lineinsert = i
+            if startswith(line, "% INCLUDE NOTEBOOKS")
             break
         end
     end
@@ -223,5 +224,87 @@ function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, f
     end
 end
 
+function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fontpath=nothing)
+
+    createproject(targetdir, template)
+    
+    notebookname = basename(notebook)
+    jsonnb = JSON.parse(read(notebook, String))
+    texfile = read(targetdir*"/main.tex", String)
+    lineinsert = 1
+    for (i,line) in enumerate(split(texfile, "\n"))
+        if startswith(line, "% INCLUDE NOTEBOOKS")
+            lineinsert = i
+            break
+        end
+    end
+    
+    if !occursin("\\include{./notebooks/"*notebookname*"}",read(targetdir*"/main.tex", String))
+
+        insertlinebelow(targetdir*"/main.tex",
+            "\\include{./notebooks/"*notebookname*"}", lineinsert)
+    end
+
+    notebook    = targetdir*"/notebooks/"*notebookname*".tex"
+    figureindex = Dict(:i=>0)
+    open(notebook, "w") do f
+        write(f,"\\newpage\n")
+        for cell in jsonnb["cells"]
+            
+            # Checks whether the cell has markdown
+            if get(cell,"cell_type", false) == "markdown"
+                parsed = markdowntolatex(strip(join(cell["source"])))
+                write(f,parsed)
+                
+            # Checks whether the cell has code and whether the code is hidden
+            elseif get(cell,"cell_type", false) == "code" && nestedget(cell,["metadata","jupyter", "source_hidden"],false)
+                write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia]\n")
+                write(f, strip(join(cell["source"])))
+                write(f,"\n\\end{lstlisting}\n")
+            end
+            
+            
+            ## Collecting outputs
+            
+            # Checks if the output is an empty array or if the outputs_hidden is true
+            check_output_hidden = get(cell, "output",[]) == [] || nestedget(cell, ["metadata","jupyter","outputs_hidden"], false) == true
+            
+            # Collect the output if the cell has code and the output is not hidden
+            if get(cell, "cell_type") == "code" && check_output_hidden == false
+                for output in get(cell, "outputs")
+                    if get(output, "output_type", false) == "stream"
+                        write(f,"\n\\begin{verbatim}\n")
+                        write(f, output["text"])
+                        write(f,"\n\\end{verbatim}\n")
+                    elseif get(output, "output_type", false) == "execute_result"
+                        if nestedget(output,["data","text/latex"], nothing) != nothing
+                            write(f, "\n"*output["data"]["text/latex"])
+                        elseif nestedget(output,["data","image/png"], nothing) != nothing
+                            png = base64decode(output["data"]["image/png"])
+                            figureindex[:i]+=1
+                            figurename = notebookname*"_figure"*string(figureindex[:i])*".png"
+                            write(targetdir*"/figures/"*figurename, png)
+                            write(f,"\n\\begin{figure}[H]\n")
+                            write(f,"\t\\centering\n")
+                            write(f,"\t\\includegraphics[width=0.8\\textwidth]{./figures/"*figurename*"}\n")
+                            write(f,"\t\\label{fig:"*figurename*"}\n")
+                            write(f,"\n\\end{figure}\n")
+                        elseif nestedget(output,["data","image/svg+xml"], nothing) != nothing
+                            svg = output["data"]["image/svg+xml"]
+                            figureindex[:i]+=1
+                            figurename = notebookname*"_figure"*string(figureindex[:i])*".svg"
+                            write(targetdir*"/figures/"*figurename, svg)
+                            write(f,"\n\\begin{figure}[H]\n")
+                            write(f,"\t\\centering\n")
+                            write(f,"\t\\includegraphics[width=0.8\\textwidth]{./figures/"*figurename*"}\n")
+                            write(f,"\t\\label{fig:"*figurename*"}\n")
+                            write(f,"\n\\end{figure}\n")
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
 
 end

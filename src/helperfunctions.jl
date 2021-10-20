@@ -150,3 +150,100 @@ Inserts a line of `text` in a `file` below the `linenumber`.
 function insertlinebelow(file::String, text::String, linenumber::Integer)
     writetext(file, "\n" * text, linenumber)
 end
+
+################ Parsing Nested Dictionary #####################
+"""
+    nestedget(dict::Dict, keys::AbstractVector, default = nothing)
+Checks whether `dict["key1"]["key2"]...["keyn"]` exists,
+returing it's value or the `default`.
+"""
+function nestedget(dict::Dict, keys::AbstractVector, default=nothing)
+    if isempty(keys)
+        return dict
+    end
+    key = popfirst!(keys)
+    if haskey(dict, key)
+        return nestedget(dict[key], keys)
+    end
+    return default
+end
+
+"""
+    nestedget(non_dict, keys::AbstractVector, default = nothing)
+This function is an auxiliary used by `nestedget` above
+in order to extrac the value from the last key.
+"""
+function nestedget(non_dict, keys::AbstractVector, default = nothing)
+    if isempty(keys)
+        return non_dict
+    end
+    return default
+end
+
+function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fontpath=nothing)
+
+    createproject(targetdir, template)
+    
+    notebookname = basename(notebook)
+    jsonnb = JSON.parse(read(notebook, String))
+    texfile = read(targetdir*"/main.tex", String)
+    lineinsert = 1
+    for (i,line) in enumerate(split(texfile, "\n"))
+        if startswith(line, "% INCLUDE NOTEBOOKS")
+            lineinsert = i
+            break
+        end
+    end
+    
+    if !occursin("\\include{./notebooks/"*notebookname*"}",read(targetdir*"/main.tex", String))
+
+        insertlinebelow(targetdir*"/main.tex",
+            "\\include{./notebooks/"*notebookname*"}", lineinsert)
+    end
+
+    notebook = targetdir*"/notebooks/"*notebookname*".tex"
+    open(notebook, "w") do f
+        write(f,"\\newpage\n")
+        for cell in jsonnb["cells"]
+            
+            # Checks whether the cell has markdown
+            if get(cell,"cell_type", false) == "markdown"
+                parsed = markdowntolatex(strip(join(cell["source"])))
+                write(f,parsed)
+                
+            # Checks whether the cell has code and whether the code is hidden
+            elseif get(cell,"cell_type", false) == "code" && nestedget(cell,["metadata","jupyter", "source_hidden"],false)
+                write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia]\n")
+                write(f, strip(join(cell["source"])))
+                write(f,"\n\\end{lstlisting}\n")
+            end
+            
+            
+            ## Collecting outputs
+            
+            # Checks if the output is an empty array or if the outputs_hidden is true
+            check_output_hidden = get(cell, "output",[]) == [] || nestedget(cell, ["metadata","jupyter","outputs_hidden"], false) == true
+            
+            # Collect the output if the cell has code and the output is not hidden
+            #= if get(cell, "cell_type") == "code" && check_output_hidden == false =#
+            #=     if outputs[i][1] == :text =#
+            #=         write(f,"\n\\begin{verbatim}\n") =#
+            #=         write(f, outputs[i][2]) =#
+            #=         write(f,"\n\\end{verbatim}\n") =#
+            #=     elseif outputs[i][1] == :plot =#
+            #=         write(f,"\n\\begin{figure}[H]\n") =#
+            #=         write(f,"\t\\centering\n") =#
+            #=         write(f,"\t\\includegraphics[width=0.8\\textwidth]{./figures/"*outputs[i][2]*"}\n") =#
+            #=         write(f,"\t\\label{fig:"*outputs[i][2]*"}\n") =#
+            #=         write(f,"\n\\end{figure}\n") =#
+            #=     elseif outputs[i][1] == :image =#
+            #=         write(f,"\n\\begin{figure}[H]\n") =#
+            #=         write(f,"\t\\centering\n") =#
+            #=         write(f,"\t\\includegraphics[width=0.8\\textwidth]{"*outputs[i][2]*"}\n") =#
+            #=         write(f,"\t\\label{fig:"*outputs[i][2]*"}\n") =#
+            #=         write(f,"\n\\end{figure}\n") =#
+            #=     end =#
+            #= end =#
+        end
+    end
+end
