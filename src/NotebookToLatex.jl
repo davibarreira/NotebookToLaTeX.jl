@@ -274,7 +274,6 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
             # Collect the output if the cell has code and the output is not hidden
             if get(cell, "cell_type", nothing) == "code" && !check_output_hidden
                 for output in get(cell, "outputs", nothing)
-                    println(output)
                     if get(output, "output_type", nothing) == "stream"
                         write(f,"\n\\begin{verbatim}\n")
                         write(f, string(output["text"]))
