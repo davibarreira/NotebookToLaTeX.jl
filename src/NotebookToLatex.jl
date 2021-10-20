@@ -230,7 +230,7 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
 
     createproject(targetdir, template)
     
-    notebookname = basename(notebook)[1:end-4]
+    notebookname = basename(notebook)[1:end-6]
     jsonnb = JSON.parse(read(notebook, String))
     texfile = read(targetdir*"/main.tex", String)
     lineinsert = 1
@@ -281,7 +281,7 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
                         write(f,"\n\\end{verbatim}\n")
                     elseif get(output, "output_type", nothing) == "execute_result"
                         if nestedget(output,["data","text/latex"], nothing) !== nothing
-                            write(f, "\n"*output["data"]["text/latex"])
+                            write(f, "\n"*join(output["data"]["text/latex"]))
                         elseif nestedget(output,["data","image/png"], nothing) !== nothing
                             png = base64decode(output["data"]["image/png"])
                             
