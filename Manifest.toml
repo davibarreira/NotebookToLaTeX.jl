@@ -491,6 +491,12 @@ uuid = "76f85450-5226-5b5a-8eaa-529ad045b433"
 deps = ["Artifacts", "Libdl", "MbedTLS_jll"]
 uuid = "29816b5a-b9ab-546f-933c-edad1886dfa8"
 
+[[Libcroco_jll]]
+deps = ["Artifacts", "Glib_jll", "JLLWrappers", "Libdl", "Pkg", "XML2_jll"]
+git-tree-sha1 = "a8e3b1b67458c8933992b95db9c4b37865906e3f"
+uuid = "57eb2189-7eb1-52c8-ac0e-99495f550b14"
+version = "0.6.13+2"
+
 [[Libdl]]
 uuid = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
 
@@ -529,6 +535,12 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "9c30530bf0effd46e15e0fdcf2b8636e78cbbd73"
 uuid = "4b2f31a3-9ecc-558c-b454-b3730dcb73e9"
 version = "2.35.0+0"
+
+[[Librsvg_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libcroco_jll", "Libdl", "Pango_jll", "Pkg", "gdk_pixbuf_jll"]
+git-tree-sha1 = "af3e6dc6747e53a0236fbad80b37e3269cf66a9f"
+uuid = "925c91fb-5dd6-59dd-8e8c-345e74382d89"
+version = "2.42.2+3"
 
 [[Libtiff_jll]]
 deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
@@ -1202,6 +1214,12 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "cc4bf3fdde8b7e3e9fa0351bdeedba1cf3b7f6e6"
 uuid = "3161d3a3-bdf6-5164-811a-617609db77b4"
 version = "1.5.0+0"
+
+[[gdk_pixbuf_jll]]
+deps = ["Artifacts", "Glib_jll", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Libtiff_jll", "Pkg", "Xorg_libX11_jll", "libpng_jll"]
+git-tree-sha1 = "0facfc4bfd873c21b83a053bbf182b9ef19c69d8"
+uuid = "da03df04-f53b-5353-a52f-6a8b0620ced0"
+version = "2.42.6+0"
 
 [[isoband_jll]]
 deps = ["Libdl", "Pkg"]
