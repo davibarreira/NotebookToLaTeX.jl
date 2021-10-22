@@ -21,20 +21,34 @@ using Test
         @test isfile(path * "/main.tex")
     end
 
-#=     @testset "Parsing Pluto Notebook" begin =#
-#=         nb = extractnotebook("./notebooktest.jl") =#
-#=             outputs  = collectoutputs(nb, path) =#
-#=         println(outputs) =#
-#=         @test outputs[1] == (:nothing, "") =#
-#=         @test outputs[2] == (:plot, "notebooktest_figure1.png") =#
-#=         @test isfile(path * "/figures/notebooktest_figure1.png") =#
-#=     end =#
+    #= @testset "Parsing Pluto Notebook" begin =#
+    #=     nb = extractnotebook("./notebooktest.jl") =#
+    #=     outputs  = collectoutputs(nb, path) =#
+    #=     println(outputs) =#
+    #=     @test outputs[1] == (:nothing, "") =#
+    #=     @test outputs[2] == (:plot, "notebooktest_figure1.png") =#
+    #=     @test isfile(path * "/figures/notebooktest_figure1.png") =#
+    #= end =#
 
-#=     @testset "Pluto to Latex" begin =#
-#=         notebooktolatex("./pluto/notebooktest.jl", template=:book, =#
-#=                         fontpath="/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/") =#
-#=         #= @test isfile("./build_latex/notebooks/") =# =#
-#=     end =#
+    @testset "Pluto to Latex" begin
+        plutopath = "./build_latex/"
+        notebooktolatex("./pluto/notebooktest.jl", template=:book, fontpath="/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/")
+        @test isfile(plutopath * "main.tex")
+        @test isfile(plutopath * "preface.tex")
+        @test isfile(plutopath * "frontmatter/copyright.tex")
+        @test isfile(plutopath * "frontmatter/titlepage.tex")
+        @test isfile(plutopath * "julia_font.tex")
+        @test isfile(plutopath * "julia_listings.tex")
+        @test isfile(plutopath * "julia_listings_unicode.tex")
+        @test isfile(plutopath * "/notebooks/notebooktest.tex")
+        @test !isfile(plutopath * "/fonts/JuliaMono_Bold.ttf")
+        @test !isfile(plutopath * "/fonts/JuliaMono_Medium.ttf")
+        @test !isfile(plutopath * "/fonts/JuliaMono_Regular.ttf")
+        @test isfile(plutopath * "/figures/figure.pdf")
+        @test isfile(plutopath * "/figures/notebooktest_figure1.png")
+        @test isfile(plutopath * "/figures/notebooktest_figure2.pdf")
+        @test isfile(plutopath * "/figures/plotexample.png")
+    end
 
     @testset "Jupyter to Latex" begin
         jupyterpath = "./jupyter/build_latex/"
@@ -56,9 +70,9 @@ using Test
         @test isfile(jupyterpath * "/figures/jupyternotebook_figure2.png")
         @test isfile(jupyterpath * "/figures/plotexample.png")
 
+        rm(jupyterpath, recursive=true)
     end
 
-    rm(path, recursive=true)
-    #= rm(jupyterpath, recursive=true) =#
-    #= rm("./build_latex/", recursive=true) =#
+        rm(path, recursive=true)
+    rm("./build_latex/", recursive=true)
 end
