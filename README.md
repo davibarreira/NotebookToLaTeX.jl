@@ -4,6 +4,8 @@
 [![Build Status](https://github.com/davibarreira/NotebookToLatex.jl/workflows/CI/badge.svg)](https://github.com/davibarreira/NotebookToLatex.jl/actions)
 [![Coverage](https://codecov.io/gh/davibarreira/NotebookToLatex.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/davibarreira/NotebookToLatex.jl)
 
+![NotebookToLatex Example](./src/assets/notebooktolatexexample.png)
+
 This package converts your notebook files (Pluto or Jupyter) to beautiful and
 simple Latex files, that are easy to modify. Thus, making it ideal
 to write reports, articles or books from notebooks.
