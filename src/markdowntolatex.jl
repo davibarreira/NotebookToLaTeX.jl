@@ -35,7 +35,7 @@ function parselinks(md)
         parsedsentence *= md[i:pstart[1] - 1]
         text = md[pstart[end] + 1:pend[1] - 1]
         link = md[linkstart[end] + 1:linkend[1] - 1]
-        parsedsentence *= "\\href{" * text * "}{" * link * "}"
+        parsedsentence *= "\\href{" * link * "}{" * text * "}"
     i = linkend[end] + 1
     end
     parsedsentence *= md[i:end]

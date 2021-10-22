@@ -1,5 +1,6 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  16 OCT 2021 16:27
- system commands enabled.
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  22 OCT 2021 08:34
+ restricted system commands enabled.
+ file:line:error style messages enabled.
 **main.tex
 (./main.tex
 LaTeX2e <2020-10-01> patch level 4
@@ -539,6 +540,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \openout2 = ./notebooks/examplepluto.aux
  (./notebooks/examplepluto.tex
 Chapter 1.
+
+Overfull \hbox (24.8698pt too wide) in paragraph at lines 10--11
+\TU/lmr/m/n/12 My text here with \TU/lmr/m/it/12 ital-ics\TU/lmr/m/n/12 , with \TU/lmr/bx/n/12 bold\TU/lmr/m/n/12 , and a [][]https://-davibar-reira.github.io/[][].Adding
+ []
+
 <./figures/examplepluto_figure1.png, id=39, 602.25pt x 401.5pt>
 File: ./figures/examplepluto_figure1.png Graphic file (type png)
 <use ./figures/examplepluto_figure1.png>
@@ -574,12 +580,12 @@ Here is how much of LuaTeX's memory you used:
  100000,953878 words of node,token memory allocated
  485 words of node memory still in use:
    3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 10 attribute, 56 glue_spec, 10 attribute_list, 6 write nodes
-   avail lists: 2:980,3:169,4:856,5:663,6:59,7:1600,8:31,9:1957,10:12,11:104
+   avail lists: 2:980,3:169,4:856,5:669,6:59,7:1663,8:31,9:1957,10:12,11:108
  38315 multiletter control sequences out of 65536+600000
  68 fonts using 36401671 bytes
  86i,6n,89p,9591b,5215s stack positions out of 5000i,500n,10000p,200000b,200000s
 </home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Medium.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (7 pages, 259454 bytes).
+Output written on main.pdf (7 pages, 260322 bytes).
 
 PDF statistics: 174 PDF objects out of 1000 (max. 8388607)
  127 compressed objects within 2 object streams
