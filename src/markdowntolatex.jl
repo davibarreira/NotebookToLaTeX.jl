@@ -15,7 +15,8 @@ function parsefigures(md)
         parsedsentence *= md[i:pstart[1] - 1]
         text = md[pstart[end] + 1:pend[1] - 1]
         link = md[linkstart[end] + 1:linkend[1] - 1]
-        parsedsentence *= "\\href{" * text * "}{" * link * "}"
+        parsedsentence *= "\n\\begin{figure}[H]\n\t \\centering\n\t\\includegraphics[width=0.8\\textwidth]{./figures/"*link*"}\n\t\\caption{"*text*"}\n\t\\label{fig:"*basename(link)*"}\n\\end{figure}\n"
+        #= * text * "}{" * link * "}" =#
         i = linkend[end] + 1
                     #= write(f,"\n\\begin{figure}[H]\n") =#
                     #= write(f,"\t\\centering\n") =#
@@ -40,7 +41,7 @@ function parselinks(md)
         parsedsentence *= md[i:pstart[1] - 1]
         text = md[pstart[end] + 1:pend[1] - 1]
         link = md[linkstart[end] + 1:linkend[1] - 1]
-        parsedsentence *= "\\href{" * link * "}{" * text * "}"
+        parsedsentence *= " \\href{" * link * "}{" * text * "}"
     i = linkend[end] + 1
     end
     parsedsentence *= md[i:end]
