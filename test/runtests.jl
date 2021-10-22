@@ -33,7 +33,7 @@ using Test
     @testset "Pluto to Latex" begin
         plutopath = "./build_latex/"
         fontpath = "/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/"
-        notebooktolatex("./pluto/notebooktest.jl", template=:book, fontpath=fonpath)
+        notebooktolatex("./pluto/notebooktest.jl", template=:book, fontpath=fontpath)
         @test isfile(plutopath * "main.tex")
         @test isfile(plutopath * "preface.tex")
         @test isfile(plutopath * "frontmatter/copyright.tex")
