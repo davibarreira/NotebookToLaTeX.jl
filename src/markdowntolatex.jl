@@ -1,8 +1,8 @@
-function parsesentence(sentence)
-    return sentence |> parsefigures |> parselinks |> parsebold |> parseitalics
+function parsesentence(md, targetdir)
+    return parsefigures(md, targetdir) |> parselinks |> parsebold |> parseitalics
 end
 
-function parsefigures(md)
+function parsefigures(md, targetdir)
     parsedsentence = ""
     i = 1
 
@@ -15,14 +15,23 @@ function parsefigures(md)
         parsedsentence *= md[i:pstart[1] - 1]
         text = md[pstart[end] + 1:pend[1] - 1]
         link = md[linkstart[end] + 1:linkend[1] - 1]
-        parsedsentence *= "\n\\begin{figure}[H]\n\t \\centering\n\t\\includegraphics[width=0.8\\textwidth]{./figures/"*link*"}\n\t\\caption{"*text*"}\n\t\\label{fig:"*basename(link)*"}\n\\end{figure}\n"
+        figurename = ""
+        if link[end - 3:end] == ".svg"
+            figuresvg = link
+            figurename *= basename(figuresvg[1:end - 4])
+            figurepdf = targetdir * "/figures/" * figurename * ".pdf"
+            rsvg_convert() do cmd
+               run(`$cmd $figuresvg -f pdf -o $figurepdf`)
+           end
+        else
+            figurename *= basename(link)
+            cp(link, targetdir * "/figures/" * figurename, force=true)
+        end
+
+        parsedsentence *= "\n\\begin{figure}[H]\n\t \\centering\n\t\\includegraphics[width=0.8\\textwidth]{./figures/" * figurename * "}\n\t\\caption{" * text * "}\n\t\\label{fig:" * figurename * "}\n\\end{figure}\n"
         #= * text * "}{" * link * "}" =#
         i = linkend[end] + 1
-                    #= write(f,"\n\\begin{figure}[H]\n") =#
-                    #= write(f,"\t\\centering\n") =#
-                    #= write(f,"\t\\includegraphics[width=0.8\\textwidth]{./figures/"*outputs[i][2]*"}\n") =#
-                    #= write(f,"\t\\label{fig:"*outputs[i][2]*"}\n") =#
-                    #= write(f,"\n\\end{figure}\n") =#
+
     end
     parsedsentence *= md[i:end]
     return parsedsentence
@@ -40,7 +49,7 @@ function parselinks(md)
 
         parsedsentence *= md[i:pstart[1] - 1]
         text = md[pstart[end] + 1:pend[1] - 1]
-        link = md[linkstart[end] + 1:linkend[1] - 1]
+    link = md[linkstart[end] + 1:linkend[1] - 1]
         parsedsentence *= " \\href{" * link * "}{" * text * "}"
     i = linkend[end] + 1
     end
@@ -55,7 +64,7 @@ function parseitalics(md)
         pstart    = findnext("*", md, i) !== nothing ? findnext("*", md, i)               : break
         pend      = findnext("*", md, pstart[end] + 1) !== nothing ? findnext("*", md, pstart[end] + 1)    : break
         parsedsentence *= md[i:pstart[1] - 1]
-        text = md[pstart[end] + 1:pend[1] - 1]
+text = md[pstart[end] + 1:pend[1] - 1]
         parsedsentence *= "\\textit{" * text * "}"
         i = pend[end] + 1
     end
@@ -78,7 +87,7 @@ function parsebold(md)
     return parsedsentence
 end
 
-function parseparagraph(paragraph)
+function parseparagraph(paragraph, targetdir)
     parsedparagraph = ""
     for (i, sentence) in enumerate(split(paragraph, "\$"))
         if iseven(i)
@@ -90,7 +99,7 @@ function parseparagraph(paragraph)
                     # It's a code sentence, i.e text is between ` ` and is not a math sentence.
                     parsedparagraph *= "\\lstinline[style=julia]{" * subsentence * "}"
                 else
-                    parsedparagraph *= parsesentence(subsentence)
+                    parsedparagraph *= parsesentence(subsentence, targetdir)
                 end
             end
         end
@@ -98,7 +107,7 @@ function parseparagraph(paragraph)
     return parsedparagraph
 end
 
-function markdowntolatex(md)
+function markdowntolatex(md, targetdir)
     tag = false
     component = ""
     parsedtext = ""
@@ -143,7 +152,7 @@ function markdowntolatex(md)
             parsedtext *= "\t" * l * "\n"
         elseif !tag
             #= if !startswith(l, "#") =#
-                parsedtext *= parseparagraph(l)
+                parsedtext *= parseparagraph(l, targetdir)
             #= end =#
         end
     end

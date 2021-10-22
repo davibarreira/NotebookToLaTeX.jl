@@ -167,7 +167,7 @@ function notebooktolatex(notebook::String, targetdir="./build_latex"; template=:
     if endswith((notebook),".jl")
         plutotolatex(notebook, targetdir, template=template, fontpath=fontpath)
     elseif endswith((notebook),".ipynb")
-        println("Jupyter no yet implemented")
+        jupytertolatex(notebook, targetdir, template=template, fontpath=fontpath)
     else
         throw(ArgumentError(notebook, "extension must be either .jl or .ipynb"))
     end
@@ -180,7 +180,7 @@ Function to convert Pluto notebooks. The arguments are the same as the ones in
 """
 function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, fontpath=nothing)
 
-    createproject(targetdir, template)
+    createproject(targetdir, template, fontpath)
     nb = extractnotebook(notebookname)
     texfile = read(targetdir*"/main.tex", String)
     lineinsert = 1
@@ -203,7 +203,7 @@ function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, f
         write(f,"\\newpage\n")
         for i in nb[:order]
             if nb[:celltype][i] == "markdown"
-                parsed = markdowntolatex(strip(nb[:contents][i])[7:end-3])
+                parsed = markdowntolatex(strip(nb[:contents][i])[7:end-3], targetdir)
                 write(f,parsed)
             elseif nb[:celltype][i] == "code" && nb[:view][i] == "showcode"
                 write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia]\n")
@@ -232,7 +232,7 @@ function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, f
                         end
                     else
                         figurename *= basename(outputs[i][2])
-                        cp(outputs[i][2],targetdir*"/figures/"*figurename)
+                        cp(outputs[i][2],targetdir*"/figures/"*figurename, force=true)
                     end
                     write(f,"\n\\begin{figure}[H]\n")
                     write(f,"\t\\centering\n")
@@ -248,7 +248,7 @@ end
 
 function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fontpath=nothing)
 
-    createproject(targetdir, template)
+    createproject(targetdir, template, fontpath)
     
     notebookname = basename(notebook)[1:end-6]
     jsonnb = JSON.parse(read(notebook, String))
@@ -275,7 +275,7 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
             
             # Checks whether the cell has markdown
             if get(cell,"cell_type", nothing) == "markdown" || get(cell,"cell_type", nothing) == "raw"
-                parsed = markdowntolatex(strip(join(cell["source"])))
+                parsed = markdowntolatex(strip(join(cell["source"])), targetdir)
                 write(f,parsed)
                 
             # Checks whether the cell has code and whether the code is hidden

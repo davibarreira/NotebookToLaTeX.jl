@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  22 OCT 2021 09:59
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  22 OCT 2021 10:24
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -384,7 +384,11 @@ Package fontspec Info: Font family 'JuliaMono-Medium(0)' created for font
 (fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
 (fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 
-) (./julia_listings.tex (./julia_listings_unicode.tex)) (./julia_listings.tex (./julia_listings_unicode.tex)) (./julia_listings_unicode.tex) (./main.aux)
+) (./julia_listings.tex (./julia_listings_unicode.tex)) (./julia_listings.tex (./julia_listings_unicode.tex)) (./julia_listings_unicode.tex) (./main.aux (./notebooks/jupyternotebook.aux
+
+LaTeX Warning: Label `fig:figure' multiply defined.
+
+) (./appendix.aux))
 \openout1 = main.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
@@ -456,6 +460,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 44.
 LaTeX Info: Redefining \pageref on input line 44.
 LaTeX Info: Redefining \nameref on input line 44.
+ (./main.out) (./main.out)
 \@outlinefile=\write3
 
 \openout3 = main.out
@@ -522,7 +527,14 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]) (./frontmatter/copyright.tex)
 warning  (pdf backend): ignoring duplicate destination with the name 'page.i'
-[1]
+[1] (./main.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 2.
+)
 \tf@toc=\write4
 
 \openout4 = main.toc
@@ -532,112 +544,69 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.i'
 \openout2 = ./notebooks/jupyternotebook.aux
  (./notebooks/jupyternotebook.tex
 Chapter 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 9.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 9.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 9.
-
-LaTeX Warning: File `./figures/figure.svg' not found on input line 16.
-
-
-./notebooks/jupyternotebook.tex:16: LaTeX Error: Unknown graphics extension: .svg.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.16 ...s[width=0.8\textwidth]{./figures/figure.svg}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: File `./figures/figure.svg' not found on input line 23.
-
-
-./notebooks/jupyternotebook.tex:23: LaTeX Error: Unknown graphics extension: .svg.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.23 ...s[width=0.8\textwidth]{./figures/figure.svg}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
+<./figures/figure.pdf, id=40, 873.2625pt x 260.975pt>
+File: ./figures/figure.pdf Graphic file (type pdf)
+<use ./figures/figure.pdf>
+Package luatex.def Info: ./figures/figure.pdf  used on input line 16.
+(luatex.def)             Requested size: 312.00119pt x 93.2421pt.
+File: ./figures/figure.pdf Graphic file (type pdf)
+<use ./figures/figure.pdf>
+Package luatex.def Info: ./figures/figure.pdf  used on input line 23.
+(luatex.def)             Requested size: 312.00119pt x 93.2421pt.
 [1
 
 
 
 
 warning  (pdf backend): ignoring duplicate destination with the name 'figure.1.1'
-
-warning  (pdf backend): ignoring duplicate destination with the name 'figure.1.2'
-]
-<./figures/jupyternotebook_figure1.pdf, id=46, 602.25pt x 401.5pt>
+<./figures/figure.pdf>]
+<./figures/jupyternotebook_figure1.pdf, id=780, 602.25pt x 401.5pt>
 File: ./figures/jupyternotebook_figure1.pdf Graphic file (type pdf)
 <use ./figures/jupyternotebook_figure1.pdf>
 Package luatex.def Info: ./figures/jupyternotebook_figure1.pdf  used on input line 41.
 (luatex.def)             Requested size: 312.00119pt x 208.00926pt.
-<./figures/jupyternotebook_figure2.png, id=47, 803.0pt x 602.25pt>
+<./figures/jupyternotebook_figure2.png, id=781, 803.0pt x 602.25pt>
 File: ./figures/jupyternotebook_figure2.png Graphic file (type png)
 <use ./figures/jupyternotebook_figure2.png>
 Package luatex.def Info: ./figures/jupyternotebook_figure2.png  used on input line 52.
 (luatex.def)             Requested size: 312.00119pt x 234.00354pt.
- [2<./figures/jupyternotebook_figure1.pdf><./figures/jupyternotebook_figure2.png>]
-
-LaTeX Warning: File `./figures/plotexample.png' not found on input line 100.
-
-
-./notebooks/jupyternotebook.tex:100: Package luatex.def Error: File `./figures/plotexample.png' not found: using draft setting.
-
-See the luatex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.100 ...h=0.8\textwidth]{./figures/plotexample.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[3]) [4
+ [2
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.1.2'
+<./figures/jupyternotebook_figure1.pdf>] [3<./figures/jupyternotebook_figure2.png>]
+<./figures/plotexample.png, id=807, 602.25pt x 401.5pt>
+File: ./figures/plotexample.png Graphic file (type png)
+<use ./figures/plotexample.png>
+Package luatex.def Info: ./figures/plotexample.png  used on input line 100.
+(luatex.def)             Requested size: 312.00119pt x 208.00926pt.
+) [4
 warning  (pdf backend): ignoring duplicate destination with the name 'figure.1.3'
-] [5]
+<./figures/plotexample.png>] [5]
 No file main.bbl.
 
 \openout2 = appendix.aux
 No file appendix.tex.
 (./main.aux (./notebooks/jupyternotebook.aux) (./appendix.aux))
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  0ADC2CA16799C2005D3AFAA3FB82D82F;421.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 0ADC2CA16799C2005D3AFAA3FB82D82F;421.
 )
 
 Here is how much of LuaTeX's memory you used:
- 19421 strings out of 478824
+ 19319 strings out of 478824
  100000,953878 words of node,token memory allocated
  485 words of node memory still in use:
    3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 10 attribute, 56 glue_spec, 10 attribute_list, 6 write nodes
-   avail lists: 2:961,3:166,4:1020,5:714,6:76,7:2015,8:41,9:2326,10:15,11:122
- 38334 multiletter control sequences out of 65536+600000
+   avail lists: 2:866,3:115,4:904,5:654,6:48,7:1462,8:41,9:2028,10:15,11:100
+ 38321 multiletter control sequences out of 65536+600000
  68 fonts using 36401671 bytes
- 86i,6n,89p,9591b,5227s stack positions out of 5000i,500n,10000p,200000b,200000s
+ 86i,7n,89p,9591b,5227s stack positions out of 5000i,500n,10000p,200000b,200000s
 </home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Medium.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on main.pdf (8 pages, 249934 bytes).
+Output written on main.pdf (8 pages, 360522 bytes).
 
-PDF statistics: 154 PDF objects out of 1000 (max. 8388607)
- 109 compressed objects within 2 object streams
+PDF statistics: 896 PDF objects out of 1000 (max. 8388607)
+ 604 compressed objects within 7 object streams
  32 named destinations out of 1000 (max. 131072)
- 1 words of extra memory for PDF output out of 10000 (max. 100000000)
+ 25 words of extra memory for PDF output out of 10000 (max. 100000000)
 
