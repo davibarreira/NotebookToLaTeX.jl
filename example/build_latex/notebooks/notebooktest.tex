@@ -1,0 +1,128 @@
+\newpage
+
+\chapter{Chapter}
+
+\section{Section}
+
+\subsection{Subsection}
+
+\subsubsection{Subsubsection}
+My text here with \textit{italics}, with \textbf{bold}, and a  \href{https://davibarreira.github.io/}{link}.Adding some math expression here with $x=10$ and
+\begin{displaymath}
+	d(\omega(t_0),\omega(t_1)) \leq \int^{t_1}_{t_0}g(s) ds.
+\end{displaymath}
+Adding some code like \lstinline[style=julia]{plots}. Note that the \lstinline[style=julia]{using plots}
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+using PlutoUI
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+begin
+	using Plots
+  ENV["GKSwstype"] = "100"
+	y(x) = sin(x)
+	Plots.plot(y,
+		color=:blue)
+end
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figures/notebooktest_figure1.png}
+	\label{fig:notebooktest_figure1.png}
+
+\end{figure}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+A = [10,10,10]
+\end{lstlisting}
+
+\begin{verbatim}
+3-element Vector{Int64}:
+ 10
+ 10
+ 10
+\end{verbatim}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+x = rand(10);
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+x .+ 1
+\end{lstlisting}
+
+\begin{verbatim}
+10-element Vector{Float64}:
+ 1.6611926115348956
+ 1.6026340792656608
+ 1.1705483723622074
+ 1.0577183414620008
+ 1.908989101602687
+ 1.6850215167816363
+ 1.0623795171331136
+ 1.8593082331579929
+ 1.5204611342180576
+ 1.742311805578205
+\end{verbatim}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+set_theme!(theme_ggplot2())
+\end{lstlisting}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+Makie.plot(x)
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figures/notebooktest_figure2.pdf}
+	\label{fig:notebooktest_figure2.pdf}
+
+\end{figure}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+PlutoUI.LocalResource("./figure.svg")
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figures/figure}
+	\label{fig:/home/davibarreira/MEGA/EMAp/NotebookToLatex.jl/test/pluto/./figure.svg}
+
+\end{figure}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+PlutoUI.LocalResource(figurepath)
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figures/plotexample.png}
+	\label{fig:/home/davibarreira/MEGA/EMAp/NotebookToLatex.jl/test/pluto/plotexample.png}
+
+\end{figure}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+begin
+	using DataFrames
+	DataFrame(a=rand(10),b=rand(["left","right"],10))
+end
+\end{lstlisting}
+
+\begin{verbatim}
+10×2 DataFrame
+ Row │ a          b
+     │ Float64    String
+─────┼───────────────────
+   1 │ 0.889757   right
+   2 │ 0.225823   right
+   3 │ 0.0966629  left
+   4 │ 0.925568   left
+   5 │ 0.407201   left
+   6 │ 0.178677   left
+   7 │ 0.360096   right
+   8 │ 0.063945   left
+   9 │ 0.93112    right
+  10 │ 0.534062   left
+\end{verbatim}

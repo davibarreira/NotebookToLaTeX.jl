@@ -47,12 +47,19 @@ using Test
         @test isfile(jupyterpath * "julia_font.tex")
         @test isfile(jupyterpath * "julia_listings.tex")
         @test isfile(jupyterpath * "julia_listings_unicode.tex")
+        @test isfile(jupyterpath * "/notebooks/jupyternotebook.tex")
         @test isfile(jupyterpath * "/fonts/JuliaMono_Bold.ttf")
         @test isfile(jupyterpath * "/fonts/JuliaMono_Medium.ttf")
         @test isfile(jupyterpath * "/fonts/JuliaMono_Regular.ttf")
-        notebooktolatex("./jupyter/jupyternotebook.ipynb", jupyterpath, template=:book)
+        @test isfile(jupyterpath * "/figures/figure.pdf")
+        @test isfile(jupyterpath * "/figures/jupyternotebook_figure1.pdf")
+        @test isfile(jupyterpath * "/figures/jupyternotebook_figure1.svg")
+        @test isfile(jupyterpath * "/figures/jupyternotebook_figure2.png")
+        @test isfile(jupyterpath * "/figures/plotexample.png")
+
     end
 
     rm(path, recursive=true)
+    #= rm(jupyterpath, recursive=true) =#
     #= rm("./build_latex/", recursive=true) =#
 end

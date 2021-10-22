@@ -110,9 +110,13 @@ function collectoutputs(notebookdata, path)
                 push!(outputs,(:image,pwd()*"/"*imagepath))
             else
                 io = IOBuffer();
+                cd(runpath)
+
                 Base.invokelatest(show,
                     IOContext(io, :limit => true),"text/plain",
                     dispatch_output(Core.eval(Runner,ex), notebookdata[:notebookname], path, figureindex));
+                cd(notebookdata[:notebookdir])
+
                 celloutput = String(take!(io))
                 if celloutput == "nothing"
                     push!(outputs,(:nothing, ""))
