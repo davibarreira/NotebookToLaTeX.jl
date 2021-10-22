@@ -150,7 +150,6 @@ using `vimtex` plugin for Vim. This line will tell the plugin to compile using
 This package is still in it's earlier stages, so here is a list of things
 still left to be done:
 * Add new templates;
-* Check the DataFrames.jl output on Pluto;
 * Enable easier way of customizing parser, for example, removing numbering in sections;
 * Enable to pass a caption in the code listings (e.g.
 `\begin{lstlisting}[language=JuliaLocal, style=julia, caption=SOR Algorithm, numbers=left]`);
