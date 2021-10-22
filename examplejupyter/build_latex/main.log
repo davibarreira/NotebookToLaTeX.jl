@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  22 OCT 2021 10:24
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  22 OCT 2021 10:29
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -315,19 +315,25 @@ Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
 
 Package fontspec Info: Font family 'JuliaMono(0)' created for font 'JuliaMono'
 (fontspec)             with options [UprightFont = *_Regular,BoldFont =
-(fontspec)             *_Bold,Path = ./fonts/,Extension = .ttf].
+(fontspec)             *_Bold,Path =
+(fontspec)             /home/davibarreira/.local/share/fonts/Unknown
+(fontspec)             Vendor/TrueType/JuliaMono//,Extension = .ttf].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[./fonts/JuliaMono_Regular.ttf]:mode=node;script=latn;language=dflt;"
+(fontspec)             <->"[/home/davibarreira/.local/share/fonts/Unknown
+(fontspec)             Vendor/TrueType/JuliaMono//JuliaMono_Regular.ttf]:mode=node;script=latn;language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
-(fontspec)             <->"[./fonts/JuliaMono_Regular.ttf]:mode=node;script=latn;language=dflt;+smcp;"
+(fontspec)             <->"[/home/davibarreira/.local/share/fonts/Unknown
+(fontspec)             Vendor/TrueType/JuliaMono//JuliaMono_Regular.ttf]:mode=node;script=latn;language=dflt;+smcp;"
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"[./fonts/JuliaMono_Bold.ttf]:mode=node;script=latn;language=dflt;"
+(fontspec)             <->"[/home/davibarreira/.local/share/fonts/Unknown
+(fontspec)             Vendor/TrueType/JuliaMono//JuliaMono_Bold.ttf]:mode=node;script=latn;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
-(fontspec)             <->"[./fonts/JuliaMono_Bold.ttf]:mode=node;script=latn;language=dflt;+smcp;"
+(fontspec)             <->"[/home/davibarreira/.local/share/fonts/Unknown
+(fontspec)             Vendor/TrueType/JuliaMono//JuliaMono_Bold.ttf]:mode=node;script=latn;language=dflt;+smcp;"
 
 luaotfload | cache : Lookup cache loaded from /home/davibarreira/.texlive2020/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.
 
@@ -600,7 +606,7 @@ Here is how much of LuaTeX's memory you used:
    3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 10 attribute, 56 glue_spec, 10 attribute_list, 6 write nodes
    avail lists: 2:866,3:115,4:904,5:654,6:48,7:1462,8:41,9:2028,10:15,11:100
  38321 multiletter control sequences out of 65536+600000
- 68 fonts using 36401671 bytes
+ 68 fonts using 36436871 bytes
  86i,7n,89p,9591b,5227s stack positions out of 5000i,500n,10000p,200000b,200000s
 </home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Medium.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 Output written on main.pdf (8 pages, 360522 bytes).
