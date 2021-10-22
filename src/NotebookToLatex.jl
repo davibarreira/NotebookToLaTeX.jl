@@ -279,7 +279,7 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
                 write(f,parsed)
                 
             # Checks whether the cell has code and whether the code is hidden
-            elseif get(cell,"cell_type", nothing) == "code" && nestedget(cell,["metadata","jupyter", "source_hidden"],nothing) == nothing
+            elseif get(cell,"cell_type", nothing) == "code" && nestedget(cell,["metadata","jupyter", "source_hidden"],nothing) === nothing
                 if get(cell,"outputs", nothing) != []
                     write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia]\n")
                     write(f, strip(join(cell["source"])))
@@ -298,7 +298,7 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
                 for output in get(cell, "outputs", nothing)
                     if get(output, "output_type", nothing) == "stream"
                         write(f,"\n\\begin{verbatim}\n")
-                        write(f, string(output["text"]))
+                        write(f, join(output["text"]))
                         write(f,"\n\\end{verbatim}\n")
                     elseif get(output, "output_type", nothing) == "execute_result"
                         if nestedget(output,["data","text/latex"], nothing) !== nothing

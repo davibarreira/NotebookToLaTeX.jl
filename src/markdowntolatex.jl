@@ -17,6 +17,11 @@ function parsefigures(md)
         link = md[linkstart[end] + 1:linkend[1] - 1]
         parsedsentence *= "\\href{" * text * "}{" * link * "}"
         i = linkend[end] + 1
+                    #= write(f,"\n\\begin{figure}[H]\n") =#
+                    #= write(f,"\t\\centering\n") =#
+                    #= write(f,"\t\\includegraphics[width=0.8\\textwidth]{./figures/"*outputs[i][2]*"}\n") =#
+                    #= write(f,"\t\\label{fig:"*outputs[i][2]*"}\n") =#
+                    #= write(f,"\n\\end{figure}\n") =#
     end
     parsedsentence *= md[i:end]
     return parsedsentence

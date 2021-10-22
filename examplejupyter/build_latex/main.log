@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  22 OCT 2021 09:00
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.7.5)  22 OCT 2021 09:50
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -543,7 +543,7 @@ Chapter 1.
 <./figures/jupyternotebook_figure1.pdf, id=42, 602.25pt x 401.5pt>
 File: ./figures/jupyternotebook_figure1.pdf Graphic file (type pdf)
 <use ./figures/jupyternotebook_figure1.pdf>
-Package luatex.def Info: ./figures/jupyternotebook_figure1.pdf  used on input line 26.
+Package luatex.def Info: ./figures/jupyternotebook_figure1.pdf  used on input line 27.
 (luatex.def)             Requested size: 312.00119pt x 208.00926pt.
 [1
 
@@ -553,29 +553,9 @@ Package luatex.def Info: ./figures/jupyternotebook_figure1.pdf  used on input li
 <./figures/jupyternotebook_figure2.png, id=61, 803.0pt x 602.25pt>
 File: ./figures/jupyternotebook_figure2.png Graphic file (type png)
 <use ./figures/jupyternotebook_figure2.png>
-Package luatex.def Info: ./figures/jupyternotebook_figure2.png  used on input line 37.
+Package luatex.def Info: ./figures/jupyternotebook_figure2.png  used on input line 38.
 (luatex.def)             Requested size: 312.00119pt x 234.00354pt.
- [2<./figures/jupyternotebook_figure1.pdf><./figures/jupyternotebook_figure2.png>]
-Overfull \hbox (1071.59938pt too wide) in paragraph at lines 53--53
-[]\TU/JuliaMono-Medium(0)/m/n/12 Any["0.17603266338214976\n", "0.12098536225957168\n", "0.06475879783294587\n", "0.02699548325659403\n", "0.00876415024678427\n", "0.0022159242059690038\n", "0.0004363413475228801\n", "6.691511288244268e-
- []
-
-
-Overfull \hbox (20.39983pt too wide) in paragraph at lines 53--53
-\TU/JuliaMono-Medium(0)/m/n/12 5\n", "7.991870553452737e-6\n", "7.433597573671488e-7\n"][] 
- []
-
-
-Overfull \hbox (1071.59938pt too wide) in paragraph at lines 57--57
-[]\TU/JuliaMono-Medium(0)/m/n/12 Any["0.17603266338214976\n", "0.12098536225957168\n", "0.06475879783294587\n", "0.02699548325659403\n", "0.00876415024678427\n", "0.0022159242059690038\n", "0.0004363413475228801\n", "6.691511288244268e-
- []
-
-
-Overfull \hbox (20.39983pt too wide) in paragraph at lines 57--57
-\TU/JuliaMono-Medium(0)/m/n/12 5\n", "7.991870553452737e-6\n", "7.433597573671488e-7\n"][] 
- []
-
-) [3]
+ [2<./figures/jupyternotebook_figure1.pdf><./figures/jupyternotebook_figure2.png>]) [3] [4]
 No file main.bbl.
 
 \openout2 = appendix.aux
@@ -586,19 +566,19 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 19281 strings out of 478824
+ 19282 strings out of 478824
  100000,953878 words of node,token memory allocated
  485 words of node memory still in use:
    3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 10 attribute, 56 glue_spec, 10 attribute_list, 6 write nodes
-   avail lists: 2:1221,3:137,4:1156,5:842,6:43,7:3128,8:41,9:2634,10:15,11:125
+   avail lists: 2:1260,3:175,4:1154,5:806,6:82,7:2586,8:41,9:2672,10:15,11:125
  38306 multiletter control sequences out of 65536+600000
  68 fonts using 36401671 bytes
  86i,6n,89p,9591b,5229s stack positions out of 5000i,500n,10000p,200000b,200000s
 </home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Bold.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Medium.ttf></home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/JuliaMono_Regular.ttf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on main.pdf (6 pages, 249034 bytes).
+Output written on main.pdf (7 pages, 248691 bytes).
 
-PDF statistics: 161 PDF objects out of 1000 (max. 8388607)
- 118 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 131072)
+PDF statistics: 165 PDF objects out of 1000 (max. 8388607)
+ 121 compressed objects within 2 object streams
+ 28 named destinations out of 1000 (max. 131072)
  25 words of extra memory for PDF output out of 10000 (max. 100000000)
 
