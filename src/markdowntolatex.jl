@@ -1,8 +1,8 @@
-function parsesentence(md, targetdir)
-    return parsefigures(md, targetdir) |> parselinks |> parsebold |> parseitalics
+function parsesentence(md, targetdir, notebookdir)
+    return parsefigures(md, targetdir, notebookdir) |> parselinks |> parsebold |> parseitalics
 end
 
-function parsefigures(md, targetdir)
+function parsefigures(md, targetdir, notebookdir)
     parsedsentence = ""
     i = 1
 
@@ -17,7 +17,7 @@ function parsefigures(md, targetdir)
         link = md[linkstart[end] + 1:linkend[1] - 1]
         figurename = ""
         if link[end - 3:end] == ".svg"
-            figuresvg = link
+            figuresvg = notebookdir*link
             figurename *= basename(figuresvg[1:end - 4])
             figurepdf = targetdir * "/figures/" * figurename * ".pdf"
             rsvg_convert() do cmd
@@ -87,7 +87,7 @@ function parsebold(md)
     return parsedsentence
 end
 
-function parseparagraph(paragraph, targetdir)
+function parseparagraph(paragraph, targetdir, notebookdir)
     parsedparagraph = ""
     for (i, sentence) in enumerate(split(paragraph, "\$"))
         if iseven(i)
@@ -99,7 +99,7 @@ function parseparagraph(paragraph, targetdir)
                     # It's a code sentence, i.e text is between ` ` and is not a math sentence.
                     parsedparagraph *= "\\lstinline[style=julia]{" * subsentence * "}"
                 else
-                    parsedparagraph *= parsesentence(subsentence, targetdir)
+                    parsedparagraph *= parsesentence(subsentence, targetdir, notebookdir)
                 end
             end
         end
@@ -107,7 +107,7 @@ function parseparagraph(paragraph, targetdir)
     return parsedparagraph
 end
 
-function markdowntolatex(md, targetdir)
+function markdowntolatex(md, targetdir, notebookdir)
     tag = false
     component = ""
     parsedtext = ""
@@ -152,7 +152,7 @@ function markdowntolatex(md, targetdir)
             parsedtext *= "\t" * l * "\n"
         elseif !tag
             #= if !startswith(l, "#") =#
-                parsedtext *= parseparagraph(l, targetdir)
+                parsedtext *= parseparagraph(l, targetdir, notebookdir)
             #= end =#
         end
     end

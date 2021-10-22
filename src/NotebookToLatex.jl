@@ -207,7 +207,7 @@ function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, f
         write(f,"\\newpage\n")
         for i in nb[:order]
             if nb[:celltype][i] == "markdown"
-                parsed = markdowntolatex(strip(nb[:contents][i])[7:end-3], targetdir)
+                parsed = markdowntolatex(strip(nb[:contents][i])[7:end-3], targetdir, nb[:notebookdir])
                 write(f,parsed)
             elseif nb[:celltype][i] == "code" && nb[:view][i] == "showcode"
                 write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia]\n")
@@ -255,6 +255,7 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
     createproject(targetdir, template, fontpath)
     
     notebookname = basename(notebook)[1:end-6]
+    notebookdir  = dirname(notebook)*"/"
     jsonnb = JSON.parse(read(notebook, String))
     texfile = read(targetdir*"/main.tex", String)
     lineinsert = 1
@@ -279,7 +280,7 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
             
             # Checks whether the cell has markdown
             if get(cell,"cell_type", nothing) == "markdown" || get(cell,"cell_type", nothing) == "raw"
-                parsed = markdowntolatex(strip(join(cell["source"])), targetdir)
+                parsed = markdowntolatex(strip(join(cell["source"])), targetdir, notebookdir)
                 write(f,parsed)
                 
             # Checks whether the cell has code and whether the code is hidden

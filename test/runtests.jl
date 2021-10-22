@@ -31,10 +31,9 @@ using Test
     #= end =#
 
     #= @testset "Pluto to Latex" begin =#
-        #= notebooktolatex("./notebooktest.jl", template=:mathbook, =#
-        #=                 fontpath="/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/") =#
-        #= notebooktolatex("./notebooktest.jl", template=:mathbook) =#
-        #= @test isfile("./build_latex/notebooks/") =#
+    #=     notebooktolatex("./pluto/notebooktest.jl", template=:book, =#
+    #=                     fontpath="/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/") =#
+    #=     #= @test isfile("./build_latex/notebooks/") =# =#
     #= end =#
 
     @testset "Jupyter to Latex" begin
