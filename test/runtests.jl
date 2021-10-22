@@ -21,20 +21,20 @@ using Test
         @test isfile(path * "/main.tex")
     end
 
-    #= @testset "Parsing Pluto Notebook" begin =#
-    #=     nb = extractnotebook("./notebooktest.jl") =#
-        #=     outputs  = collectoutputs(nb, path) =#
-    #=     println(outputs) =#
-    #=     @test outputs[1] == (:nothing, "") =#
-    #=     @test outputs[2] == (:plot, "notebooktest_figure1.png") =#
-    #=     @test isfile(path * "/figures/notebooktest_figure1.png") =#
-    #= end =#
+#=     @testset "Parsing Pluto Notebook" begin =#
+#=         nb = extractnotebook("./notebooktest.jl") =#
+#=             outputs  = collectoutputs(nb, path) =#
+#=         println(outputs) =#
+#=         @test outputs[1] == (:nothing, "") =#
+#=         @test outputs[2] == (:plot, "notebooktest_figure1.png") =#
+#=         @test isfile(path * "/figures/notebooktest_figure1.png") =#
+#=     end =#
 
-    #= @testset "Pluto to Latex" begin =#
-    #=     notebooktolatex("./pluto/notebooktest.jl", template=:book, =#
-    #=                     fontpath="/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/") =#
-    #=     #= @test isfile("./build_latex/notebooks/") =# =#
-    #= end =#
+#=     @testset "Pluto to Latex" begin =#
+#=         notebooktolatex("./pluto/notebooktest.jl", template=:book, =#
+#=                         fontpath="/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/") =#
+#=         #= @test isfile("./build_latex/notebooks/") =# =#
+#=     end =#
 
     @testset "Jupyter to Latex" begin
         jupyterpath = "./jupyter/build_latex/"

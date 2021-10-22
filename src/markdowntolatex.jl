@@ -17,7 +17,7 @@ function parsefigures(md, targetdir, notebookdir)
         link = md[linkstart[end] + 1:linkend[1] - 1]
         figurename = ""
         if link[end - 3:end] == ".svg"
-            figuresvg = notebookdir*link
+            figuresvg = notebookdir * link
             figurename *= basename(figuresvg[1:end - 4])
             figurepdf = targetdir * "/figures/" * figurename * ".pdf"
             rsvg_convert() do cmd
@@ -25,11 +25,10 @@ function parsefigures(md, targetdir, notebookdir)
            end
         else
             figurename *= basename(link)
-            cp(link, targetdir * "/figures/" * figurename, force=true)
+            cp(notebookdir * link, targetdir * "/figures/" * figurename, force=true)
         end
 
         parsedsentence *= "\n\\begin{figure}[H]\n\t \\centering\n\t\\includegraphics[width=0.8\\textwidth]{./figures/" * figurename * "}\n\t\\caption{" * text * "}\n\t\\label{fig:" * figurename * "}\n\\end{figure}\n"
-        #= * text * "}{" * link * "}" =#
         i = linkend[end] + 1
 
     end
@@ -82,7 +81,7 @@ function parsebold(md)
         text = md[pstart[end] + 1:pend[1] - 1]
         parsedsentence *= "\\textbf{" * text * "}"
         i = pend[end] + 1
-    end
+        end
     parsedsentence *= md[i:end]
     return parsedsentence
 end
@@ -105,7 +104,7 @@ function parseparagraph(paragraph, targetdir, notebookdir)
         end
     end
     return parsedparagraph
-end
+            end
 
 function markdowntolatex(md, targetdir, notebookdir)
     tag = false

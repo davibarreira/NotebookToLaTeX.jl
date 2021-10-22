@@ -1,0 +1,124 @@
+\newpage
+
+\chapter{My Notebook}
+
+\section{Start importing}
+
+\subsection{Some theory}
+The Wasserstein Distance for 1D distributions can be obtained by:
+\begin{displaymath}
+	\int_0^1 |C_\alpha^{-1}(r) - C_\beta^{-1}(r)|^p dr \\
+	\int_0^1 |C_\alpha^{-1}(r) - C_\beta^{-1}(r)|^p dr
+\end{displaymath}
+Where $C_\alpha^{-1}$ is the quantile function for the distribution $\alpha$ (the inverse of the Cumulative Distribution Function).Write some more markdown, with \textbf{bold text here} and \textit{italics} and \href{https://juliaoptimaltransport.github.io/OptimalTransport.jl/stable/examples/basic/}{a link here},another \textbf{bold} and \textit{more italics} and \href{https://github.com/}{another}. Ends with two figures
+\begin{figure}[H]
+	 \centering
+	\includegraphics[width=0.8\textwidth]{./figures/figure}
+	\caption{Figure}
+	\label{fig:figure}
+\end{figure}
+ and
+\begin{figure}[H]
+	 \centering
+	\includegraphics[width=0.8\textwidth]{./figures/figure}
+	\caption{Figure 2}
+	\label{fig:figure}
+\end{figure}
+ again.
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+μ(x) = pdf(Normal(0,2),x)
+println("Myplot")
+Plots.plot(μ)
+\end{lstlisting}
+
+\begin{verbatim}
+Myplot
+
+\end{verbatim}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figures/jupyternotebook_figure1.pdf}
+	\label{fig:jupyternotebook_figure1}
+
+\end{figure}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+Makie.lines(-10:0.1:10, μ.(-10:0.1:10))
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figures/jupyternotebook_figure2.png}
+	\label{fig:jupyternotebook_figure2.png}
+
+\end{figure}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+function example(μ)
+    for i in 1:10
+        println(μ(i))
+    end
+end
+example(μ)
+\end{lstlisting}
+
+\begin{verbatim}
+0.17603266338214976
+0.12098536225957168
+0.06475879783294587
+0.02699548325659403
+0.00876415024678427
+0.0022159242059690038
+0.0004363413475228801
+6.691511288244268e-5
+7.991870553452737e-6
+7.433597573671488e-7
+
+\end{verbatim}
+
+\begin{verbatim}
+0.17603266338214976
+0.12098536225957168
+0.06475879783294587
+0.02699548325659403
+0.00876415024678427
+0.0022159242059690038
+0.0004363413475228801
+6.691511288244268e-5
+7.991870553452737e-6
+7.433597573671488e-7
+
+\end{verbatim}
+
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+rand(10)
+\end{lstlisting}
+
+\begin{figure}[H]
+	 \centering
+	\includegraphics[width=0.8\textwidth]{./figures/plotexample.png}
+	\caption{Figure2}
+	\label{fig:plotexample.png}
+\end{figure}
+A raw cell
+\begin{lstlisting}[language=JuliaLocal, style=julia]
+DataFrame(x=rand(10),y=rand(10))
+\end{lstlisting}
+
+\begin{tabular}{r|cc}
+	& x & y\\
+	\hline
+	& Float64 & Float64\\
+	\hline
+	1 & 0.149443 & 0.751421 \\
+	2 & 0.637346 & 0.940969 \\
+	3 & 0.4722 & 0.326127 \\
+	4 & 0.372503 & 0.369152 \\
+	5 & 0.373836 & 0.957421 \\
+	6 & 0.337304 & 0.541391 \\
+	7 & 0.412213 & 0.722059 \\
+	8 & 0.262926 & 0.708737 \\
+	9 & 0.472072 & 0.322898 \\
+	10 & 0.708293 & 0.809144 \\
+\end{tabular}
