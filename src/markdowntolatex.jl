@@ -1,23 +1,76 @@
 function parsesentence(sentence)
+    return sentence |> parsefigures |> parselinks |> parsebold |> parseitalics
+end
+
+function parsefigures(md)
     parsedsentence = ""
-    for word in split(sentence, " ")
-        if findfirst(Regex(look_for(one_or_more(ANY), after="[", before="](")), word) != nothing && findfirst(Regex(look_for(one_or_more(ANY), after="](", before=")")), word) != nothing
-            linktext = word[findfirst(Regex(look_for(one_or_more(ANY), after="[", before="]")), word)]
-            linkref  = word[findfirst(Regex(look_for(one_or_more(ANY), after="(", before=")")), word)]
-            parsedsentence *= "\\href{" * linkref * "}{" * linktext * "}" * word[findfirst(Regex(look_for(one_or_more(ANY), after="(", before=")")), word)[end] + 2:end] * " "
-        elseif findfirst(Regex(look_for(one_or_more(ANY), after="**", before="**")), word) != nothing
-            bword = word[findfirst(Regex(look_for(one_or_more(ANY), after="**", before="**")), word)]
-            parsedsentence *= "\\textbf{" * bword * "}" * word[findfirst(Regex(look_for(one_or_more(ANY), after="**", before="**")), word)[end] + 3:end] * " "
-        elseif findfirst(Regex(look_for(one_or_more(ANY), after="*", before="*")), word) != nothing
-            iword = word[findfirst(Regex(look_for(one_or_more(ANY), after="*", before="*")), word)]
-            parsedsentence *= "\\textbf{" * iword * "}" * word[findfirst(Regex(look_for(one_or_more(ANY), after="*", before="*")), word)[end] + 2:end] * " "
-        else
-            parsedsentence *= word * " "
-        end
+    i = 1
+
+    while i < length(md)
+        pstart    = findnext("![", md, i)              !== nothing ? findnext("![", md, i)              : break
+        pend      = findnext("]", md, pstart[end])    !== nothing ? findnext("]", md, pstart[end])    : break
+        linkstart = findnext("(", md, pend[end])       !== nothing ? findnext("(", md, pend[end])       : break
+        linkend   = findnext(")", md, linkstart[end]) !== nothing ? findnext(")", md, linkstart[end]) : break
+
+        parsedsentence *= md[i:pstart[1] - 1]
+        text = md[pstart[end] + 1:pend[1] - 1]
+        link = md[linkstart[end] + 1:linkend[1] - 1]
+        parsedsentence *= "\\href{" * text * "}{" * link * "}"
+        i = linkend[end] + 1
     end
+    parsedsentence *= md[i:end]
     return parsedsentence
 end
 
+function parselinks(md)
+    parsedsentence = ""
+    i = 1
+
+    while i < length(md)
+        pstart    = findnext("[", md, i)              !== nothing ? findnext("[", md, i)              : break
+        pend      = findnext("]", md, pstart[end])    !== nothing ? findnext("]", md, pstart[end])    : break
+        linkstart = findnext("(", md, pend[end])       !== nothing ? findnext("(", md, pend[end])       : break
+        linkend   = findnext(")", md, linkstart[end]) !== nothing ? findnext(")", md, linkstart[end]) : break
+
+        parsedsentence *= md[i:pstart[1] - 1]
+        text = md[pstart[end] + 1:pend[1] - 1]
+        link = md[linkstart[end] + 1:linkend[1] - 1]
+        parsedsentence *= "\\href{" * text * "}{" * link * "}"
+    i = linkend[end] + 1
+    end
+    parsedsentence *= md[i:end]
+    return parsedsentence
+end
+
+function parseitalics(md)
+    parsedsentence = ""
+    i = 1
+    while i < length(md)
+        pstart    = findnext("*", md, i) !== nothing ? findnext("*", md, i)               : break
+        pend      = findnext("*", md, pstart[end] + 1) !== nothing ? findnext("*", md, pstart[end] + 1)    : break
+        parsedsentence *= md[i:pstart[1] - 1]
+        text = md[pstart[end] + 1:pend[1] - 1]
+        parsedsentence *= "\\textit{" * text * "}"
+        i = pend[end] + 1
+    end
+    parsedsentence *= md[i:end]
+    return parsedsentence
+end
+
+function parsebold(md)
+    parsedsentence = ""
+    i = 1
+    while i < length(md)
+        pstart    = findnext("**", md, i) !== nothing ? findnext("**", md, i)               : break
+        pend      = findnext("**", md, pstart[end]) !== nothing ? findnext("**", md, pstart[end])    : break
+        parsedsentence *= md[i:pstart[1] - 1]
+        text = md[pstart[end] + 1:pend[1] - 1]
+        parsedsentence *= "\\textbf{" * text * "}"
+        i = pend[end] + 1
+    end
+    parsedsentence *= md[i:end]
+    return parsedsentence
+end
 
 function parseparagraph(paragraph)
     parsedparagraph = ""
@@ -25,7 +78,7 @@ function parseparagraph(paragraph)
         if iseven(i)
             # It's a math sentence, i.e text is between $ $, so nothing should be parsed
             parsedparagraph *= "\$" * sentence * "\$"
-        else
+                    else
             for (i, subsentence) in enumerate(split(sentence, "`"))
                 if iseven(i)
                     # It's a code sentence, i.e text is between ` ` and is not a math sentence.
@@ -56,6 +109,15 @@ function markdowntolatex(md)
             parsedtext *= "\\end{" * component * "}\n"
             continue
 
+        elseif startswith(l, "\$\$")
+            if !tag
+                tag = !tag
+                parsedtext *= "\n\\begin{displaymath}\n"
+            else
+                tag = !tag
+                parsedtext *= "\\end{displaymath}\n"
+            end
+            continue
         elseif startswith(l, "####")
             parsedtext *= "\n\\subsubsection{" * l[6:end] * "}\n"
             continue
@@ -68,7 +130,7 @@ function markdowntolatex(md)
         elseif startswith(l, "#")
             parsedtext *= "\n\\chapter{" * l[3:end] * "}\n"
             continue
-        end
+    end
         
 
         if tag

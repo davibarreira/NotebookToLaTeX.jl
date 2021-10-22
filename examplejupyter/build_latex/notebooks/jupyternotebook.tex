@@ -5,7 +5,12 @@
 \section{Start importing}
 
 \subsection{Some theory}
-The Wasserstein Distance for 1D distributions can be obtained by:  $$ \int_0^1 |C_\alpha^{-1}(r) - C_\beta^{-1}(r)|^p dr  $$  Where  $C_\alpha^{-1}$ is the quantile function for the distribution  $\alpha$ (the inverse of the Cumulative Distribution Function). 
+The Wasserstein Distance for 1D distributions can be obtained by:
+\begin{displaymath}
+	\int_0^1 |C_\alpha^{-1}(r) - C_\beta^{-1}(r)|^p dr \\
+	\int_0^1 |C_\alpha^{-1}(r) - C_\beta^{-1}(r)|^p dr
+\end{displaymath}
+Where $C_\alpha^{-1}$ is the quantile function for the distribution $\alpha$ (the inverse of the Cumulative Distribution Function).Write some more markdown, with \textbf{bold text here} and \textit{italics} and\href{a link here}{https://juliaoptimaltransport.github.io/OptimalTransport.jl/stable/examples/basic/},another \textbf{bold} and \textit{more italics} and\href{another}{https://github.com/}. Ends with two figures\href{Figure}{figure.svg} and\href{Figure 2}{figure.svg} again.
 \begin{lstlisting}[language=JuliaLocal, style=julia]
 μ(x) = pdf(Normal(0,2),x)
 println("Myplot")
@@ -54,7 +59,7 @@ Any["0.17603266338214976\n", "0.12098536225957168\n", "0.06475879783294587\n", "
 \begin{lstlisting}[language=JuliaLocal, style=julia]
 rand(10)
 \end{lstlisting}
-\href{figure.svg}{Figure}  \href{plotexample.png}{Figure2} A raw cell 
+\href{Figure2}{plotexample.png}A raw cell
 \begin{lstlisting}[language=JuliaLocal, style=julia]
 DataFrame(x=rand(10),y=rand(10))
 \end{lstlisting}
