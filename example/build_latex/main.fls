@@ -318,9 +318,9 @@ INPUT ./figures/examplepluto_figure1.png
 INPUT ./figures/examplepluto_figure2.pdf
 INPUT ./figures/examplepluto_figure2.pdf
 INPUT ./figures/examplepluto_figure2.pdf
-INPUT /home/davibarreira/MEGA/EMAp/NotebookToLatex.jl/example/plotexample.png
-INPUT /home/davibarreira/MEGA/EMAp/NotebookToLatex.jl/example/plotexample.png
-INPUT /home/davibarreira/MEGA/EMAp/NotebookToLatex.jl/example/plotexample.png
+INPUT ./figures/plotexample.png
+INPUT ./figures/plotexample.png
+INPUT ./figures/plotexample.png
 OUTPUT appendix.aux
 INPUT ./main.aux
 INPUT ./notebooks/examplepluto.aux

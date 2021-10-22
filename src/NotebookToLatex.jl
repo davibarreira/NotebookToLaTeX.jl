@@ -80,6 +80,11 @@ function extractnotebook(notebook)
     return notebookdata
 end
 
+"""
+    collectoutputs(notebookdata, path)
+Runs the Pluto notebook and saves the outputs of
+each cell into a list.
+"""
 function collectoutputs(notebookdata, path)
     figureindex = Dict(:i => 0)
     runpath = pwd()
@@ -217,9 +222,22 @@ function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, f
                     write(f,"\t\\label{fig:"*outputs[i][2]*"}\n")
                     write(f,"\n\\end{figure}\n")
                 elseif outputs[i][1] == :image
+                    figurename = ""
+                    if outputs[i][2][end-3:end] == ".svg"
+                        figuresvg = outputs[i][2]
+                        figurename *= basename(figuresvg[1:end-4])
+                        figurepdf = targetdir*"/figures/"*figurename*".pdf"
+                        rsvg_convert() do cmd
+                           run(`$cmd $figuresvg -f pdf -o $figurepdf`)
+                        end
+                    else
+                        figurename *= basename(outputs[i][2])
+                        cp(outputs[i][2],targetdir*"/figures/"*figurename)
+                    end
                     write(f,"\n\\begin{figure}[H]\n")
                     write(f,"\t\\centering\n")
-                    write(f,"\t\\includegraphics[width=0.8\\textwidth]{"*outputs[i][2]*"}\n")
+                    write(f,"\t\\includegraphics[width=0.8\\textwidth]{./figures/"*figurename*"}\n")
+                    #= write(f,"\t\\includegraphics[width=0.8\\textwidth]{"*outputs[i][2]*"}\n") =#
                     write(f,"\t\\label{fig:"*outputs[i][2]*"}\n")
                     write(f,"\n\\end{figure}\n")
                 end
