@@ -6,6 +6,8 @@ using Makie
 using CairoMakie
 using Base64
 using JSON
+using Librsvg_jll # For converting svg to pdf
+
 export notebooktolatex, jupytertolatex
 
 include("templates.jl")
@@ -297,11 +299,22 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
                         elseif nestedget(output,["data","image/svg+xml"], nothing) !== nothing
                             svg = join(output["data"]["image/svg+xml"])
                             figureindex[:i]+=1
-                            figurename = notebookname*"_figure"*string(figureindex[:i])*".svg"
-                            write(targetdir*"/figures/"*figurename, svg)
+                            figurename = notebookname*"_figure"*string(figureindex[:i])
+                            figuresvg = targetdir*"/figures/"*figurename*".svg"
+
+                            # Save svg figure
+                            write(figuresvg, svg)
+
+                            # Convert svg to pdf
+                            figurepdf = targetdir*"/figures/"*figurename*".pdf"
+                            rsvg_convert() do cmd
+                               run(`$cmd $figuresvg -f pdf -o $figurepdf`)
+                            end
+
+                            # Parse pdf image to Latex
                             write(f,"\n\\begin{figure}[H]\n")
                             write(f,"\t\\centering\n")
-                            write(f,"\t\\includegraphics[width=0.8\\textwidth]{./figures/"*figurename*"}\n")
+                            write(f,"\t\\includegraphics[width=0.8\\textwidth]{./figures/"*figurename*".pdf}\n")
                             write(f,"\t\\label{fig:"*figurename*"}\n")
                             write(f,"\n\\end{figure}\n")
                         end
