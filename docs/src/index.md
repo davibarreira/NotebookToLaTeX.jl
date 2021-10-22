@@ -88,6 +88,19 @@ At the moment, the available templates are:
 * `:book` - The standard Latex book template;
 * `:mathbook` - Very similar to `:book`, but with some extra packages already imported.
 
+### Plots and Images
+
+At the moment, this package works with either `Makie.jl` (`CairoMakie.jl`)
+and/or `Plots.jl`. These packages are actually dependencies, and they are used
+to save the plots from Pluto notebooks. This is not necessary for the Jupyter converter.
+In a near future, I intend to create a separate package for each converter, and use
+`NotebookToLatex.jl` as a main package containing both.
+
+Also important to note is that, while notebooks are good at displaying `svg` images,
+this is not the case with Latex, which handles `pdf` images better. Hence,
+if you have `![Example](figure.svg)`, this figure will be converted to a `pdf`
+using `Librsvg_jll`.
+
 ### Workflow
 
 Once the Latex files are generated, you can modify your notebooks and
@@ -110,7 +123,7 @@ After converting the Pluto notebook the first time, the next time
 should be quite fast.
 
 
-## How this Package Works
+## For Developers and Forkers
 
 If you want to contribute to this package or if you want to modify it for your own use,
 this section is relevant.
@@ -126,3 +139,20 @@ the `julia_font.tex`, `julia_listings.tex` and `julia_listings_unicode.tex`;
 functions to add text to files in specific lines, creating folders, etc;
 * `markdowntolatex.jl` - Here is where the Markdown parser is;
 * `NotebookToLatex` - The functions to convert both Pluto and Jupyter are here.
+
+Another thing to note is that inside the `main.tex` file there is a comment
+line with `%! TeX program = lualatex`. This is necessary for people
+using `vimtex` plugin for Vim. This line will tell the plugin to compile using
+*luatex*, which is necessary.
+
+### TODO
+
+This package is still in it's earlier stages, so here is a list of things
+still left to be done:
+* Add new templates;
+* Check the DataFrames.jl output on Pluto;
+* Enable easier way of customizing parser, for example, removing numbering in sections;
+* Enable to pass a caption in the code listings (e.g.
+`\begin{lstlisting}[language=JuliaLocal, style=julia, caption=SOR Algorithm, numbers=left]`);
+* Add `\vline` before code (?);
+* Add other color schemes;

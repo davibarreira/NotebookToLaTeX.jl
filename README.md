@@ -3,78 +3,42 @@
 [![][bag-dev]][bld-dev]
 [![Build Status](https://github.com/davibarreira/NotebookToLatex.jl/workflows/CI/badge.svg)](https://github.com/davibarreira/NotebookToLatex.jl/actions)
 [![Coverage](https://codecov.io/gh/davibarreira/NotebookToLatex.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/davibarreira/NotebookToLatex.jl)
-**This is an experimental package.**
 
-This package has been tested on Linux and macOS, and might not work properly on Windows.
+This package converts your notebook files (Pluto or Jupyter) to beautiful and
+simple Latex files, that are easy to modify. Thus, making it ideal
+to write reports, articles or books from notebooks.
 
-The goal of this package is generate Latex files from Pluto and Jupyter notebooks.
-At the current moment, Pluto.jl allows one to generate pdfs from notebooks,
-but these are not customizable. This package turns notebooks into Latex files.
+Although it's already possible to convert both Pluto and Jupyter notebooks
+to PDFs, or even to Latex (via Pandoc), the PDFs are not very customizable
+and the Latex files are usually very messy.
+In contrast, NotebookToLatex.jl focuses less in generality, and
+more on opinionated defaults.
 
-Still in progress...
+The package has it's own implementation to parse Markdown to Latex,
+e.g. it turns `# Example` to `\chapter{Example}`. Thus,
+one can dive down into the actual Julia code and customize it
+for his own preference. Or, submit an issue requesting
+the feature. Hopefully, more and more customization will
+be possible from the get go as the package evolves.
 
-This package uses [julia-mono-listing](https://github.com/mossr/julia-mono-listings),
-hence, *it requires using `lualatex` for compilation*.
+Another very important point to note is that NotebookToLatex.jl uses
+[julia-mono-listing](https://github.com/mossr/julia-mono-listings).
+This enables it to produce beautiful Julia code inside the Latex pdf.
+Note that *it requires using `lualatex` for compilation*.
 
-## Converting a Pluto Notebook to Latex
+*This package has been tested on Linux and macOS, and might not work properly on Windows.*
 
-Once the files are created, the `./build_latex/julia_font.tex` file
-contains information related to `Julia-Mono`, which is the font
-used. Note that the user should define the path to the fonts location.
+## TL;DR
+If you are too lazy to read the documentation (which is already quite brief),
+then all you need to know is
+to convert the notebooks just use `notebooktolatex("mynotebook.jl")`.
+This will produce a directory `./build_latex/` where the Latex files
+will be generated.
 
-## Options
+This package has two very similar templates at the moment (`:book`, `:mathbook`),
+but another one will come very soon (`:article`). Since the output are simple
+Latex files, you can just modify them to your needs.
 
-One can add a custom folder by passing the command
-`cover = "cover.pdf"`. This will add the cover in the Latex template.
-
-## Tips on Use
-
-Note that there are some limitations on the parser from Markdown to Latex.
-For example, it's advised to write links without white spaces,
-e.g. `[mylink](www.github.com)`.
-
-## For Developers
-The information here is mostly for people who want to better understand what is
-going on under the hood.
-
-### Code Structure
-
-## Saving Plots as Images
-
-For plots to be saved as a figure to be used
-on Latex, you must use either `Plots.jl`
-or `Makie.jl`.
-
-
-### Important Details
-Here are some minor details that might go unnoticed, but that might be essential
-for the proper working of the package.
-
-A first thing to note is that inside the `book.tex` file there is a comment
-line with `%! TeX program = lualatex`. This is necessary for people
-using `vimtex` plugin for Vim. This line will tell the plugin to compile using
-luatex, which is necessary.
-
-
-#### To remember
-```julia
-const _notebook_header = "### A Pluto.jl notebook ###"
-# We use a creative delimiter to avoid accidental use in code
-# so don't get inspired to suddenly use these in your code!
-const _cell_id_delimiter = "# ╔═╡ "
-const _order_delimiter = "# ╠═"
-const _order_delimiter_folded = "# ╟─"
-const _cell_suffix = "\n\n"
-```
-
-TODO
-* Check DataFrame on Pluto
-* Enable customizing parser, for example, removing numbering in sections;
-* Enable to pass a caption in the code listings (e.g.
-`\begin{lstlisting}[language=JuliaLocal, style=julia, caption=SOR Algorithm, numbers=left]`);
-* Add `\vline` before code (?);
-* Add other color schemes;
-* Add Jupyter Converter;
 
 [bag-dev]: https://img.shields.io/badge/docs-dev-blue.svg
 [bld-dev]: https://davibarreira.github.io/NotebookToLatex.jl/dev
