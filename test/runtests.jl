@@ -20,7 +20,7 @@ using Test
         @test isfile(path * "/main.tex")
     end
 
-    @testset "Parsing Notebook" begin
+    @testset "Parsing Pluto Notebook" begin
         nb = extractnotebook("./notebooktest.jl")
         outputs  = collectoutputs(nb, path)
         println(outputs)
