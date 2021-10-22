@@ -53,7 +53,10 @@ function extractnotebook(notebook)
         push!(codes, cell[1:36])
         push!(contents, cell[38:end])
         push!(outputtag, endswith(rstrip(cell),";") ? "hideoutput" : "showoutput")
-        push!(celltype, cell[38:42] == "md\"\"\"" ? "markdown" : "code")
+        #= if length(cell) < 42 =#
+        #=     push!(celltype, "code") =#
+        #= else =#
+        push!(celltype, startswith(strip(cell[38:end]),"md\"") ? "markdown" : "code")
     end
     
     # Get order and view type
@@ -207,7 +210,13 @@ function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, f
         write(f,"\\newpage\n")
         for i in nb[:order]
             if nb[:celltype][i] == "markdown"
-                parsed = markdowntolatex(strip(nb[:contents][i])[7:end-3], targetdir, nb[:notebookdir])
+                if startswith(strip(nb[:contents][i]), "md\"\"\"")
+                    parsed = markdowntolatex(strip(nb[:contents][i])[7:end-3], targetdir, nb[:notebookdir])*"\n\n"
+                elseif startswith(strip(nb[:contents][i]), "md\"")
+                    parsed = markdowntolatex(strip(nb[:contents][i])[4:end-1], targetdir, nb[:notebookdir])*"\n\n"
+                else
+                    throw(DomainError("Markdown cell must start with either md\"\"\" or md\"."))
+                end
                 write(f,parsed)
             elseif nb[:celltype][i] == "code" && nb[:view][i] == "showcode"
                 write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia]\n")

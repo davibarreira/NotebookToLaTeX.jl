@@ -32,7 +32,8 @@ using Test
 
     @testset "Pluto to Latex" begin
         plutopath = "./build_latex/"
-        notebooktolatex("./pluto/notebooktest.jl", template=:book, fontpath="/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/")
+        fontpath = "/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/"
+        notebooktolatex("./pluto/notebooktest.jl", template=:book, fontpath=fontpath)
         @test isfile(plutopath * "main.tex")
         @test isfile(plutopath * "preface.tex")
         @test isfile(plutopath * "frontmatter/copyright.tex")
@@ -48,6 +49,11 @@ using Test
         @test isfile(plutopath * "/figures/notebooktest_figure1.png")
         @test isfile(plutopath * "/figures/notebooktest_figure2.pdf")
         @test isfile(plutopath * "/figures/plotexample.png")
+
+        notebooktolatex("./pluto/foo.jl", template=:book, fontpath=fontpath)
+        notebooktolatex("./pluto/foo2.jl", template=:book, fontpath=fontpath)
+        @test isfile(plutopath * "/notebooks/foo.tex")
+        @test isfile(plutopath * "/notebooks/foo2.tex")
     end
 
     @testset "Jupyter to Latex" begin
