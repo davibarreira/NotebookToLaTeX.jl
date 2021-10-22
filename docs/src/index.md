@@ -63,7 +63,7 @@ as a chapter. To get your final book pdf, just compile the `main.tex` using `lua
 
 In case you want a different project folder, you can run the command
 with an extra argument providing the target directory for the Latex files, e.g.:
-```
+```julia
 `notebooktolatex("mynotebook.jl", "./project/",template=:book)`.
 ```
 This will create a `./project/` folder instead of the `./build_latex`.
@@ -75,7 +75,7 @@ this will install the `.ttf` files in the project directory. You might instead
 run the command with the path to the folder containing the `JuliaMono` fonts (at the moment,
 the package requires this specific font in order to properly deal with unicode symbols).
 Here is an example:
-```
+```julia
 notebooktolatex("mynotebook.jl", template=:book,
         fontpath="/home/davibarreira/.local/share/fonts/Unknown Vendor/TrueType/JuliaMono/")
 ```
