@@ -7,18 +7,18 @@
 
 ## Why this Package?
 This package converts your notebook files (Pluto or Jupyter) to beautiful and
-simple Latex files, that are easy to modify. Thus, making it ideal
+simple LaTeX files, that are easy to modify. Thus, making it ideal
 to write reports, articles or books from notebooks.
 
 ![NotebookToLatex Example](./src/assets/notebooktolatexexample.png)
 
 Although it's already possible to convert both Pluto and Jupyter notebooks
-to PDFs, or even to Latex (via Pandoc), the PDFs are not very customizable
-and the Latex files are usually very messy.
+to PDFs, or even to LaTeX (via Pandoc), the PDFs are not very customizable
+and the LaTeX files are usually very messy.
 In contrast, NotebookToLatex.jl focuses less in generality, and
 more on opinionated defaults.
 
-The package has it's own implementation to parse Markdown to Latex,
+The package has it's own implementation to parse Markdown to LaTeX,
 e.g. it turns `# Example` to `\chapter{Example}`. Thus,
 one can dive down into the actual Julia code and customize it
 for his own preference. Or, submit an issue requesting
@@ -27,7 +27,7 @@ be possible from the get go as the package evolves.
 
 Another very important point to note is that NotebookToLatex.jl uses
 [julia-mono-listing](https://github.com/mossr/julia-mono-listings).
-This enables it to produce beautiful Julia code inside the Latex pdf.
+This enables it to produce beautiful Julia code inside the LaTeX pdf.
 Note that *it requires using `lualatex` for compilation*.
 
 ## Getting Started
@@ -40,7 +40,7 @@ notebooktolatex
 
 ### Basic Use
 To convert the notebooks just use `notebooktolatex("mynotebook.jl", template=:book)`.
-This will produce a directory `./build_latex/` where the Latex files
+This will produce a directory `./build_latex/` where the LaTeX files
 will be generated. Inside `build_latex/` you will have:
 ```
 build_latex
@@ -64,12 +64,12 @@ build_latex
 └───notebooks
     └───mynotebook.tex
 ```
-Using `template=:book`, we get the Latex book format, thus, we have a `preface.tex`,
+Using `template=:book`, we get the LaTeX book format, thus, we have a `preface.tex`,
 a `titlepage.tex` and a `copyright.tex` page. The notebook will be included
 as a chapter. To get your final book pdf, just compile the `main.tex` using `lualatex`.
 
 In case you want a different project folder, you can run the command
-with an extra argument providing the target directory for the Latex files, e.g.:
+with an extra argument providing the target directory for the LaTeX files, e.g.:
 ```julia
 `notebooktolatex("mynotebook.jl", "./project/",template=:book)`.
 ```
