@@ -1,8 +1,8 @@
-# NotebookToLaTeX.jl <a href='https://github.com/davibarreira/NotebookToLatex.jl/blob/master/src/assets/logo.svg'><img src="src/assets/logo.svg" align="center" height="50." /></a>
+# NotebookToLaTeX.jl <a href='https://github.com/davibarreira/NotebookToLaTeX.jl/blob/master/src/assets/logo.svg'><img src="src/assets/logo.svg" align="center" height="50." /></a>
 
 [![][bag-dev]][bld-dev]
-[![Build Status](https://github.com/davibarreira/NotebookToLatex.jl/workflows/CI/badge.svg)](https://github.com/davibarreira/NotebookToLatex.jl/actions)
-[![Coverage](https://codecov.io/gh/davibarreira/NotebookToLatex.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/davibarreira/NotebookToLatex.jl)
+[![Build Status](https://github.com/davibarreira/NotebookToLaTeX.jl/workflows/CI/badge.svg)](https://github.com/davibarreira/NotebookToLaTeX.jl/actions)
+[![Coverage](https://codecov.io/gh/davibarreira/NotebookToLaTeX.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/davibarreira/NotebookToLaTeX.jl)
 
 **Important**: The package is still in active development, so things might change/break. Note that the package name is being changed from
 *NotebookToLatex.jl* to *NotebookToLaTeX.jl* in order to be more consistent with the naming of other packages in the Julia environment. If you've cloned
@@ -13,12 +13,12 @@ This package converts your notebook files (Pluto or Jupyter) to beautiful and
 simple LaTeX files, that are easy to modify. Thus, making it ideal
 to write reports, articles or books from notebooks.
 
-![NotebookToLatex Example](./src/assets/notebooktolatexexample.png)
+![NotebookToLaTeX Example](./src/assets/notebooktolatexexample.png)
 
 Although it's already possible to convert both Pluto and Jupyter notebooks
 to PDFs, or even to LaTeX (via Pandoc), the PDFs are not very customizable
 and the LaTeX files are usually very messy.
-In contrast, NotebookToLatex.jl focuses less in generality, and
+In contrast, NotebookToLaTeX.jl focuses less in generality, and
 more on opinionated defaults.
 
 The package has it's own implementation to parse Markdown to LaTeX,
@@ -28,7 +28,7 @@ for his own preference. Or, submit an issue requesting
 the feature. Hopefully, more and more customization will
 be possible from the get go as the package evolves.
 
-Another very important point to note is that NotebookToLatex.jl uses
+Another very important point to note is that NotebookToLaTeX.jl uses
 [julia-mono-listing](https://github.com/mossr/julia-mono-listings).
 This enables it to produce beautiful Julia code inside the LaTeX pdf.
 Note that *it requires using `lualatex` for compilation*.
@@ -78,8 +78,8 @@ with an extra argument providing the target directory for the LaTeX files, e.g.:
 ```
 This will create a `./project/` folder instead of the `./build_latex`.
 
-Read the [documentation](https://davibarreira.github.io/NotebookToLatex.jl/dev) for more information.
+Read the [documentation](https://davibarreira.github.io/NotebookToLaTeX.jl/dev) for more information.
 
 
 [bag-dev]: https://img.shields.io/badge/docs-dev-blue.svg
-[bld-dev]: https://davibarreira.github.io/NotebookToLatex.jl/dev
+[bld-dev]: https://davibarreira.github.io/NotebookToLaTeX.jl/dev

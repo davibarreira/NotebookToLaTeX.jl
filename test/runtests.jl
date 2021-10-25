@@ -1,9 +1,9 @@
-using NotebookToLaTex
-import NotebookToLaTex:dispatch_output
-import NotebookToLaTex:createfolders
-import NotebookToLaTex:createtemplate
-import NotebookToLaTex:extractnotebook
-import NotebookToLaTex:collectoutputs
+using NotebookToLaTeX
+import NotebookToLaTeX:dispatch_output
+import NotebookToLaTeX:createfolders
+import NotebookToLaTeX:createtemplate
+import NotebookToLaTeX:extractnotebook
+import NotebookToLaTeX:collectoutputs
 using Test
 
 @testset "NotebookToLatex.jl" begin
