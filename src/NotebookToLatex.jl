@@ -1,4 +1,4 @@
-module NotebookToLatex
+module NotebookToLaTeX
 
 using ReadableRegex
 using Plots

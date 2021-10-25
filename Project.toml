@@ -1,4 +1,4 @@
-name = "NotebookToLatex"
+name = "NotebookToLaTeX"
 uuid = "4acc56a1-9938-4ee1-a82a-abdf2d4f6bfc"
 authors = ["Davi Barreira <davisbarreira@gmail.com> and contributors"]
 version = "0.1.0"

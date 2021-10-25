@@ -1,13 +1,14 @@
 # Inside make.jl
 push!(LOAD_PATH,"../src/")
-using NotebookToLatex
+using NotebookToLaTex
 using Documenter
 makedocs(
-         sitename="NotebookToLatex.jl",
-         modules=[NotebookToLatex],
+         sitename="NotebookToLaTeX.jl",
+         modules=[NotebookToLaTex],
          pages=[
                 "Home" => "index.md"
                ])
 deploydocs(;
-    repo="github.com/davibarreira/NotebookToLatex.jl",
+    repo="github.com/davibarreira/NotebookToLaTeX.jl",
 )
+

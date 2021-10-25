@@ -1,11 +1,11 @@
-# NotebookToLaTex.jl <a href='https://github.com/davibarreira/NotebookToLatex.jl/blob/master/src/assets/logo.svg'><img src="src/assets/logo.svg" align="center" height="50." /></a>
+# NotebookToLaTeX.jl <a href='https://github.com/davibarreira/NotebookToLatex.jl/blob/master/src/assets/logo.svg'><img src="src/assets/logo.svg" align="center" height="50." /></a>
 
 [![][bag-dev]][bld-dev]
 [![Build Status](https://github.com/davibarreira/NotebookToLatex.jl/workflows/CI/badge.svg)](https://github.com/davibarreira/NotebookToLatex.jl/actions)
 [![Coverage](https://codecov.io/gh/davibarreira/NotebookToLatex.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/davibarreira/NotebookToLatex.jl)
 
 **Important**: The package is still in active development, so things might change/break. Note that the package name is being changed from
-*NotebookToLatex.jl* to *NotebookToLaTex.jl* in order to be more consistent with the naming of other packages in the Julia environment. If you've cloned
+*NotebookToLatex.jl* to *NotebookToLaTeX.jl* in order to be more consistent with the naming of other packages in the Julia environment. If you've cloned
 this repo before that, you might want to delete and clone again.
 
 ## Why this Package?
