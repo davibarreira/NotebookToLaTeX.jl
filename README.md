@@ -8,6 +8,8 @@
 *NotebookToLatex.jl* to *NotebookToLaTeX.jl* in order to be more consistent with the naming of other packages in the Julia environment. If you've cloned
 this repo before that, you might want to delete and clone again.
 
+*If you try this package and find some bug, or think of a feature you'd like to have implemented, do not hesitate to open an issue*.
+
 ## Why this Package?
 This package converts your notebook files (Pluto or Jupyter) to beautiful and
 simple LaTeX files, that are easy to modify. Thus, making it ideal
