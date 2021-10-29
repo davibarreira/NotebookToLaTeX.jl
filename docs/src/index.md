@@ -68,6 +68,9 @@ with an extra argument providing the target directory for the LaTeX files, e.g.:
 ```
 This will create a `./project/` folder instead of the `./build_latex`.
 
+If instead you just want a simple report containing the Notebook,
+you can use the `:article` template.
+
 ### Font - JuliaMono
 
 Note that when you run `notebooktolatex` without providing a `fontpath`,
@@ -86,7 +89,9 @@ correctly find your fonts. You can also do this manually by changing the `julia_
 
 At the moment, the available templates are:
 * `:book` - The standard LaTeX book template;
-* `:mathbook` - Very similar to `:book`, but with some extra packages already imported.
+* `:mathbook` - Very similar to `:book`, but with some extra packages already imported;
+* `:article` - Simple template using the `article` document class.
+* `:matharticle` - The `article` template with extra packages for mathematics.
 
 ### Plots and Images
 

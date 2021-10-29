@@ -81,6 +81,14 @@ This will create a `./project/` folder instead of the `./build_latex`.
 If instead you just want a simple report containing the Notebook,
 you can use the `:article` template.
 
+### Templates
+
+At the moment, the available templates are:
+* `:book` - The standard LaTeX book template;
+* `:mathbook` - Very similar to `:book`, but with some extra packages for mathematics;
+* `:article` - Simple template using the `article` document class;
+* `:matharticle` - The `article` template with extra packages for mathematics.
+
 Read the [documentation](https://davibarreira.github.io/NotebookToLaTeX.jl/dev) for more information.
 
 
