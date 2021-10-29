@@ -133,28 +133,28 @@ function markdowntolatex(md, targetdir, notebookdir; template=:book)
             end
             continue
         elseif startswith(l, "####")
-            if template == :article
+            if template == :article || template == :matharticle
                 parsedtext *= "\n\\subsubsubsection{" * l[6:end] * "}\n"
             else
                 parsedtext *= "\n\\subsubsection{" * l[6:end] * "}\n"
             end
             continue
         elseif startswith(l, "###")
-            if template == :article
+            if template == :article || template == :matharticle
                 parsedtext *= "\n\\subsubsection{" * l[5:end] * "}\n"
             else
                 parsedtext *= "\n\\subsection{" * l[5:end] * "}\n"
             end
             continue
         elseif startswith(l, "##")
-            if template == :article
+            if template == :article || template == :matharticle
                 parsedtext *= "\n\\subsection{" * l[4:end] * "}\n"
             else
                 parsedtext *= "\n\\section{" * l[4:end] * "}\n"
             end
             continue
         elseif startswith(l, "#")
-            if template == :article
+            if template == :article || template == :matharticle
                 parsedtext *= "\n\\section{" * l[3:end] * "}\n"
             else
                 parsedtext *= "\n\\chapter{" * l[3:end] * "}\n"
@@ -166,9 +166,7 @@ function markdowntolatex(md, targetdir, notebookdir; template=:book)
         if tag
             parsedtext *= "\t" * l * "\n"
         elseif !tag
-            #= if !startswith(l, "#") =#
-                parsedtext *= parseparagraph(l, targetdir, notebookdir)
-            #= end =#
+            parsedtext *= parseparagraph(l, targetdir, notebookdir)
         end
     end
     return parsedtext
