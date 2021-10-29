@@ -106,7 +106,7 @@ function parseparagraph(paragraph, targetdir, notebookdir)
     return parsedparagraph
             end
 
-function markdowntolatex(md, targetdir, notebookdir)
+function markdowntolatex(md, targetdir, notebookdir; template=:book)
     tag = false
     component = ""
     parsedtext = ""
@@ -133,16 +133,32 @@ function markdowntolatex(md, targetdir, notebookdir)
             end
             continue
         elseif startswith(l, "####")
-            parsedtext *= "\n\\subsubsection{" * l[6:end] * "}\n"
+            if template == :article
+                parsedtext *= "\n\\subsubsubsection{" * l[6:end] * "}\n"
+            else
+                parsedtext *= "\n\\subsubsection{" * l[6:end] * "}\n"
+            end
             continue
         elseif startswith(l, "###")
-            parsedtext *= "\n\\subsection{" * l[5:end] * "}\n"
+            if template == :article
+                parsedtext *= "\n\\subsubsection{" * l[5:end] * "}\n"
+            else
+                parsedtext *= "\n\\subsection{" * l[5:end] * "}\n"
+            end
             continue
         elseif startswith(l, "##")
-            parsedtext *= "\n\\section{" * l[4:end] * "}\n"
+            if template == :article
+                parsedtext *= "\n\\subsection{" * l[4:end] * "}\n"
+            else
+                parsedtext *= "\n\\section{" * l[4:end] * "}\n"
+            end
             continue
         elseif startswith(l, "#")
-            parsedtext *= "\n\\chapter{" * l[3:end] * "}\n"
+            if template == :article
+                parsedtext *= "\n\\section{" * l[3:end] * "}\n"
+            else
+                parsedtext *= "\n\\chapter{" * l[3:end] * "}\n"
+            end
             continue
     end
         

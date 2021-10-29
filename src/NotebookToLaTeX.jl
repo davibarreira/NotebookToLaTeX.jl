@@ -211,9 +211,11 @@ function plutotolatex(notebookname, targetdir="./build_latex"; template=:book, f
         for i in nb[:order]
             if nb[:celltype][i] == "markdown"
                 if startswith(strip(nb[:contents][i]), "md\"\"\"")
-                    parsed = markdowntolatex(strip(nb[:contents][i])[7:end-3], targetdir, nb[:notebookdir])*"\n\n"
+                    parsed = markdowntolatex(strip(nb[:contents][i])[7:end-3],
+                        targetdir, nb[:notebookdir], template=template)*"\n\n"
                 elseif startswith(strip(nb[:contents][i]), "md\"")
-                    parsed = markdowntolatex(strip(nb[:contents][i])[4:end-1], targetdir, nb[:notebookdir])*"\n\n"
+                    parsed = markdowntolatex(strip(nb[:contents][i])[4:end-1],
+                        targetdir, nb[:notebookdir], template=template)*"\n\n"
                 else
                     throw(DomainError("Markdown cell must start with either md\"\"\" or md\"."))
                 end
@@ -289,7 +291,7 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
             
             # Checks whether the cell has markdown
             if get(cell,"cell_type", nothing) == "markdown" || get(cell,"cell_type", nothing) == "raw"
-                parsed = markdowntolatex(strip(join(cell["source"])), targetdir, notebookdir)
+                parsed = markdowntolatex(strip(join(cell["source"])), targetdir, notebookdir, template=template)
                 write(f,parsed)
                 
             # Checks whether the cell has code and whether the code is hidden
