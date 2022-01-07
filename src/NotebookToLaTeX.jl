@@ -319,6 +319,10 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
                     elseif get(output, "output_type", nothing) == "execute_result"
                         if nestedget(output,["data","text/latex"], nothing) !== nothing
                             write(f, "\n"*join(output["data"]["text/latex"]))
+                        elseif nestedget(output,["data","text/plain"], nothing) !== nothing
+                            write(f,"\n\\begin{verbatim}\n")
+                            write(f, "\n"*join(output["data"]["text/plain"]))
+                            write(f,"\n\\end{verbatim}\n")
                         elseif nestedget(output,["data","image/png"], nothing) !== nothing
                             png = base64decode(output["data"]["image/png"])
                             
