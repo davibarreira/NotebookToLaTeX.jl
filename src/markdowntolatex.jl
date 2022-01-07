@@ -104,7 +104,20 @@ function parseparagraph(paragraph, targetdir, notebookdir)
         end
     end
     return parsedparagraph
-            end
+end
+
+
+
+"""
+    configparser(config=nothing, template=:book)
+This function contains the configuration to be used in the
+Markdown to LaTeX parser.
+"""
+# function configparser(config=nothing, template=:book)
+    # Note that the order is important! It defines the order
+    # for the parser evaluation.
+    # parserdictionary = 
+# end
 
 function markdowntolatex(md, targetdir, notebookdir; template=:book)
     tag = false
@@ -134,7 +147,7 @@ function markdowntolatex(md, targetdir, notebookdir; template=:book)
             continue
         elseif startswith(l, "####")
             if template == :article || template == :matharticle
-                parsedtext *= "\n\\subsubsubsection{" * l[6:end] * "}\n"
+                parsedtext *= "\n\\textbf{" * l[6:end] * "}\n"
             else
                 parsedtext *= "\n\\subsubsection{" * l[6:end] * "}\n"
             end
