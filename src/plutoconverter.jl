@@ -116,13 +116,13 @@ end
 
 function dispatch_output(command_eval::Plots.Plot, notebookname, path, figureindex)
     figureindex[:i]+=1
-    savefig(command_eval,path*"/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".png")
+    Plots.savefig(command_eval,path*"/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".png")
     return command_eval
 end
 
 function dispatch_output(command_eval::Makie.FigureAxisPlot, notebookname, path, figureindex)
     figureindex[:i]+=1
-    save(path*"/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".pdf", command_eval)
+    CairoMakie.save(path*"/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".pdf", command_eval)
     return command_eval
 end
 

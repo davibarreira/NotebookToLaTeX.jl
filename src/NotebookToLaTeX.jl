@@ -2,9 +2,9 @@ module NotebookToLaTeX
 
 using Requires
 using ReadableRegex
-using Plots
-using Makie
-using CairoMakie
+# using Plots
+# using Makie
+# using CairoMakie
 using Base64
 using JSON
 using Librsvg_jll # For converting svg to pdf
@@ -15,7 +15,7 @@ include("templates.jl")
 include("auxiliarytex.jl")
 include("markdowntolatex.jl")
 include("helperfunctions.jl")
-include("plutoconverter.jl")
+# include("plutoconverter.jl")
 include("jupyterconverter.jl")
 
 export nestedget
@@ -31,17 +31,11 @@ end
 
 function __init__()
 
-    @require LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f" println("Latex")
-    # @require Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a" begin
-    #     @require CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0" begin
-    #         println("Got both")
-            # function dispatch_output(command_eval::Makie.FigureAxisPlot, notebookname, path, figureindex)
-            #     figureindex[:i]+=1
-            #     save(path*"/figures/"*notebookname*"_"*"figure"*string(figureindex[:i])*".pdf", command_eval)
-            #     return command_eval
-            # end
-    #     end
-    # end
+    @require Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80" begin
+    @require Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a" begin
+        @require CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0" include("plutoconverter.jl")
+    end
+    end
 end
 
 """

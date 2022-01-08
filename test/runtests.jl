@@ -1,3 +1,4 @@
+using Makie, CairoMakie, Plots
 using NotebookToLaTeX
 import NotebookToLaTeX:dispatch_output
 import NotebookToLaTeX:createfolders
