@@ -32,7 +32,7 @@ notebooktolatex
 ```
 
 ### Basic Use
-To convert the notebooks just use `notebooktolatex("mynotebook.jl", template=:book)`.
+To convert the notebooks just use `notebooktolatex("mynotebook.ipynb", template=:book)`.
 This will produce a directory `./build_latex/` where the LaTeX files
 will be generated. Inside `build_latex/` you will have:
 ```
@@ -64,12 +64,22 @@ as a chapter. To get your final book pdf, just compile the `main.tex` using `lua
 In case you want a different project folder, you can run the command
 with an extra argument providing the target directory for the LaTeX files, e.g.:
 ```julia
-`notebooktolatex("mynotebook.jl", "./project/",template=:book)`.
+`notebooktolatex("mynotebook.ipynb", "./project/",template=:book)`.
 ```
 This will create a `./project/` folder instead of the `./build_latex`.
 
 If instead you just want a simple report containing the Notebook,
 you can use the `:article` template.
+
+### Pluto Users
+
+If you want to convert Pluto notebooks, you have to import `Makie.jl`, `CairoMakie.jl` and
+`Plots.jl`, which are the packages used in order to save your figures. The reason for this
+is that NotebookToLaTeX.jl uses Requires.jl in order to avoid these packages as dependencies.
+Hence, to convert Pluto, you have to run:
+```julia
+notebooktolatex("myplutonotebook.jl", template=:book)
+```
 
 ### Font - JuliaMono
 
@@ -96,10 +106,8 @@ At the moment, the available templates are:
 ### Plots and Images
 
 At the moment, this package works with either `Makie.jl` (`CairoMakie.jl`)
-and/or `Plots.jl`. These packages are actually dependencies, and they are used
+and/or `Plots.jl`. These packages are incorporated via `Requires.jl`, and they are used
 to save the plots from Pluto notebooks. This is not necessary for the Jupyter converter.
-In a near future, I intend to create a separate package for each converter, and use
-`NotebookToLatex.jl` as a main package containing both.
 
 Also important to note is that, while notebooks are good at displaying `svg` images,
 this is not the case with LaTeX, which handles `pdf` images better. Hence,
