@@ -90,6 +90,7 @@ If you want to convert Pluto notebooks, you have to import `Makie.jl`, `CairoMak
 is that NotebookToLaTeX.jl uses Requires.jl in order to avoid these packages as dependencies.
 Hence, to convert Pluto, you have to run:
 ```julia
+using Makie, CairoMakie, Plots
 notebooktolatex("myplutonotebook.jl", template=:book)
 ```
 
