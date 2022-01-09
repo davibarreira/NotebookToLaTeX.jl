@@ -39,7 +39,9 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
             # Checks whether the cell has code and whether the code is hidden
             elseif get(cell,"cell_type", nothing) == "code" && nestedget(cell,["metadata","jupyter", "source_hidden"],nothing) === nothing
                 if get(cell,"outputs", nothing) != []
-                    write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia]\n")
+                    write(f,"\n\\bigskip")
+                    # The textcl=true option is for using words with accent in the comments. Useful for non-english.
+                    write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia, texcl=true]\n")
                     write(f, strip(join(cell["source"])))
                     write(f,"\n\\end{lstlisting}\n")
                 end
@@ -55,16 +57,22 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
             if get(cell, "cell_type", nothing) == "code" && !check_output_hidden
                 for output in get(cell, "outputs", nothing)
                     if get(output, "output_type", nothing) == "stream"
+                        write(f,"\n\\begingroup\n")
+                        write(f,"\n\\fontsize{10pt}{12pt}\\selectfont\n")
                         write(f,"\n\\begin{verbatim}\n")
                         write(f, join(output["text"]))
                         write(f,"\n\\end{verbatim}\n")
+                        write(f,"\n\\endgroup\n")
                     elseif get(output, "output_type", nothing) == "execute_result"
                         if nestedget(output,["data","text/latex"], nothing) !== nothing
                             write(f, "\n"*join(output["data"]["text/latex"]))
                         elseif nestedget(output,["data","text/plain"], nothing) !== nothing
+                            write(f,"\n\\begingroup\n")
+                            write(f,"\n\\fontsize{10pt}{12pt}\\selectfont\n")
                             write(f,"\n\\begin{verbatim}\n")
                             write(f, "\n"*join(output["data"]["text/plain"]))
                             write(f,"\n\\end{verbatim}\n")
+                            write(f,"\n\\endgroup\n")
                         end
                         if nestedget(output,["data","image/png"], nothing) !== nothing
                             png = base64decode(output["data"]["image/png"])
