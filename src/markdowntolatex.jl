@@ -125,6 +125,9 @@ function markdowntolatex(md, targetdir, notebookdir; template=:book)
     parsedtext = ""
     for line in split(md, "\n")
         l = strip(line)
+        if l == ""
+            l = "\n\n"
+        end
 
         if startswith(l, "```math")
             tag = !tag
