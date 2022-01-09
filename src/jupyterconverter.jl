@@ -39,6 +39,7 @@ function jupytertolatex(notebook, targetdir="./build_latex"; template=:book, fon
             # Checks whether the cell has code and whether the code is hidden
             elseif get(cell,"cell_type", nothing) == "code" && nestedget(cell,["metadata","jupyter", "source_hidden"],nothing) === nothing
                 if get(cell,"outputs", nothing) != []
+                    write(f,"\n\\bigskip")
                     # The textcl=true option is for using words with accent in the comments. Useful for non-english.
                     write(f,"\n\\begin{lstlisting}[language=JuliaLocal, style=julia, texcl=true]\n")
                     write(f, strip(join(cell["source"])))
