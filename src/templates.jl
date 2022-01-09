@@ -41,7 +41,7 @@ function createtemplate(path=".", template=:book)
             end
         end
 
-        titlepage = read("../templates/frontmatter/titlepage.tex", String)
+        titlepage = read(String(@__DIR__)*"../templates/frontmatter/titlepage.tex", String)
 
         titlepagetex = path * "/frontmatter/titlepage.tex"
         if !isfile(titlepagetex)
@@ -50,7 +50,7 @@ function createtemplate(path=".", template=:book)
             end
         end
 
-        copyright = read("../templates/frontmatter/copyright.tex", String)
+        copyright = read(String(@__DIR__)*"../templates/frontmatter/copyright.tex", String)
 
         copyrighttex = path * "/frontmatter/copyright.tex"
         if !isfile(copyrighttex)
