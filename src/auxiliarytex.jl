@@ -5,11 +5,11 @@ Creates the `julia_font.tex`, `julia_listings.tex` and
 """
 function createauxiliarytex(path="./")
     
-    juliafont = read("../templates/julia_font.tex", String)
+    juliafont = read(String(@__DIR__)*"/../templates/julia_font.tex", String)
 
-    julialistings = read("../templates/julia_listings.tex", String)
+    julialistings = read(String(@__DIR__)*"/../templates/julia_listings.tex", String)
 
-    julialistingsunicode = read("../templates/julia_listings_unicode.tex", String)
+    julialistingsunicode = read(String(@__DIR__)*"/../templates/julia_listings_unicode.tex", String)
 
     julia_font_tex = path * "/julia_font.tex"
     open(julia_font_tex, "w") do f

@@ -10,17 +10,17 @@ imports some more packages specific for mathematics.
 function createtemplate(path=".", template=:book)
 
     if template == :book
-        tex = read("../templates/book.tex", String)
+        tex = read(String(@__DIR__)*"/../templates/book.tex", String)
 
     elseif template == :mathbook
-        tex = read("../templates/mathbook.tex", String)
+        tex = read(String(@__DIR__)*"/../templates/mathbook.tex", String)
 
 
     elseif template == :article
-        tex = read("../templates/article.tex", String)
+        tex = read(String(@__DIR__)*"/../templates/article.tex", String)
 
     elseif template == :matharticle
-        tex = read("../templates/matharticle.tex", String)
+        tex = read(String(@__DIR__)*"/../templates/matharticle.tex", String)
     end
 
     maintex = path * "/main.tex"
