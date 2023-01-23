@@ -20,13 +20,13 @@ include("jupyterconverter.jl")
 
 export nestedget
 
-"""
-    Runner is a module for controling the scope
-    when running the notebook files, avoinding that any
-    command interferes with the "outside" script.
-"""
-module Runner
-end
+# """
+#     Runner is a module for controling the scope
+#     when running the notebook files, avoinding that any
+#     command interferes with the "outside" script.
+# """
+# module Runner
+# end
 
 
 function __init__()

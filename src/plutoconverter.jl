@@ -62,6 +62,7 @@ Runs the Pluto notebook and saves the outputs of
 each cell into a list.
 """
 function collectoutputs(notebookdata, path)
+    Runner = Core.eval(Main, :(Module())) # anonymous submodule of Main
     figureindex = Dict(:i => 0)
     runpath = pwd()
     cd(notebookdata[:notebookdir])
